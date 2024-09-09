@@ -1,0 +1,22 @@
+{
+  "name": "thesensationalist",
+  "version": "1.0.0",
+  "description": "A online Magazine website",
+  "main": "index.js",
+  "scripts": {
+    "test": "\u0016"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LincolnLedet/Thesensationalist.XYZ.git"
+  },
+  "author": "Lincoln Ledet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LincolnLedet/Thesensationalist.XYZ/issues"
+  },
+  "homepage": "https://github.com/LincolnLedet/Thesensationalist.XYZ#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
