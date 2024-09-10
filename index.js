@@ -11,14 +11,17 @@ const app = express();
 // When someone visits 'http://localhost:3000/', this function runs.
 // req = request (info from the client), res = response (what we send back to the client).
 app.get('/', (req, res) => {
-  // Send a response to the client. In this case, just a simple 'Hello, World!' message.
-  res.send('Hello, World!');
-});
+    res.sendFile(__dirname + '/views/index.html');
+  });
+  
+  app.get('/about', (req, res) => {
+    res.sendFile(__dirname + '/views/about.html');
+  });
 
 // Step 4: Set the port where the server will listen for incoming requests
 // 'PORT' is the variable that sets the port number for the server. 
 // It’s where your app will be available in your browser (e.g., http://localhost:3000).
-const PORT = 3000;
+const PORT = 8000;
 
 // Step 5: Start the server
 // The listen() method starts the server and makes it listen for connections on the specified port.
