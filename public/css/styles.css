@@ -17,9 +17,6 @@ body {
 	background-color: whitesmoke;
 	overflow: hidden;
 	height: 4rem;
-
-
-
 	display: flex;
 	/* Use Flexbox */
 	justify-content: space-between;
@@ -68,18 +65,14 @@ body {
 	padding: 20px;
 }
 
-.grid-container {
+.grid-container1 {
 	display: flex;
-	flex-wrap: wrap; /* Ensures flexibility for small screens */
-	height: calc(100vh - 60px); /* Subtracting navbar height */
-	width: 100%;
-	padding: 3vw;
-
+	justify-content: left;
 }
 
 /* Flexbox grid items, each image takes 50% of the width */
 .grid-item {
-	flex: 1;
+	
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -87,12 +80,17 @@ body {
 
 /* Style the images to take full width of the grid item */
 .grid-item img {
-	width: 100%;
+	padding: 10px;
+	width: 30%;
 	height: auto;
 	/* Maintain aspect ratio */
 	object-fit: cover;
 	/* Ensure the image covers the space */
 }
+.grid-item p {
+	color: white;
+
+}	
 
 @media (max-width: 768px) {
 	.grid-container {
