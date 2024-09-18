@@ -1,0 +1,68 @@
+.NavHeader {
+  display: grid;
+  align-items: center;
+  background-color: black;
+  color: white; /* White text */
+  padding: 20px;
+  max-width: 100%;  /* Keep it responsive */
+  grid-template-columns: 1fr 1fr 1fr;  /* Define 3 columns */
+  grid-template-areas: 
+    "logo logo  Media-Logos"
+    "logo logo nav-links";
+
+}
+
+.NavHeaderContainer {
+  max-width: 1000px;
+  margin: 0 auto; /* Center the container */
+  width: 100%;
+  max-width: 1000px;
+
+}
+.Media-Logos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  grid-area: Media-Logos;
+}
+
+.YoutubeLogo {
+  height: 50px;
+  width: auto;
+}
+
+.InstaLogo {
+  height: 50px;
+  width: auto;
+}
+.EmailLogo {
+  height: 50px;
+  width: auto;
+
+}
+
+
+.nav-links {
+  grid-area: nav-links;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links li a:hover {
+  color: #61dafb;
+  transition: color 0.3s ease;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  grid-area: logo;
+  padding-right: 30vw;
+}
