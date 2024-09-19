@@ -12,11 +12,12 @@ const AnimatedHeader: React.FC = () => {
       <div className="NavHeader">
         <SensationalLogo className="logo" /> {/* Use the SVG as a component */}
         <ul className="nav-links">
-          <li><a href="#home">Shop</a></li>
-          <li><a href="#about">Magazine</a></li>
-          <li><a href="#services">Community</a></li>
+          <li><a href="#home">SHOP</a></li>
+          <li><a href="#about">MAGAZINE</a></li>
+          <li><a href="#services">COMMUNITY</a></li>
         </ul>
         <ul className="Media-Logos">
+
           <InstaLogo className="InstaLogo" /> {/* Use the SVG as a component */}
           <YoutubeLogo className="YoutubeLogo" /> {/* Use the SVG as a component */}
           <EmailLogo className="EmailLogo" /> {/* Use the SVG as a component */}

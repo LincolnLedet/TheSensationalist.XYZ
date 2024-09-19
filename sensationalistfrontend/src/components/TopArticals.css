@@ -1,0 +1,36 @@
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 1px; /* Rounded corners for a smooth look */
+  background: linear-gradient(to bottom, rgba(169, 169, 169, 0.397), black); /* Gradient background */
+  padding: 7px;
+}
+
+.image-container {
+  text-align: center;
+}
+
+.image-button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.image {
+  width: 261px;
+  height: 146px;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Smooth transition on hover */
+  
+}
+
+.image-button:hover .image {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+p {
+  font-family: Arial, sans-serif;
+  color: #fff; /* White text to contrast the gradient */
+  margin-top: 5px;
+}
