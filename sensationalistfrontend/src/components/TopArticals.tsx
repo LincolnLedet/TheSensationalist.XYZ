@@ -11,7 +11,7 @@ const TopArticals: React.FC = () => {
   };
 
   const images = [
-    { src: Image1, description: 'Artical 7' },
+    { src: Image1, description: 'Artical 70' },
     { src: Image2, description: 'Artical 8' },
     { src: Image3, description: 'Artical 13' },
     { src: Image4, description: 'Artical 15' }

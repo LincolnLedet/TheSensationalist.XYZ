@@ -1,14 +1,19 @@
 import React from 'react';
-import AnimatedHeader from './components/AnimatedHeader';  // Adjust the import path
-import TopArticals from './components/TopArticals';  // Adjust the import path
-import './App.css'; // Import the CSS file
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/HomePage';
+
 
 const App: React.FC = () => {
   return (
-    <div className="main-container">
-      <AnimatedHeader />
-      <TopArticals />
-    </div>
+    <Router>
+      <div>
+        {/* You can include a header or navigation component here if needed */}
+        <Routes>
+          {/* Define routes for different pages */}
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
