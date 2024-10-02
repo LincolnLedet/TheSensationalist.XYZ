@@ -8,6 +8,18 @@ const AnimatedHeader: React.FC = () => {
         <div className="AnarchyArchiveHeader">
             <h1>Anarchy Archive</h1>
             <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            <p>Where the storys are spilt</p>
+            
         </div>
     </div>
   );
