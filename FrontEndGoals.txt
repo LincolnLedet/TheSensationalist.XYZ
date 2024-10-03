@@ -1,8 +1,0 @@
-Overall goals for front page
-    - Top navagational Bar with logo on left and button on right that link to an About, Search and Login page
-        - Flagpole.com has a sick top navagational bar thats dynamic https://flagpole.com/
-    - Central image on front page. Possible just an image, possibly image with text
-        It should be kept simple and clean. 
-    - Flex grid under both elements Contain articals and additional info. 
-        - https://www.nationalgeographic.com/ does this very well
-
