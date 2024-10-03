@@ -12,23 +12,22 @@
 
 🎵 A Silly Project For UGA and Henry levitt 🎵
 
-    ( (
-     ) )
-  ........
-  |      |]
-  \      / 
-   `----'
-                                     
+      ;   :   ;
+   .   \_,!,_/   ,
+    `.,'     `.,'
+     /         \
+~ -- :         : -- ~
+     \         /
+    ,'`._   _.'`.
+   '   / `!` \   `
+     ;   :   ;                  
 ----------------
 📜 **Table of Contents:** 📜
 ----------------
 1. 🏄 Introduction
 2. 🚀 Dependencies
 3. 🛠️ Usage
-4. 🌈 Features
-5. 🔧 Configuration
-6. 📞 Contact
-8. 🎉 Fun Facts
+
 
 
 ---------------------------
