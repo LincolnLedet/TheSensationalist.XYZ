@@ -1,20 +1,21 @@
-// Import required packages
+// index.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-// Load environment variables
 dotenv.config();
 
-// Initialize the Express application
 const app = express();
 
-// Middleware setup
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
+// Serve static files from the "uploads" directory
+app.use('/uploads', express.static('uploads'));
+
+// Database connection (make sure MongoDB is running locally)
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
