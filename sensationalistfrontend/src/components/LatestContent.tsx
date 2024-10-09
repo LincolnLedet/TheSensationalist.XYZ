@@ -1,6 +1,6 @@
 import React from 'react';
 import './LatestContent.css'; // Import the CSS file for the Thrasher style
- // Import SVG as a React component
+import axios from 'axios';// Import SVG as a React component
 
 const LatestContent: React.FC = () => {
   return (

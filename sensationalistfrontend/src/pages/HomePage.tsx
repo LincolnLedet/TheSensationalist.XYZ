@@ -3,6 +3,7 @@ import AnimatedHeader from '../components/AnimatedHeader';  // Adjust the import
 import TopArticals from '../components/TopArticals';
 import AnarchyArchive from '../components/AnarchyArchive';  // Adjust the import path
 import LatestContent from '../components/LatestContent';  // Adjust the import path
+import PDFtest from '../components/PDFtest';  // Adjust the import path
 import './HomePage.css'; // Import the CSS file
 
 const HomePage: React.FC = () => {
@@ -20,6 +21,9 @@ const HomePage: React.FC = () => {
           </div>
           <div className="latestContent">
               <LatestContent />
+          </div>
+          <div className="PDFtest">
+              <PDFtest />
           </div>
       </div>
     </div>

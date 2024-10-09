@@ -1,0 +1,6 @@
+.PFD-container {
+    border: none;
+    width: 100%;
+    max-width: 8000px; /* Limit the max width */
+    height: 5000px;
+  }

@@ -1,5 +1,6 @@
 // models/Article.js
-
+// what is mongoose?
+// mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks.
 const mongoose = require('mongoose');
 
 const ArticleSchema = new mongoose.Schema({

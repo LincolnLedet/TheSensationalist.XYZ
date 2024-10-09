@@ -16,6 +16,10 @@ export const getArticleById = async (id) => {
 
 // Create a new article
 export const createArticle = async (articleData) => {
-    const response = await axios.post(API_URL, articleData);
+    const response = await axios.post(API_URL, articleData, {
+        headers: {
+            'Content-Type': 'multipart/form-data', // Required to handle file uploads
+        },
+    });
     return response.data;
 };
