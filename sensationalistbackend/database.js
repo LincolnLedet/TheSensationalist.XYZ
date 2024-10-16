@@ -28,8 +28,7 @@ const Article = sequelize.define('Article', {
     values: ['Article', 'Volume', 'Video', 'Image', 'Podcast', "Issue"], // Add more types as needed
   },
   viewcount: {type : DataTypes.NUMBER, allowNull: true },
-  downloadcount: {type : DataTypes.NUMBER, allowNull: true },
-  profane : {type : DataTypes.BOOLEAN, defaultValue: false, },
+  downloadcount: {type : DataTypes.NUMBER, allowNull: true }
 });
 
 // Sync the models
