@@ -24,99 +24,81 @@
 ----------------
 📜 **Table of Contents:** 📜
 ----------------
-1. 🏄 Introduction
-2. 🚀 Dependencies
-3. 🛠️ Usage
-
+ 1.   Description
+ 2.   Features
+ 3.   Technologies Used
+ 4.   Installation
+    - Prerequisites
+    - Back End Setup
+    - Front End Setup
+ 8.   Usage
+ 9.   API Endpoints
+ 10.  Database Schema
+ 11.  Project Structure
 
 
 ---------------------------
-🏄 **1. Introduction:** 🏄
+🏄 **1. Description:** 🏄
 ---------------------------
 
-Welcome to **The Sensationalist Media Website**, a full-stack web application designed to serve news articles 
-with a snazzy frontend and a robust backend. This project uses a React-based frontend to fetch, display, and 
-interact with articles stored in a MongoDB database via a Node.js and Express backend. Users can browse articles,
-view detailed content, and, with a bit of extra functionality, even add their own articles to the collection.
-
-
-The project's architecture is split into two parts:
-- **Backend**: Handles data storage and API interactions using Node.js, Express, and MongoDB.
-- **Frontend**: Provides a sleek interface using React for smooth navigation and display of the content.
+The Article Management System is a full-stack web application that allows users to upload articles along with 
+PDF files and view them. It features a React front end and an Express.js back end. The back end uses Sequelize
+ORM with a SQLite database and handles file uploads using Multer. The front end is built with React, TypeScript,
+and React Router for client-side routing.
 
 ----------------------------
-🚀 **2. Dependencies:** 🚀
+🚀 **2. Features:** 🚀
 ----------------------------
-### Backend (Node.js & Express)
-- **Node.js**: The runtime environment that allows JavaScript to run server-side.
-    It's the engine that powers the backend of this application.
-- **Express**: A minimalist web framework for Node.js, used to set up the server 
-    and define routes for fetching, creating, and managing articles.
-- **Mongoose**: An Object Data Modeling (ODM) library for MongoDB. It provides a 
-    straightforward, schema-based solution to model and interact with your MongoDB
-    data in JavaScript.
-- **MongoDB**: A NoSQL database used to store articles in a flexible, JSON-like 
-    format. This is where all the media content lives.
-- **dotenv**: A zero-dependency module that loads environment variables from a 
-    `.env` file into `process.env`. It's crucial for securely storing sensitive information
-    like database connection strings.
-- **cors**: Middleware that allows cross-origin requests. This is essential for enabling the
-     React frontend (running on a different port) to communicate with the backend.
+    Article Upload: Users can upload articles with a title, description, and associated PDF file.
+    Article Listing: View a list of all uploaded articles.
+    Article Detail View: View detailed information about a specific article, including the option to download or view the PDF.
+    File Serving: Serve uploaded PDF files for download or viewing directly in the browser.
 
-### Frontend (React)
-- **React**: A JavaScript library for building user interfaces. In this project, React is 
-    used to create components for listing articles, displaying detailed content, and managing
-     forms for adding new articles.
-- **react-router-dom**: Provides the necessary tools to handle navigation and routing within 
-    the React application. It’s what makes moving between pages (like the article list and 
-    article details) smooth and seamless.
-- **Axios**: A promise-based HTTP client used to make API requests to the backend. Axios handles 
-    all the network requests, from fetching articles to sending new ones to the database.
-
-### Additional Tools
-- **MongoDB Compass**: A GUI tool to manage and interact with your MongoDB database. Useful for 
-    inserting, updating, and inspecting documents within the `articles` collection.
-- **Git**: Version control to track changes in the project files, allowing you to manage different
-     versions of your codebase effectively.
 
 ----------------------------
-🛠️ **3. Installation and Setup:** 🛠️
+🚀 **3. Technologies Used:** 🚀
 ----------------------------
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/LincolnLedet/TheSensationalist.XYZ
-   ```
+-Back End
+    Node.js: JavaScript runtime for server-side programming.
+    Express.js: Web framework for Node.js.
+    Sequelize ORM: Object-Relational Mapping tool for interacting with the database.
+    SQLite: Lightweight relational database.
+    Multer: Middleware for handling multipart/form-data, primarily used for file uploads.
+    CORS: Middleware for enabling Cross-Origin Resource Sharing.
+    dotenv: Module for loading environment variables from a .env file.
+-  Front End
+    React: JavaScript library for building user interfaces.
+    TypeScript: Superset of JavaScript that adds static typing.
+    React Router: Library for handling routing in React applications.
+    Axios: Promise-based HTTP client for the browser and Node.js.
+    CSS/SCSS: Styling for the application.
 
-2. **Navigate to the Backend Directory and Install Dependencies:**
-   ```bash
-   cd sensationalist-backend
-   npm install
-   ```
+----------------------------
+🚀 **4. Installation:** 🚀
+----------------------------
+Prerequisites
+    Node.js (version 12 or higher)
+    npm or yarn
+    Git (optional)
 
-3. **Create a `.env` File in the Backend Directory:**
-   - Add your MongoDB connection string:
-     ```
-     MONGODB_URI=mongodb://localhost:27017/sensationalistdb
-     PORT=5000
-     ```
+BackEnd Setup
+    - Clone the Repository
+        - git clone https://github.com/LincolnLedet/TheSensationalist.XYZ
+        - cd TheSensationalist.XYZ/sensationalistbackend
+        - node index.js 
+    
+FrontEnd
+    - cd TheSensationalist.XYZ/sensationalistfrontend
+    - npm install (install dependcies)
+    - npm start
 
-4. **Navigate to the Frontend Directory and Install Dependencies:**
-   ```bash
-   cd ../sensationalist-frontend
-   npm install
-   ```
 
-5. **Start the Backend Server:**
-   ```bash
-   node index.js
-   ```
 
-6. **Start the React Frontend:**
-   ```bash
-   npm start
-   ```
-
-7. **Access the Application:**
-   - Open your browser and go to `http://localhost:3000` to see the app in action.
-
----
+curl -X POST http://localhost:5000/api/articles \
+  -F 'title=The Sensationalist Issue #8' \
+  -F 'description=The Chain of Evolution, “Liminal Space”, On placebos, The Girl, You can’t stop me!, Alarm, The Death of Humanity, Hot Dog Art' \
+  -F "pdf=@\"C:/Users/linco/Desktop/Past Issues/The_Sensationalist_8.pdf\"" \
+  -F 'filetype=Article' \
+  -F 'viewcount=0' \
+  -F 'downloadcount=0' \
+  -F 'profane=False'
