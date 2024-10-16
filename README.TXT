@@ -65,8 +65,7 @@ and React Router for client-side routing.
     SQLite: Lightweight relational database.
     Multer: Middleware for handling multipart/form-data, primarily used for file uploads.
     CORS: Middleware for enabling Cross-Origin Resource Sharing.
-    dotenv: Module for loading environment variables from a .env file.
--  Front End
+    -  Front End
     React: JavaScript library for building user interfaces.
     TypeScript: Superset of JavaScript that adds static typing.
     React Router: Library for handling routing in React applications.
@@ -77,13 +76,14 @@ and React Router for client-side routing.
 🚀 **4. Installation:** 🚀
 ----------------------------
 Prerequisites
-    Node.js (version 12 or higher)
-    npm or yarn
-    Git (optional)
+    - Node.js (version 12 or higher)
+    - npm or yarn
+    - Git
+    - Clone the Repository
+        - git clone https://github.com/LincolnLedet/TheSensationalist.XYZ
 
 BackEnd Setup
     - Clone the Repository
-        - git clone https://github.com/LincolnLedet/TheSensationalist.XYZ
         - cd TheSensationalist.XYZ/sensationalistbackend
         - node index.js 
     
@@ -94,6 +94,42 @@ FrontEnd
 
 
 
+----------------------------
+🚀 **5. Usage:** 🚀
+----------------------------
+
+All of these require terminal commands. I use bash.
+
+
+
+How to start BackEnd
+-----------------------------------------------------------------------
+Cd into TheSensationalist.XYZ/sensationalistbackend
+node index.js
+
+
+
+How to test the backend is working. 
+-----------------------------------------------------------------------
+http://localhost:5000/uploads/The_Sensationalist_1.pdf
+
+
+
+How to start FrontEnd
+-----------------------------------------------------------------------
+Cd into TheSensationalist.XYZ/sensationalistfrontend
+npm start
+
+
+
+How to test the frontend is working. 
+-----------------------------------------------------------------------
+http://localhost:3000/
+
+
+
+How to Upload a File or PDF
+-------------------------------------------------------------------------------------------------------------------------------------
 curl -X POST http://localhost:5000/api/articles \
   -F 'title=The Sensationalist Issue #8' \
   -F 'description=The Chain of Evolution, “Liminal Space”, On placebos, The Girl, You can’t stop me!, Alarm, The Death of Humanity, Hot Dog Art' \
@@ -102,3 +138,5 @@ curl -X POST http://localhost:5000/api/articles \
   -F 'viewcount=0' \
   -F 'downloadcount=0' \
   -F 'profane=False'
+
+
