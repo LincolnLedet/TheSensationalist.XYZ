@@ -9,14 +9,11 @@
   grid-template-areas: 
     "logo logo  Media-Logos"
     "logo logo nav-links";
-
 }
 
 .NavHeaderContainer {
-  max-width: 1000px;
   margin: 0 auto; /* Center the container */
   width: 100%;
-  max-width: 1000px;
 
 }
 .Media-Logos {
@@ -40,7 +37,6 @@
   width: auto;
 
 }
-
 
 .nav-links {
   grid-area: nav-links;

@@ -10,11 +10,9 @@ interface Article {
 }
 
 const PDFtest: React.FC = () => {
-  // Set the correct type for articles: Article[]
   const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
-    // Fetch the articles from your API
     axios.get('http://localhost:5000/api/articles')
       .then(response => {
         setArticles(response.data);
@@ -30,12 +28,13 @@ const PDFtest: React.FC = () => {
       <ul>
         {articles.map(article => (
           <li key={article.id}>
-            <h2>{article.title}</h2>
+            <h2>{article.pdfPath}</h2>
             <p>{article.description}</p>
-            {/* Embed PDF in an iframe */}
+            {/* URL-encode the PDF path */}
             {article.pdfPath && (
-              <iframe className="PFD-container"
-                src={`http://localhost:5000/uploads/test.pdf`}
+              <iframe
+                className="PFD-container"
+                src={`http://localhost:5000/${article.pdfPath.replace(/\\/g, '/')}`}
                 width="600px"
                 height="500px"
                 title="PDF Viewer"
