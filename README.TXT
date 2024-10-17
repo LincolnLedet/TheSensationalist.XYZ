@@ -93,6 +93,7 @@ FrontEnd
     - npm start
 
 
+How to add data files to data base. 
 
 curl -X POST http://localhost:5000/api/articles \
   -F 'title=The Sensationalist Issue #8' \
@@ -102,3 +103,30 @@ curl -X POST http://localhost:5000/api/articles \
   -F 'viewcount=0' \
   -F 'downloadcount=0' \
   -F 'profane=False'
+
+  Tasks for Project
+  - Frontend 
+    - Add animated header/topnav bar for homepage
+        - Create animated header for react component. sensationalistfrontend/src/compents/AnimatedHeader.tsx
+        - reference https://www.thrashermagazine.com/
+        - When a mouse hovers over Shop, Magazine or Community additonal options should be presented
+            -Shop list
+                - Subscribe
+            - Magazine
+                - articles
+                - volumes
+            - Community
+                - Authors 
+                - Submit yourself
+                - Events 
+    - Search bar
+        - Search bar in top right should Seach through article descriptions pulled from api and find article Ids that
+          match the Search. Artical hyberlinks will be displayed based on found ID
+    - Icon buttons (Email and instagram)
+        - Instagram Icon located in sensationalistfrontend/src/compents/AnimatedHeader.tsx should link to https://www.instagram.com/thesensationalist_mag/ page
+        - Email Icon should link to a new page that for emailing frankievinehardt3@gmail.com ideally with fill attachments. 
+  - BackEnd
+    - Viewcount incrementation  
+    - article download button (button that links to http://localhost:5000/uploads/The_Sensationalist_1.pdf)
+        - Downloadcount incrementation 
+
