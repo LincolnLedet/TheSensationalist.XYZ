@@ -18,18 +18,58 @@ curl -X POST http://localhost:5000/api/articles \
   -F 'profane=False'
  */
 // Define the Article model
+// Article Model
 const Article = sequelize.define('Article', {
-  title: { type: DataTypes.STRING, allowNull: false },
-  description: { type: DataTypes.STRING, allowNull: false },
-  pdfPath: { type: DataTypes.STRING, allowNull: true },
-  uploadedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+  title: { 
+    type: DataTypes.STRING, 
+    allowNull: false 
+  },
+  description: { 
+    type: DataTypes.STRING, 
+    allowNull: false 
+  },
+  pdfPath: { 
+    type: DataTypes.STRING, 
+    allowNull: true 
+  },
+  uploadedAt: { 
+    type: DataTypes.DATE, 
+    defaultValue: DataTypes.NOW 
+  },
   filetype: {
     type: DataTypes.ENUM,
-    values: ['Article', 'Volume', 'Video', 'Image', 'Podcast', "Issue"], // Add more types as needed
+    values: ['Article', 'Volume', 'Video', 'Image', 'Podcast', 'Issue', 'Music', 'Misc' ],
   },
-  viewcount: {type : DataTypes.NUMBER, allowNull: true },
-  downloadcount: {type : DataTypes.NUMBER, allowNull: true }
+  viewcount: {
+    type: DataTypes.INTEGER,
+    allowNull: true 
+  },
+  downloadcount: {
+    type: DataTypes.INTEGER,
+    allowNull: true 
+  },
+  coverImage: {
+    type: DataTypes.STRING,
+    allowNull: true 
+  }
 });
+
+// Author Model
+const Author = sequelize.define('Author', {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  bio: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  }
+});
+
+// Define the many-to-many relationship through the join table ArticleAuthor
+Article.belongsToMany(Author, { through: 'ArticleAuthor' });
+Author.belongsToMany(Article, { through: 'ArticleAuthor' });
+
 
 // Sync the models
 sequelize.sync();
