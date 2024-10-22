@@ -17,10 +17,13 @@ const AnimatedHeader: React.FC = () => {
           <li><a href="#services">COMMUNITY</a></li>
         </ul>
         <ul className="Media-Logos">
+          <a href="https://www.instagram.com/thesensationalist_mag/" target="_blank" rel="noopener noreferrer">
+            <InstaLogo className="InstaLogo" /> {/* Use the SVG as a component */}
+           </a>
+           <a href="mailto:frankievinehardt3@gmail.com" target="_blank" rel="noopener noreferrer">
+            <EmailLogo className="EmailLogo" /> {/* Use the SVG as a component */}
+          </a>
 
-          <InstaLogo className="InstaLogo" /> {/* Use the SVG as a component */}
-          <YoutubeLogo className="YoutubeLogo" /> {/* Use the SVG as a component */}
-          <EmailLogo className="EmailLogo" /> {/* Use the SVG as a component */}
           <div className="SearchBarContainer">
             <input 
               type="search" 
