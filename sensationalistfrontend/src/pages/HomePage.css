@@ -4,11 +4,13 @@
     display: grid;
     background-color: black;
     color: white;
-    min-width: 85vw;
+    min-width: 30vw;
+    max-width: 85vw;
+
     grid-template-areas: 
     "header header header"
     "topAriticals topAriticals topAriticals"
-    "anarchyArchive LatestContent LatestContent"
+    "LatestIssues LatestContent LatestContent"
     "a a a";
     
   }
@@ -27,8 +29,9 @@
   .topAriticals {
     grid-area: topAriticals;
   }
-  .anarchyArchive {
-    grid-area: anarchyArchive;
+  .LatestIssues {
+    grid-area: LatestIssues;
+    min-width : 40vw;
   }
   .latestContent
   {

@@ -9,10 +9,11 @@ const sequelize = new Sequelize({
 });
 /* 
 curl -X POST http://localhost:5000/api/articles \
-  -F 'title=The Sensationalist Issue #5' \
-  -F 'description=' \
-  -F "pdf=@\"C:/Users/linco/Desktop/Past Issues/The_Sensationalist_5.pdf\"" \
-  -F 'filetype=Article' \
+  -F 'title=The Sensationalist Issue #1' \
+  -F 'description=Symmetry (A short film script), The Fabric Cube, One Day I Will Replace All the Caffeine in Your Coffee, New Stanford Study Raises Alarm Over Widespread Addiction, The O.A.R. Project, and Music of the #1: Clubbing Harder @ Home.' \
+  -F "pdf=@\"C:/Users/linco/Desktop/Past Issues/The_Sensationalist_1.pdf\"" \
+  -F "coverImage=@\"C:/Users/linco/Desktop/Past Issues/The-Sensationalist-Cover-1.png\"" \
+  -F 'filetype=Issue' \
   -F 'viewcount=0' \
   -F 'downloadcount=0' \
   -F 'profane=False'
@@ -38,7 +39,7 @@ const Article = sequelize.define('Article', {
   },
   filetype: {
     type: DataTypes.ENUM,
-    values: ['Article', 'Volume', 'Video', 'Image', 'Podcast', 'Issue', 'Music', 'Misc' ],
+    values: ['Volume', 'Video', 'Image', 'Podcast', 'Issue', 'Music', 'Misc'],
   },
   viewcount: {
     type: DataTypes.INTEGER,
