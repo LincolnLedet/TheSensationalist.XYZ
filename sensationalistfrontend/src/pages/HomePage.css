@@ -31,7 +31,7 @@
   }
   .LatestIssues {
     grid-area: LatestIssues;
-    min-width : 40vw;
+    min-width : 30vw;
   }
   .latestContent
   {

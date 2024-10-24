@@ -7,7 +7,6 @@ const LatestIssues: React.FC = () => {
   return (
     <div className="LatestIssues">
         <div className="LatestIssuesHeader">
-            <h1>Latest Issues</h1>
         </div>
         <IssueModule/>
     </div>

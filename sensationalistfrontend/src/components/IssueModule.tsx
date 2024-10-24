@@ -36,7 +36,7 @@ const IssueModule: React.FC = () => {
           <a href={`/articles/${article.id}`} className="article-link">
             {/* Title Above Both Image and Description */}
             <h2 className="article-title">{article.title}</h2>
-            <div className="article-content">
+            <div className="article-content-preview">
               {/* Cover Image on the Left */}
               <img
                 src={`http://localhost:5000/${article.coverImage.replace(/\\/g, '/')}`}

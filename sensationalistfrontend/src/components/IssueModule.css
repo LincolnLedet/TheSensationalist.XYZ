@@ -14,7 +14,7 @@
   background-color: white;
   border: 1px solid #ddd;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   width: 100%; /* Add this line */
 }
@@ -30,9 +30,12 @@
   color: #333;
 }
 
-.article-content {
+.article-content-preview {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: flex-start;
+  justify-content: flex-start;
   gap: 20px;
 }
 
@@ -40,7 +43,7 @@
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 2px;
   flex-shrink: 0;
 }
 

@@ -1,0 +1,9 @@
+.article-flex-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 110vh;
+}
+.article-content{
+    display: flex;
+    flex-direction: column;
+}
