@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AnimatedHeader from '../components/AnimatedHeader';  // Adjust the import path
 import TopArticals from '../components/TopArticals';
 import LatestIssues from '../components/LatestIssues';  // Adjust the import path
@@ -12,6 +13,11 @@ const HomePage: React.FC = () => {
           <div className="header">
               <AnimatedHeader />
           </div>
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+          <Link to="/author-bio">
+            <button className="author-bio-button">Visit Author Bio</button>
+          </Link>
+        </div>
           <div className="topAriticals">
               <TopArticals />
           </div>

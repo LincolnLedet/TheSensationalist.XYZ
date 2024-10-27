@@ -1,0 +1,16 @@
+.author-bio-page {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h2, h3 {
+    color: red;
+  }
+  
+  .author-bio-page p {
+    color: white;
+  }
+  
