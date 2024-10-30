@@ -1,7 +1,7 @@
 import React from 'react';
 import AnimatedHeader from '../components/AnimatedHeader';  // Adjust the import path
 import TopArticals from '../components/TopArticals';
-import LatestIssues from '../components/LatestIssues';  // Adjust the import path
+import IssueModule from '../components/IssueModule';  // Adjust the import path
 import LatestContent from '../components/LatestContent';  // Adjust the import path
 import './HomePage.css'; // Import the CSS file
 
@@ -15,8 +15,8 @@ const HomePage: React.FC = () => {
           <div className="topAriticals">
               <TopArticals />
           </div>
-          <div className="LatestIssues">
-              <LatestIssues />
+          <div className="IssueModule">
+              <IssueModule />
           </div>
           <div className="latestContent">
               <LatestContent />

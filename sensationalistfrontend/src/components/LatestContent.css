@@ -1,10 +1,46 @@
-.LatestContent {
-    display: grid;
-    align-items: left;
-    justify-content: left;
-    background-color: black;
-    color: red; /* White text */
-    padding: 20px;
-    max-width: 30%;  /* Keep it responsive */
-  
-  }
+.latest-content {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  position: relative;
+  flex-direction: column ;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.volume-cover-button {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.h4{
+  padding: 10px;
+  font-size: large;
+}
+
+.volume-container {
+  display: flex;
+  flex-direction: column;
+}
+.volume-cover-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.volume-cover-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2em;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for contrast */
+  padding: 10px 20px;
+  border-radius: 5px;
+}

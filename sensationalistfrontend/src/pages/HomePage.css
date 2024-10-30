@@ -10,7 +10,7 @@
     grid-template-areas: 
     "header header header"
     "topAriticals topAriticals topAriticals"
-    "LatestIssues LatestContent LatestContent"
+    "IssueModule latestContent LatestContent"
     "a a a";
     
   }
@@ -29,10 +29,11 @@
   .topAriticals {
     grid-area: topAriticals;
   }
-  .LatestIssues {
-    grid-area: LatestIssues;
+  .IssueModule {
+    grid-area: IssueModule;
     min-width : 30vw;
   }
+
   .latestContent
   {
     grid-area: LatestContent;
