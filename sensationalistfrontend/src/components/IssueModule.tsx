@@ -33,7 +33,6 @@ const IssueModule: React.FC = () => {
       .filter(article => article.filetype === 'Issue')
       .map(article => (
         <li key={article.id} className="article-item">
-          <h2 className="article-title">{`http://localhost:5000/${article.coverImage.replace(/\\/g, '/')}`}</h2>
           <a href={`/articles/${article.id}`} className="article-link">
             {/* Title Above Both Image and Description */}
             <h2 className="article-title">{article.title}</h2>

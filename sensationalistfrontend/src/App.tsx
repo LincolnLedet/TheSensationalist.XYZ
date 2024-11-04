@@ -1,23 +1,27 @@
+// App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/HomePage';
-import Article from './pages/ArticlePage';
-
+import { AuthProvider } from './AuthContext'; // Adjust the path if necessary
+import AnimatedHeader from './components/AnimatedHeader'; // Adjust the path
+import Home from './pages/HomePage'; // Adjust the path
+import Article from './pages/ArticlePage'; // Adjust the path
+import LoginPage from './pages/LoginPage'; // Adjust the path
+import RegisterPage from './pages/RegisterPage'; // Adjust the path
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <div>
-        {/* You can include a header or navigation component here if needed */}
+    <AuthProvider>
+      <Router>
         <Routes>
-          {/* Define routes for different pages */}
           <Route path="/" element={<Home />} />
-          {/* Dynamic route for Article IDS */}
-          <Route path="/articles/:id" element={<Article />} /> 
+          <Route path="/articles/:id" element={<Article />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
 };
 
 export default App;
+
