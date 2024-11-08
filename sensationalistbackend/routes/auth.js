@@ -1,7 +1,6 @@
 // routes/auth.js
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const { User } = require('../database'); // Adjust the path if necessary
 const router = express.Router();
 const { Op } = require('sequelize'); // For advanced querying

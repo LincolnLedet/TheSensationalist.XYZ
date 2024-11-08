@@ -21,7 +21,7 @@ const AuthorBio: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/articles/authors/${id}`)
+    axios.get(`http://localhost:4444/api/articles/authors/${id}`)
       .then(response => {
         console.log("API Response:", response.data); // Log the API response to inspect it
 
@@ -29,7 +29,7 @@ const AuthorBio: React.FC = () => {
         const articles = response.data.articles || []; // Use an empty array if articles is undefined
 
         const fetchedAuthor = {
-          pictureUrl: `http://localhost:5000/${response.data.profileImage?.replace(/\\/g, '/') || ''}`,
+          pictureUrl: `http://localhost:4444/${response.data.profileImage?.replace(/\\/g, '/') || ''}`,
           name: response.data.name || 'Unknown Author',
           bio: response.data.bio || 'No biography available.',
           contributions: Array.isArray(articles)
