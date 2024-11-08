@@ -1,4 +1,3 @@
-// database.js
 const { Sequelize, DataTypes } = require('sequelize');
 const path = require('path');
 const bcrypt = require('bcrypt');
@@ -67,7 +66,7 @@ const Author = sequelize.define('Author', {
 Article.belongsToMany(Author, { through: 'ArticleAuthor' });
 Author.belongsToMany(Article, { through: 'ArticleAuthor' });
 
-/// New Models (User, Merch, Cart, CartItem)
+/// New Models (User, Merch, Cart, CartItem, Order, OrderItem)
 
 // Define the User model
 const User = sequelize.define('User', {
@@ -83,7 +82,7 @@ const User = sequelize.define('User', {
     validate: {
       isEmail: true, // Validates email format
     },
-  }, // Closing brace correctly placed here
+  },
   passwordHash: {
     type: DataTypes.STRING,
     allowNull: false, // Store the hashed password
@@ -146,6 +145,43 @@ const CartItem = sequelize.define('CartItem', {
     allowNull: false,
     defaultValue: 1,
   },
+  priceAtAdd: {
+    type: DataTypes.DECIMAL(10, 2), // Price of the item when it was added to the cart
+    allowNull: false,
+  },
+});
+
+// Define the Order model
+const Order = sequelize.define('Order', {
+  status: {
+    type: DataTypes.ENUM('Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'),
+    defaultValue: 'Pending',
+  },
+  orderDate: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
+  },
+  shippingAddress: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  trackingNumber: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+});
+
+// Define the OrderItem model
+const OrderItem = sequelize.define('OrderItem', {
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+  },
+  priceAtPurchase: {
+    type: DataTypes.DECIMAL(10, 2), // Price at the time of order
+    allowNull: false,
+  },
 });
 
 // Define Associations
@@ -162,17 +198,22 @@ CartItem.belongsTo(Cart, { foreignKey: 'cartId' });
 Merch.hasMany(CartItem, { foreignKey: 'merchId' });
 CartItem.belongsTo(Merch, { foreignKey: 'merchId' });
 
+// User and Order
+User.hasMany(Order, { foreignKey: 'userId' });
+Order.belongsTo(User, { foreignKey: 'userId' });
+
+// Order and OrderItem
+Order.hasMany(OrderItem, { foreignKey: 'orderId', onDelete: 'CASCADE' });
+OrderItem.belongsTo(Order, { foreignKey: 'orderId' });
+
+// Merch and OrderItem
+Merch.hasMany(OrderItem, { foreignKey: 'merchId' });
+OrderItem.belongsTo(Merch, { foreignKey: 'merchId' });
+
 // Sync the models (create tables in the database)
 // Be cautious with force: true as it will drop existing tables and data
 // You may remove or comment out sequelize.sync() here if you synchronize the database elsewhere
 // sequelize.sync({ /* force: true */ });
 
 // Export sequelize and models
-module.exports = { sequelize, Article, Author, User, Merch, Cart, CartItem };
-//
-//curl -X POST http://localhost:5000/api/articles \
-//  -F "title=The Sensationalist Issue 1" \
-//  -F "filetype=Issue" \
-//  -F "coverImage=@/Users/linco/Desktop/Past Issues/The-Sensationalist-Cover-1.png" \
-//  -F "pdf=@/Users/linco/Desktop/Past Issues/The_Sensationalist_1.pdf" \
-//  -F $'description=This Issue Includes:\nSymmetry (A short film script)\nThe Fabric Cube\nOne Day I Will Replace All the Caffeine in Your Coffee.\nNew Stanford Study Raises Alarm Over Widespread Addiction\nThe O.A.R. Project,\nMusic of the #1: Clubbing Harder @ Home'
+module.exports = { sequelize, Article, Author, User, Merch, Cart, CartItem, Order, OrderItem };

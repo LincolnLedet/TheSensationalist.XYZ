@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './AuthContext'; // Adjust the path if necessary
-import AnimatedHeader from './components/AnimatedHeader'; // Adjust the path
+import AuthorBio from './pages/AuthorBioPage'; // Adjust the path
 import Home from './pages/HomePage'; // Adjust the path
 import Article from './pages/ArticlePage'; // Adjust the path
 import LoginPage from './pages/LoginPage'; // Adjust the path
@@ -17,6 +17,7 @@ const App: React.FC = () => {
           <Route path="/articles/:id" element={<Article />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/authors/:id" element={<AuthorBio />} />
         </Routes>
       </Router>
     </AuthProvider>

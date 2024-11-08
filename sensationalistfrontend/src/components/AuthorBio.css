@@ -1,0 +1,41 @@
+.author-bio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .author-bio-picture {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+  
+  .author-bio-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .author-bio-bio {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+  
+  .author-bio-contributions ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .author-bio-contributions a {
+    color: red;
+    text-decoration: none;
+  }
+  
+  .author-bio-contributions a:hover {
+    text-decoration: underline;
+  }
+  

@@ -48,6 +48,37 @@ router.post('/authors', authenticateToken, authorizeRoles('admin', 'editor'), up
   }
 });
 
+// Get all authors
+router.get('/authors', async (req, res) => {
+  try {
+    const authors = await Author.findAll(); // Fetch all authors from the database
+    res.json(authors);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to fetch authors.' });
+  }
+});
+
+router.get('/authors/:id', async (req, res) => {
+  try {
+    const authorId = req.params.id;
+    const author = await Author.findByPk(authorId, {
+      include: [{ model: Article }] // Include articles associated with the author
+    });
+
+    if (!author) {
+      return res.status(404).json({ message: 'Author not found' });
+    }
+
+    // Respond with the author data
+    res.json(author);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to fetch author.' });
+  }
+});
+
+
 // Create a new article with file upload (requires authentication)
 router.post('/', authenticateToken, authorizeRoles('admin', 'editor'), uploadMultiple, async (req, res) => {
   try {
