@@ -12,7 +12,10 @@ interface Author {
   pictureUrl: string;
   name: string;
   bio: string;
-  contributions: Contribution[];
+  contributions: {
+    title: string;
+    link: string;
+  }[];
 }
 
 const AuthorBio: React.FC = () => {
@@ -23,13 +26,14 @@ const AuthorBio: React.FC = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/api/articles/authors/${id}`)
       .then(response => {
-        console.log("API Response:", response.data); // Log the API response to inspect it
+        console.log("API Response:", response.data);
 
-        // Check if articles exist and are an array
-        const articles = response.data.articles || []; // Use an empty array if articles is undefined
+        const articles = response.data.Articles || []; // Fallback to an empty array if Articles is not defined
 
-        const fetchedAuthor = {
-          pictureUrl: `http://localhost:5000/${response.data.profileImage?.replace(/\\/g, '/') || ''}`,
+        const fetchedAuthor: Author = {
+          pictureUrl: response.data.profileImage
+            ? `http://localhost:5000/${response.data.profileImage.replace(/\\/g, '/')}`
+            : 'default-image-url', // Replace with a placeholder if no image is provided
           name: response.data.name || 'Unknown Author',
           bio: response.data.bio || 'No biography available.',
           contributions: Array.isArray(articles)
@@ -37,13 +41,14 @@ const AuthorBio: React.FC = () => {
                 title: article.title,
                 link: `/articles/${article.id}`
               }))
-            : [] // If articles is not an array, use an empty array
+            : [] // Use an empty array if Articles is not an array
         };
+
         setAuthor(fetchedAuthor);
       })
-      .catch(error => {
-        console.error("Error fetching author data:", error);
-        setError("Failed to load author data.");
+      .catch(err => {
+        console.error("Error fetching author data:", err);
+        setError("Failed to load author information.");
       });
   }, [id]);
 
@@ -52,29 +57,22 @@ const AuthorBio: React.FC = () => {
   }
 
   if (!author) {
-    return <div>Loading author data...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="author-bio-container">
-      <div className="author-bio-picture">
-        <img src={author.pictureUrl} alt={`${author.name}'s profile`} />
-      </div>
-
-      <h2>{author.name}</h2>
-      <p className="author-bio-bio">{author.bio}</p>
-      <div className="author-bio-contributions">
-        <h3>Articles & Issues Contributed</h3>
-        <ul>
-          {author.contributions.map((contribution, index) => (
-            <li key={index}>
-              <a href={contribution.link} target="_blank" rel="noopener noreferrer">
-                {contribution.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="author-bio">
+      <img src={author.pictureUrl} alt={`${author.name}'s profile`} className="author-image" />
+      <h1>{author.name}</h1>
+      <p>{author.bio}</p>
+      <h2>Contributions</h2>
+      <ul>
+        {author.contributions.map((contribution, index) => (
+          <li key={index}>
+            <a href={contribution.link}>{contribution.title}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
