@@ -182,6 +182,27 @@ router.put('/:id', authenticateToken, authorizeRoles('admin', 'editor'), uploadM
   }
 });
 
+router.post('/api/articles/:id/increment-viewcount', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Find the article by ID and increment the viewcount
+    const article = await Article.findByPk(id);
+    if (!article) {
+      return res.status(404).json({ message: 'Article not found' });
+    }
+
+    // Increment viewcount and save
+    article.viewcount = (article.viewcount || 0) + 1;
+    await article.save();
+
+    res.status(200).json({ message: 'View count incremented', viewcount: article.viewcount });
+  } catch (error) {
+    console.error('Error incrementing viewcount:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 // Delete an article (requires authentication)
 router.delete('/:id', authenticateToken, authorizeRoles('admin', 'editor'), async (req, res) => {
   try {

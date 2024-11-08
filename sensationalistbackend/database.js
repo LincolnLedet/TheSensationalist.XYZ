@@ -184,6 +184,8 @@ const OrderItem = sequelize.define('OrderItem', {
   },
 });
 
+
+
 // Define Associations
 
 // User and Cart
