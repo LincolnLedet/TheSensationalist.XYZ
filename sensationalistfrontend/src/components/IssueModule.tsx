@@ -17,7 +17,7 @@ const IssueModule: React.FC = () => {
   const [articles, setArticles] = useState<Issue[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4444/api/articles')
+    axios.get('http://localhost:5000/api/articles')
       .then(response => {
         setArticles(response.data);
       })
@@ -28,7 +28,7 @@ const IssueModule: React.FC = () => {
 
   const handleArticleClick = async (articleId: number) => {
     try {
-      await axios.post(`http://localhost:4444/api/articles/${articleId}/increment-viewcount`);
+      await axios.post(`http://localhost:5000/api/articles/${articleId}/increment-viewcount`);
       console.log(`View count incremented for article ID: ${articleId}`);
     } catch (error) {
       console.error('Error incrementing view count:', error);
@@ -60,7 +60,7 @@ const IssueModule: React.FC = () => {
                 <div className="article-content-preview">
                   {/* Cover Image on the Left */}
                   <img
-                    src={`http://localhost:4444/${article.coverImage.replace(/\\/g, '/')}`}
+                    src={`http://localhost:5000/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
                     className="article-image"
                   />
