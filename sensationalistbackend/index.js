@@ -40,7 +40,7 @@ app.use('/api/auth', authRoutes); // Use the auth routes
 
 // 6. Start the server
 sequelize.sync().then(() => {
-  const PORT = 4444;
+  const PORT = 5000;
   app.listen(PORT, () => {
     console.log(`Backend server running on port ${PORT}`);
   });
