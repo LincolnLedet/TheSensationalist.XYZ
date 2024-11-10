@@ -24,7 +24,7 @@ const AuthorBio: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/articles/authors/${id}`)
+    axios.get(`http://localhost:4444/api/articles/authors/${id}`)
       .then(response => {
         console.log("API Response:", response.data);
 

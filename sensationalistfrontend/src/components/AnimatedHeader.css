@@ -9,11 +9,16 @@
   grid-template-areas: 
     "logo logo  Media-Logos"
     "logo logo nav-links";
+    position: sticky; /* Makes the header sticky */
+    top: 0;
+    padding: 0 15px 0 15px;
 }
 
 .NavHeaderContainer {
   margin: 0 auto; /* Center the container */
   width: 100%;
+  position: sticky; /* Makes the header sticky */
+  top: 0;
 
 }
 .Media-Logos {

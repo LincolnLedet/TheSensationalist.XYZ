@@ -29,7 +29,7 @@ const AnimatedHeader: React.FC = () => {
       <div className="NavHeader">
         <SensationalLogo className="logo" />
         <ul className="nav-links">
-          <li><a href="#home">SHOP</a></li>
+          <li><a href="shop">SHOP</a></li>
           <li><a href="#about">MAGAZINE</a></li>
           <li><a href="#services">COMMUNITY</a></li>
         </ul>

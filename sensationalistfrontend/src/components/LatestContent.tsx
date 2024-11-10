@@ -15,7 +15,7 @@ const LatestContent: React.FC = () => {
   const [volumes, setVolumes] = useState<Volume[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/articles')
+    axios.get('http://localhost:4444/api/articles')
       .then(response => {
         const volumeData = response.data.filter((item: Volume) => item.filetype === 'Volume');
         setVolumes(volumeData);
@@ -39,7 +39,7 @@ const LatestContent: React.FC = () => {
           >
             <img 
               
-              src={`http://localhost:5000/${volume.coverImage.replace(/\\/g, '/')}`}
+              src={`http://localhost:4444/${volume.coverImage.replace(/\\/g, '/')}`}
               crossOrigin="anonymous" 
               alt={volume.title} 
               className="volume-cover-image"

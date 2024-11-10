@@ -7,6 +7,7 @@ import Home from './pages/HomePage'; // Adjust the path
 import Article from './pages/ArticlePage'; // Adjust the path
 import LoginPage from './pages/LoginPage'; // Adjust the path
 import RegisterPage from './pages/RegisterPage'; // Adjust the path
+import ShopPage from './pages/ShopPage';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/authors/:id" element={<AuthorBio />} />
+          <Route path="/shop" element={<ShopPage/>} />
         </Routes>
       </Router>
     </AuthProvider>
