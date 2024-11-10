@@ -34,9 +34,17 @@ app.use('/uploads', (req, res, next) => {
 // 5. Import and use routes
 const articleRoutes = require('./routes/articles');
 const authRoutes = require('./routes/auth'); // Add auth routes
+const merchRoutes = require('./routes/merch');
+const cartRoutes = require('./routes/cart');
+
+
 
 app.use('/api/articles', articleRoutes);
 app.use('/api/auth', authRoutes); // Use the auth routes
+app.use('/api/merch', merchRoutes);
+app.use('/api/cart', cartRoutes);
+
+
 
 // 6. Start the server
 sequelize.sync().then(() => {

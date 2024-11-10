@@ -8,6 +8,10 @@ import Article from './pages/ArticlePage'; // Adjust the path
 import LoginPage from './pages/LoginPage'; // Adjust the path
 import RegisterPage from './pages/RegisterPage'; // Adjust the path
 import ShopPage from './pages/ShopPage';
+import ItemDetailsPage from './pages/ItemDetailsPage';
+import CartPage from './pages/CartPage';
+
+
 
 const App: React.FC = () => {
   return (
@@ -20,6 +24,8 @@ const App: React.FC = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/authors/:id" element={<AuthorBio />} />
           <Route path="/shop" element={<ShopPage/>} />
+          <Route path="/item/:id" element={<ItemDetailsPage />} /> {/* Dynamic route */}
+          <Route path="/cart" element={<CartPage />} /> {/* Dynamic route */}
         </Routes>
       </Router>
     </AuthProvider>

@@ -9,15 +9,13 @@
 
 /* Gallery Container */
 .gallery {
-    display: grid; /* Enable grid layout */
-    gap: 16px; /* Space between items */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
-    padding: 16px;
-    
-    /* Restrict to a max of 4 columns */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
-  }
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive */
+  padding: 16px;
+  max-width: 1200px; /* Add a max width for the grid container */
+  margin: 0 auto; /* Center the grid on the page */
+}
   
   @media (max-width: 1200px) {
     .gallery {

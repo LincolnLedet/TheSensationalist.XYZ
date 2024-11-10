@@ -22,7 +22,7 @@ const ArticlePage: React.FC = () => {
 
   useEffect(() => {
     // Fetch the article data based on the ID
-    axios.get(`http://localhost:4444/api/articles/${id}`)
+    axios.get(`http://localhost:5000/api/articles/${id}`)
       .then(response => {
         setArticle(response.data);
         setLoading(false);
@@ -50,7 +50,7 @@ const ArticlePage: React.FC = () => {
         </div>
         {/* Display the article in an iframe */}
         <iframe
-          src={`http://localhost:4444/${article.pdfPath.replace(/\\/g, '/')}`}
+          src={`http://localhost:5000/${article.pdfPath.replace(/\\/g, '/')}`}
           title={article.title}
           width="100%"
           height="800px"

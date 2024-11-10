@@ -12,13 +12,6 @@ const ShopPage: React.FC = () => {
 
             <div className="gallery">
                 <ShopListing />
-                <ShopListing />
-                <ShopListing />
-                <ShopListing />
-                <ShopListing />
-                <ShopListing />
-                <ShopListing />
-                <ShopListing />
                
             </div>
         </div>

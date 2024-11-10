@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
  /* Gallery Items */
-  .gallery-item {
-    background-color: #ffffff;
-    padding: 16px;
-    text-align: center;
-    border-radius: 8px;
-    
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: flex-start;
-  }
+ .gallery-item {
+  background-color: #ffffff;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Adjusted for centering in grid */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
 
   /* Image Styling */
 .gallery-item img {
