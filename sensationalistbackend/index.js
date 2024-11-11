@@ -36,6 +36,8 @@ const articleRoutes = require('./routes/articles');
 const authRoutes = require('./routes/auth'); // Add auth routes
 const merchRoutes = require('./routes/merch');
 const cartRoutes = require('./routes/cart');
+const checkoutRoutes = require('./routes/checkout'); // Import the checkout route
+
 
 
 
@@ -43,6 +45,8 @@ app.use('/api/articles', articleRoutes);
 app.use('/api/auth', authRoutes); // Use the auth routes
 app.use('/api/merch', merchRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/checkout', checkoutRoutes); // Use the route with a specific prefix (e.g., '/api')
+
 
 
 

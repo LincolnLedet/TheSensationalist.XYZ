@@ -57,3 +57,9 @@ curl -X POST http://localhost:5000/api/articles \
   -F "authorIds[]=2" \
   -F "pdf=@C:\Users\linco\Desktop\Past Issues\The_Sensationalist_vol2.pdf" \
   -F "coverImage=@C:\Users\linco\Desktop\Past Issues\The-Sensationalist-Cover-Vol2.png"
+
+  curl -X GET http://localhost:5000/api/cart/ \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJMaW5jb2xuIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMxMjkzNTc3LCJleHAiOjE3MzEyOTcxNzd9.GC1Mk7kYzKbF9xVtaIWVZxJYJ2gssg7ZPNrV_CRRgvU" \
+  -H "Content-Type: application/json"
+
+
