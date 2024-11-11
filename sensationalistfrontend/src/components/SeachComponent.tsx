@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './IssueModule.css';
+import './SearchComponent.css';
 
 // Define the structure of an article
 interface Issue {
@@ -48,9 +48,50 @@ const IssueModule: React.FC = () => {
     // Add more fields to filter by here
   );
 
+
+
+  const [checkedIssue, setCheckedIssue] = useState(false);
+  const handleIssueCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckedIssue(event.target.checked);
+  }
+
+  const [checkedVolume, setCheckedVolume] = useState(false);
+  const handleVolumeCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckedVolume(event.target.checked);
+  }
+
   return (
     <div>
-      <h1>Issues</h1>
+      
+
+
+      <div className="search-header">
+        <h1>Issues</h1>
+        <div className="checkbox-section">
+          <label className="search-label">Search by type:</label>
+          <div className="checkbox-type">
+            <label className="checkbox-label">Issue</label>
+            <input 
+              type="checkbox" 
+              checked={checkedIssue}
+              onChange={handleIssueCheckboxChange}
+              className="checkbox-box"
+              />
+          </div>
+          <div className="checkbox-type">
+            <label className="checkbox-label">Volume</label>
+            <input 
+              type="checkbox" 
+              checked={checkedVolume}
+              onChange={handleVolumeCheckboxChange}
+              className="checkbox-box"
+            />
+          </div>  
+        </div>
+      </div>
+      
+
+
       {/* Filter Form */}
       <form className="filter-form">
         <input

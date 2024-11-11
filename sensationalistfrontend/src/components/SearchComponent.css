@@ -1,0 +1,93 @@
+.article-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .article-item {
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .article-link {
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    width: 100%; /* Add this line */
+  }
+  
+  
+  .article-link:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px); /* Slight lift effect on hover */
+  }
+  
+  .article-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .article-content-preview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  
+  .article-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  
+  .article-details {
+    flex-grow: 1;
+  }
+  
+  .article-description {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  /* Make the entire link act like a button on click */
+  .article-link:active {
+    transform: scale(0.98); /* Slight shrink effect on click */
+  }
+  
+  .search-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .checkbox-section {
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+  }
+
+  .search-label {
+    margin-right: 20px;
+  }
+
+  .checkbox-type {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  .checkbox-label {
+    margin-right: 5px;
+  }
+
+  .checkbox-box {
+    width: 20px;
+    height: 20px;
+  }
