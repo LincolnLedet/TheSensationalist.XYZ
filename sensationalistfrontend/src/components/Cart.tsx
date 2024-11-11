@@ -1,88 +1,94 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import './Cart.css'; // Ensure this file exists and is styled as needed
-import { AuthContext } from '../AuthContext'; // Import your AuthContext
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../AuthContext';
+import './Cart.css';
 
 interface CartItem {
-    id: number;
-    quantity: number;
-    priceAtAdd: number;
-    merch: {
-        id: number;
-        title: string;
-        image: string;
-    };
+  id: number;
+  quantity: number;
+  priceAtAdd: number;
+  Merch: {
+    title: string;
+    description: string;
+    price: number;
+    image: string;
+  };
 }
 
 const Cart: React.FC = () => {
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [totalPrice, setTotalPrice] = useState<number>(0);
-    const authContext = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-    if (!authContext) {
-        throw new Error('AuthContext must be used within an AuthProvider');
-    }
+  if (!authContext) {
+    throw new Error('AuthContext must be used within an AuthProvider');
+  }
 
-    const { auth } = authContext;
-    const navigate = useNavigate();
+  const { auth } = authContext;
 
-    useEffect(() => {
-        if (!auth.token) {
-            console.log('auth.token:', auth.token);
-            alert('You need to be logged in to view your cart.');
-            //navigate('/login');
-            return;
-        }
-
-        axios.get('http://localhost:5000/api/cart', {
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      if (auth.isLoggedIn && auth.token) {
+        try {
+          const response = await fetch('http://localhost:5000/api/cart/', {
+            method: 'GET',
             headers: {
-                Authorization: `Bearer ${auth.token}`,
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${auth.token}`,
             },
-        })
-        .then(response => {
-            setCartItems(response.data);
-            const total = response.data.reduce((sum: number, item: CartItem) => sum + (item.quantity * item.priceAtAdd), 0);
-            setTotalPrice(total);
-            setLoading(false);
-        })
-        .catch(error => {
-            console.error('Error fetching cart data:', error);
-            setLoading(false);
-        });
-    }, [auth.token, navigate]);
+          });
 
-    if (loading) {
-        return <p>Loading...</p>;
-    }
+          if (response.ok) {
+            const data = await response.json();
+            setCartItems(data);
+          } else {
+            const errorData = await response.json();
+            setError(errorData.message || 'Failed to fetch cart items.');
+          }
+        } catch (error) {
+          console.error('Error fetching cart data:', error);
+          setError('An error occurred while fetching cart items.');
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        setLoading(false);
+        setError('You must be logged in to view your cart.');
+      }
+    };
 
-    if (cartItems.length === 0) {
-        return <p>Your cart is empty.</p>;
-    }
+    fetchCartItems();
+  }, [auth]);
 
-    return (
-        <div className="cart-page-container">
-            <h2>Your Cart</h2>
-            <div className="cart-items">
-                {cartItems.map(item => (
-                    <div key={item.id} className="cart-item">
-                        <img src={`http://localhost:5000/${item.merch.image}`} alt={item.merch.title} className="cart-item-image" />
-                        <div className="cart-item-details">
-                            <h3>{item.merch.title}</h3>
-                            <p>Quantity: {item.quantity}</p>
-                            <p>Price per item: ${item.priceAtAdd.toFixed(2)}</p>
-                            <p>Total: ${(item.quantity * item.priceAtAdd).toFixed(2)}</p>
-                        </div>
-                    </div>
-                ))}
+  if (loading) {
+    return <div>Loading your cart...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (cartItems.length === 0) {
+    return <div>Your cart is empty.</div>;
+  }
+
+  return (
+    <div className="cart-container">
+      <h2>Your Cart</h2>
+      <div className="cart-grid">
+        {cartItems.map((item) => (
+          <div key={item.id} className="cart-card">
+            <img src={`http://localhost:5000/${item.Merch.image}`} alt={item.Merch.title} className="cart-image" />
+            <div className="cart-info">
+              <h3 className="cart-title">{item.Merch.title}</h3>
+              <p className="cart-quantity">Quantity: {item.quantity}</p>
+              <p className="cart-price">Price: ${item.priceAtAdd.toFixed(2)}</p>
             </div>
-            <div className="cart-summary">
-                <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
-                <button className="checkout-button" onClick={() => alert('Proceed to checkout flow')}>Proceed to Checkout</button>
-            </div>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Cart;

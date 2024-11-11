@@ -16,7 +16,6 @@ const AnimatedHeader: React.FC = () => {
   
 
   const { auth, logout } = authContext;
-  console.log('Auth state in header:', auth);
   const navigate = useNavigate();
 
   const handleLogout = () => {

@@ -1,14 +1,11 @@
 
-// AuthContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
-// **Define your interfaces here**
 interface User {
   id: number;
   username: string;
-  email: string; // Include if returned by backend
+  email: string;
   role: string;
-  // Add other user properties as needed
 }
 
 interface AuthState {
@@ -31,8 +28,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     token: null,
     user: null,
   });
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
+    // Simulate fetching the token and user data from localStorage
     const token = localStorage.getItem('token');
     const userString = localStorage.getItem('user');
 
@@ -42,13 +41,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setAuth({ isLoggedIn: true, token, user });
       } catch (error) {
         console.error('Failed to parse user data from localStorage:', error);
-        setAuth({ isLoggedIn: false, token: null, user: null });
       }
     }
+
+    setLoading(false); // Set loading to false after data is fetched
   }, []);
 
   const login = (token: string, user: User) => {
-    console.log('AuthContext: login called with', { token, user });
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
     setAuth({ isLoggedIn: true, token, user });
@@ -59,6 +58,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.removeItem('user');
     setAuth({ isLoggedIn: false, token: null, user: null });
   };
+
+  // Render a loading indicator until initialization is complete
+  if (loading) {
+    return <div>Loading...</div>; // This can be a custom loading component or a spinner
+  }
 
   return (
     <AuthContext.Provider value={{ auth, login, logout }}>
