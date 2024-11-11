@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext';
 import './Cart.css';
+import { useStripe } from '@stripe/react-stripe-js';
 
 interface CartItem {
   id: number;
@@ -19,6 +20,7 @@ const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const stripe = useStripe();
 
   if (!authContext) {
     throw new Error('AuthContext must be used within an AuthProvider');
@@ -60,6 +62,43 @@ const Cart: React.FC = () => {
     fetchCartItems();
   }, [auth]);
 
+  const handleCheckout = async () => {
+    if (!stripe) {
+      console.error('Stripe has not loaded yet.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth.token}`, // Include if needed
+        },
+        body: JSON.stringify({ cartItems }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error creating checkout session:', errorData);
+        return;
+      }
+
+      const session = await response.json();
+
+      if (session.id) {
+        const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
+        if (error) {
+          console.error('Error redirecting to checkout:', error.message);
+        }
+      } else {
+        console.error('Session ID not received.');
+      }
+    } catch (error) {
+      console.error('Error during checkout:', error);
+    }
+  };
+
   if (loading) {
     return <div>Loading your cart...</div>;
   }
@@ -78,15 +117,22 @@ const Cart: React.FC = () => {
       <div className="cart-grid">
         {cartItems.map((item) => (
           <div key={item.id} className="cart-card">
-            <img src={`http://localhost:5000/${item.Merch.image}`} alt={item.Merch.title} className="cart-image" />
+            <img
+              src={`http://localhost:5000/${item.Merch.image}`}
+              alt={item.Merch.title}
+              className="cart-image"
+            />
             <div className="cart-info">
               <h3 className="cart-title">{item.Merch.title}</h3>
               <p className="cart-quantity">Quantity: {item.quantity}</p>
-              <p className="cart-price">Price: ${item.priceAtAdd.toFixed(2)}</p>
+              <p className="cart-price">Price: ${(item.priceAtAdd / 100).toFixed(2)}</p>
             </div>
           </div>
         ))}
       </div>
+      <button className="checkout-button" onClick={handleCheckout}>
+        Proceed to Checkout
+      </button>
     </div>
   );
 };

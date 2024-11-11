@@ -31,7 +31,8 @@ app.use('/uploads', (req, res, next) => {
   next();
 }, express.static(path.join(__dirname, 'uploads')));
 
-// 5. Import and use routes
+// 5. Import and use route
+
 const articleRoutes = require('./routes/articles');
 const authRoutes = require('./routes/auth'); // Add auth routes
 const merchRoutes = require('./routes/merch');
