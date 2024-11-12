@@ -48,14 +48,12 @@ const IssueModule: React.FC = () => {
     // Add more fields to filter by here
   );
 
-
-
-  const [checkedIssue, setCheckedIssue] = useState(false);
+  const [checkedIssue, setCheckedIssue] = useState(true);
   const handleIssueCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckedIssue(event.target.checked);
   }
 
-  const [checkedVolume, setCheckedVolume] = useState(false);
+  const [checkedVolume, setCheckedVolume] = useState(true);
   const handleVolumeCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckedVolume(event.target.checked);
   }
@@ -105,7 +103,12 @@ const IssueModule: React.FC = () => {
 
       <ul className="article-list">
         {filteredArticles
-          .filter(article => article.filetype === 'Issue')
+          .filter(article => {
+            if (checkedIssue && article.filetype === 'Issue') return true;
+            if (checkedVolume && article.filetype === 'Volume') return true;
+            return false;
+          })
+            /*(article.filetype === 'Issue' || article.filetype === 'Volume'))*/
           .map(article => (
             <li key={article.id} className="article-item">
               <a
