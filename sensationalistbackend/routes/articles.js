@@ -1,7 +1,9 @@
+// routes/articles.js
 const express = require('express');
 const multer = require('multer');
 const { Article, Author } = require('../database');
 const path = require('path');
+const { authenticateToken, authorizeRoles } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -11,18 +13,74 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/'); // Save files in 'uploads' folder
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname); // Save with original file name
+    cb(null, file.originalname); // Saves the file with the original name
   }
 });
 
+const upload = multer({ storage: storage });
 
-const upload = multer({ storage: storage }).fields([
+// Create upload handlers
+const uploadMultiple = upload.fields([
   { name: 'pdf', maxCount: 1 },
   { name: 'coverImage', maxCount: 1 }
 ]);
 
-// Create a new article with file upload
-router.post('/', upload, async (req, res) => {
+const uploadSingle = upload.single('profileImage');
+
+// Create a new author (requires authentication)
+router.post('/authors', authenticateToken, authorizeRoles('admin', 'editor'), uploadSingle, async (req, res) => {
+  try {
+    const { name, bio } = req.body;
+    const profileImagePath = req.file ? req.file.path : null;
+
+    // Create the author
+    const author = await Author.create({
+      name,
+      bio,
+      profileImage: profileImagePath
+    });
+
+    // Respond with the created author
+    res.status(201).json(author);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get all authors
+router.get('/authors', async (req, res) => {
+  try {
+    const authors = await Author.findAll(); // Fetch all authors from the database
+    res.json(authors);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to fetch authors.' });
+  }
+});
+
+router.get('/authors/:id', async (req, res) => {
+  try {
+    const authorId = req.params.id;
+    const author = await Author.findByPk(authorId, {
+      include: [{ model: Article }] // Include articles associated with the author
+    });
+
+    if (!author) {
+      return res.status(404).json({ message: 'Author not found' });
+    }
+
+    // Respond with the author data
+    res.json(author);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to fetch author.' });
+  }
+});
+
+
+// Create a new article with file upload (requires authentication)
+router.post('/', authenticateToken, authorizeRoles('admin', 'editor'), uploadMultiple, async (req, res) => {
   try {
     // Extract data from request body
     const { title, description, filetype, viewcount, downloadcount, authorIds } = req.body;
@@ -43,8 +101,9 @@ router.post('/', upload, async (req, res) => {
     });
 
     // Associate authors (if provided)
-    if (authorIds && authorIds.length > 0) {
-      const authors = await Author.findAll({ where: { id: authorIds } });
+    if (authorIds) {
+      const authorIdsArray = Array.isArray(authorIds) ? authorIds.map(Number) : [Number(authorIds)];
+      const authors = await Author.findAll({ where: { id: authorIdsArray } });
       await article.addAuthors(authors); // Add authors to the article
     }
 
@@ -85,8 +144,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Update an article
-router.put('/:id', upload, async (req, res) => {
+// Update an article (requires authentication)
+router.put('/:id', authenticateToken, authorizeRoles('admin', 'editor'), uploadMultiple, async (req, res) => {
   try {
     const article = await Article.findByPk(req.params.id);
 
@@ -96,33 +155,56 @@ router.put('/:id', upload, async (req, res) => {
 
     // Update article details
     const { title, description, filetype, viewcount, downloadcount, authorIds } = req.body;
-    const pdfPath = req.files['pdf'] ? req.files['pdf'][0].path : article.pdfPath;
-    const coverImagePath = req.files['coverImage'] ? req.files['coverImage'][0].path : article.coverImage;
+    const pdfPath = req.files && req.files['pdf'] ? req.files['pdf'][0].path : article.pdfPath;
+    const coverImagePath = req.files && req.files['coverImage'] ? req.files['coverImage'][0].path : article.coverImage;
 
     await article.update({
-      title,
-      description,
+      title: title || article.title,
+      description: description || article.description,
       pdfPath,
       coverImage: coverImagePath,
-      filetype,
-      viewcount: parseInt(viewcount) || article.viewcount,
-      downloadcount: parseInt(downloadcount) || article.downloadcount,
+      filetype: filetype || article.filetype,
+      viewcount: viewcount !== undefined ? parseInt(viewcount) : article.viewcount,
+      downloadcount: downloadcount !== undefined ? parseInt(downloadcount) : article.downloadcount,
     });
 
     // Re-associate authors if provided
-    if (authorIds && authorIds.length > 0) {
-      const authors = await Author.findAll({ where: { id: authorIds } });
+    if (authorIds) {
+      const authorIdsArray = Array.isArray(authorIds) ? authorIds.map(Number) : [Number(authorIds)];
+      const authors = await Author.findAll({ where: { id: authorIdsArray } });
       await article.setAuthors(authors); // Update authors for the article
     }
 
     res.json(article);
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: err.message });
   }
 });
 
-// Delete an article
-router.delete('/:id', async (req, res) => {
+router.post('/api/articles/:id/increment-viewcount', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Find the article by ID and increment the viewcount
+    const article = await Article.findByPk(id);
+    if (!article) {
+      return res.status(404).json({ message: 'Article not found' });
+    }
+
+    // Increment viewcount and save
+    article.viewcount = (article.viewcount || 0) + 1;
+    await article.save();
+
+    res.status(200).json({ message: 'View count incremented', viewcount: article.viewcount });
+  } catch (error) {
+    console.error('Error incrementing viewcount:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// Delete an article (requires authentication)
+router.delete('/:id', authenticateToken, authorizeRoles('admin', 'editor'), async (req, res) => {
   try {
     const article = await Article.findByPk(req.params.id);
 

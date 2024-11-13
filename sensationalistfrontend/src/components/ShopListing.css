@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+ /* Gallery Items */
+ .gallery-item {
+  background-color: #ffffff;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Adjusted for centering in grid */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+
+  /* Image Styling */
+.gallery-item img {
+  max-width: 100%; /* Make image responsive */
+  height: auto;
+  border-radius: 4px; /* Optional: Rounded corners */
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+/* Product Name */
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222222;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none;
+  letter-spacing: 0px;
+  display: block;
+  margin: 0;
+}
+
+/* Product Type */
+.product-type {
+  color: #888;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none;
+  letter-spacing: 0px;
+  line-height: 20px;
+  display: block;
+  margin: 0;
+}
+
+/* Product Price */
+.product-price {
+  font-size: 14px;
+  font-weight: 400;
+
+  color: #222222;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.price-cart-container {
+  display: flex; /* Enables flexbox */
+  flex-wrap: nowrap; /* Prevents wrapping */
+  align-items: top; /* Centers items vertically */
+  justify-content: space-between; /* Centers items horizontally (optional, adjust as needed) */
+  gap: 4px; /* Adds spacing between the price and the icon */
+  margin-top: 0px;
+  margin: 0;
+  width: 100%;
+}
+
+/* Child elements */
+.icon {
+  transition: color 0.3s ease; /* Smooth color change on hover */
+  cursor: pointer;
+}
+
+/* Hover effect on parent container */
+.icon:hover {
+  color: rgb(57, 57, 255); /* Lavender purple for child elements */
+}
+
+  

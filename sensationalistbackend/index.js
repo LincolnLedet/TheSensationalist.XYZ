@@ -1,31 +1,63 @@
 // index.js
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
+const helmet = require('helmet');
+const path = require('path');
 const { sequelize } = require('./database');
-
+const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// 1. Apply CORS middleware first
+app.use(cors({
+  origin: 'http://localhost:3000', // Frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // If you need to send cookies or auth headers
+}));
+
+// 2. Temporarily disable Helmet for testing
+// Comment out Helmet to rule out interference
+// app.use(helmet());
+
+// 3. Parse JSON bodies
 app.use(express.json());
 
-// Serve static files from the "uploads" directory
-app.use('/uploads', express.static('uploads'));
+// 4. Serve static files from the 'uploads' directory
+app.use('/uploads', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // Frontend origin
+  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}, express.static(path.join(__dirname, 'uploads')));
 
-// Import and use article routes
+// 5. Import and use route
+
 const articleRoutes = require('./routes/articles');
+const authRoutes = require('./routes/auth'); // Add auth routes
+const merchRoutes = require('./routes/merch');
+const cartRoutes = require('./routes/cart');
+const checkoutRoutes = require('./routes/checkout'); // Import the checkout route
+
+
+
+
 app.use('/api/articles', articleRoutes);
+app.use('/api/auth', authRoutes); // Use the auth routes
+app.use('/api/merch', merchRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/checkout', checkoutRoutes); // Use the route with a specific prefix (e.g., '/api')
 
-// Test Route
-app.get('/test', (req, res) => {
-  res.send('Test route is working!');
+
+
+
+// 6. Start the server
+sequelize.sync().then(() => {
+  const PORT = 5000;
+  app.listen(PORT, () => {
+    console.log(`Backend server running on port ${PORT}`);
+  });
+}).catch((err) => {
+  console.error('Unable to connect to the database:', err);
 });
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Backend server running on port ${PORT}`);
-});

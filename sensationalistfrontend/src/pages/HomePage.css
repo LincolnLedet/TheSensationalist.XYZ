@@ -9,9 +9,8 @@
 
     grid-template-areas: 
     "header header header"
-    "topAriticals topAriticals topAriticals"
-    "LatestIssues LatestContent LatestContent"
-    "a a a";
+    "TopAuthors TopAuthors TopAuthors"
+    "IssueModule latestContent LatestContent";
     
   }
   .main-container {
@@ -26,13 +25,14 @@
   .header {
     grid-area: header;
   }
-  .topAriticals {
-    grid-area: topAriticals;
+  .TopAuthors {
+    grid-area: TopAuthors;
   }
-  .LatestIssues {
-    grid-area: LatestIssues;
+  .IssueModule {
+    grid-area: IssueModule;
     min-width : 30vw;
   }
+
   .latestContent
   {
     grid-area: LatestContent;

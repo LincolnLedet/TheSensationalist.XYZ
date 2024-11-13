@@ -44,3 +44,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+Front end tasks:
+ - Make the sensationalist logo inside the header (top right) a button that links back to the home page 
+    - sensationalistfrontend\src\components\AnimatedHeader.tsx line 13
+ - General component proportions and adaptation for mobile (CSS)
+    - General css. This is prettly losy goosey. For example when the page is stretched or moved some homepage componets look messed up. 
+    - Home page should be adapted for mobile pages. 
+ - Merch page front end 
+    - should have the route http://localhost:3000/shop/ 
+    - This can be pretty simplistic. Just for selling tee shirts and stickers. Use filler images for now. Ill replace them later and so
+    the back end stripe payment system. 
+ - 

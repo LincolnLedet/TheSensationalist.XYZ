@@ -1,0 +1,37 @@
+.mainContentContainer {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Gallery Container */
+.gallery {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive */
+  padding: 16px;
+  max-width: 1200px; /* Add a max width for the grid container */
+  margin: 0 auto; /* Center the grid on the page */
+}
+  
+  @media (max-width: 1200px) {
+    .gallery {
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+  

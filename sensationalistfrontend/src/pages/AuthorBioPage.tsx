@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import AuthorBio from '../components/AuthorBio';
 import axios from 'axios';
 import './AuthorBioPage.css';
@@ -24,3 +25,23 @@ const AuthorBioPage: React.FC = () => {
 
 export default AuthorBioPage;
 export {};
+=======
+import AuthorBio from '../components/AuthorBio'; // Make sure this path is correct
+import AnimatedHeader from '../components/AnimatedHeader';
+import './AuthorBioPage.css';
+
+const AuthorPage: React.FC = () => {
+  return (
+    <div className = "Author-Bio-Page">
+      <div className="header">
+        <AnimatedHeader />
+      </div>
+      <div className="author-page">
+        <AuthorBio />
+      </div>
+    </div>
+  );
+};
+
+export default AuthorPage;
+>>>>>>> Links-Branch

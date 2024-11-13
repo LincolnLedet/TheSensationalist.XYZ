@@ -10,8 +10,6 @@
 😵 The Sensationalist WEBSITE! 😵
 --------------------------
 
-🎵 A Silly Project For UGA and Henry levitt 🎵
-
       ;   :   ;
    .   \_,!,_/   ,
     `.,'     `.,'
@@ -20,7 +18,7 @@
      \         /
     ,'`._   _.'`.
    '   / `!` \   `
-     ;   :   ;                  
+      ;   :   ;                  
 ----------------
 📜 **Table of Contents:** 📜
 ----------------

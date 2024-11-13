@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .author-bio-page {
     background-color: black;
     min-height: 100vh;
@@ -14,3 +15,16 @@
     color: white;
   }
   
+=======
+.Author-Bio-Page {
+    background-color: black;
+    min-height: 100vh;
+
+
+  }
+  
+  
+  .author-bio-page p {
+    color: white;
+  }
+>>>>>>> Links-Branch
