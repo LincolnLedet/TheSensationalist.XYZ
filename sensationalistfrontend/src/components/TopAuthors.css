@@ -11,12 +11,6 @@
   text-align: center;
 }
 
-.image-button {
-  border: none;
-  background: none;
-  padding: 0;
-}
-
 .image {
   width: 261px;
   height: 146px;
@@ -25,9 +19,14 @@
   
 }
 
-.image-button:hover .image {
+.image:hover {
   transform: scale(1.05); /* Slight zoom on hover */
 }
+
+.image:active {
+  transform: scale(1); /* Slight shrink effect on click */
+}
+
 
 p {
   font-family: Arial, sans-serif;
