@@ -59,10 +59,8 @@ const IssueModule: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="search">
       
-
-
       <div className="search-header">
         <h1>Issues</h1>
         <div className="checkbox-section">
@@ -87,11 +85,10 @@ const IssueModule: React.FC = () => {
           </div>  
         </div>
       </div>
-      
-
 
       {/* Filter Form */}
       <form className="filter-form">
+        <span className="search-icon">search</span>
         <input
           type="text"
           placeholder="Filter articles by title or description"
@@ -137,7 +134,9 @@ const IssueModule: React.FC = () => {
             </li>
           ))}
       </ul>
+      
     </div>
+   
   );
 };
 
