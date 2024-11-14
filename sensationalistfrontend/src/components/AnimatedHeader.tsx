@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext';
 import './AnimatedHeader.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ReactComponent as SensationalLogo } from './SVGs/SensationalistLogo.svg';
 import { ReactComponent as InstaLogo } from './SVGs/instagram-svgrepo-com.svg';
 import { ReactComponent as EmailLogo } from './SVGs/email-svgrepo-com.svg';
@@ -68,7 +68,9 @@ const AnimatedHeader: React.FC = () => {
   return (
     <div className="NavHeaderContainer">
       <div className="NavHeader">
-        <SensationalLogo className="logo" />
+        <a href="/" className="logo-link">
+          <SensationalLogo className="logo" />
+        </a>
         <nav>
           <ul className="nav-links">
             <li>
@@ -86,12 +88,12 @@ const AnimatedHeader: React.FC = () => {
                 </ul>
             </li>
             <li><a href="#services">SHOP</a>
-            <ul>
-              <li><a href="#merch">MERCH</a></li>
-            </ul>
-          </li>
-        </ul>
-    </nav>
+              <ul>
+                <li><a href="#subcribe">SUBSCRIBE</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
         <ul className="Media-Logos">
           <a href="https://www.instagram.com/thesensationalist_mag/" target="_blank" rel="noopener noreferrer">
             <InstaLogo className="InstaLogo" />
@@ -99,14 +101,6 @@ const AnimatedHeader: React.FC = () => {
           <a href="mailto:frankievinehardt3@gmail.com" target="_blank" rel="noopener noreferrer">
             <EmailLogo className="EmailLogo" />
           </a>
-
-          <div className="SearchBarContainer">
-            <input
-              type="search"
-              placeholder="Search..."
-              className="SearchBar"
-            />
-          </div>
 
           {/* Conditionally render based on login state */}
           {auth.isLoggedIn && auth.user ? (

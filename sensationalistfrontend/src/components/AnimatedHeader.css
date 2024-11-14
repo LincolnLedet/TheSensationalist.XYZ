@@ -5,7 +5,7 @@
   color: white; /* White text */
   padding: 20px;
   max-width: 100%;  /* Keep it responsive */
-  grid-template-columns: 1fr 1fr 1fr;  /* Define 3 columns */
+  grid-template-columns: 1fr 2fr 1fr;  /* Define 3 columns */
   grid-template-areas: 
     "logo logo  Media-Logos"
     "logo logo nav-links";
@@ -30,13 +30,10 @@
   width: auto;
 }
 
-.InstaLogo {
+.InstaLogo, .EmailLogo {
   height: 50px;
   width: auto;
-}
-.EmailLogo {
-  height: 50px;
-  width: auto;
+  padding: 0 10px;
 }
 
 .auth-links a {
@@ -54,6 +51,17 @@
   width: auto;
   grid-area: logo;
   padding-right: 30vw;
+}
+
+.logo-link {
+  display: inline-block;
+  grid-area: logo;
+  text-decoration: none;
+}
+
+.logo-link .logo {
+  display: block;
+  margin: 0 auto;
 }
 
 nav {
@@ -168,7 +176,33 @@ nav > ul > li > ul > li {
   }
 
   nav > ul {
-    flex-direction: row; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  nav > ul > li > a {
+    display: inline;
+  }
+
+  nav li > ul {
+    position: absolute;
+    top: -75%; 
+    left: 75%; 
+    transform: translateY(0); 
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+  }
+
+  nav li:hover > ul, nav li.hover > ul {
+    pointer-events: initial;
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+
+  nav > ul > li > ul > li > a {
+    padding: 15px 40px; 
+    margin-top: 2px;
   }
 }
