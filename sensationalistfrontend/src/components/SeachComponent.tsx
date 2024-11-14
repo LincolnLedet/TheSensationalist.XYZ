@@ -34,7 +34,7 @@ const IssueModule: React.FC = () => {
     } catch (error) {
       console.error('Error incrementing view count:', error);
     }
-  };
+  }
 
   // Function to handle filter input change
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +42,7 @@ const IssueModule: React.FC = () => {
   };
 
   // Filter articles based on the filter state
+  //creates an array of filtered articles
   const filteredArticles = articles.filter(article =>
     article.title.toLowerCase().includes(filter.toLowerCase()) ||
     article.description.toLowerCase().includes(filter.toLowerCase())
@@ -54,13 +55,29 @@ const IssueModule: React.FC = () => {
       {/* Filter Form */}
       <form className="filter-form">
         <input
-          type="text"
-          placeholder="Filter articles by title or description"
-          value={filter}
-          onChange={handleFilterChange}
-          className="filter-input"
+            type="text"
+            placeholder="Filter articles by title or description"
+            value={filter}
+            onChange={handleFilterChange}
+            className="filter-input"
         />
-      </form>
+        <label className="filter-checkbox">
+            <input
+            type="checkbox"
+            //checked={isChecked}
+            //onChange={handleCheckboxChange}
+            />
+            Show only popular articles
+        </label>
+        <label className="filter-checkbox">
+            <input
+            type="checkbox"
+            //checked={isChecked}
+            //onChange={handleCheckboxChange}
+            />
+            Show only popular articles
+        </label>
+        </form>
 
       <ul className="article-list">
         {filteredArticles
