@@ -40,8 +40,8 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    
-    <div className="login-page">
+    <div className="login-page-screen">
+      <div className="login-page">
 
           <h1>Login</h1>
 
@@ -82,7 +82,7 @@ const LoginPage: React.FC = () => {
             <a href="/">Continue as guest</a>
           </div>
 
-    
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
 
-body {
+.login-page-screen {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,8 +49,8 @@ body {
   font-size: 14px;
   color: #ffffff;
   box-sizing: border-box;
-  padding-left: 15px; /* Space for text */
-  padding-right: 45px; /* Space for icon */
+  padding-left: 15px; 
+  padding-right: 45px; 
 }
 
 .item .input::placeholder {
@@ -88,11 +88,11 @@ body {
 
 .login-page .login-button:hover {
   box-shadow: 0 4px 12px rgba(188, 149, 149, 0.9);
-  transform: scale(1.02); /* Slight lift effect on hover */
+  transform: scale(1.02);
 }
 
 .login-page .login-button:active {
-  transform: scale(0.98); /* Slight shrink effect on click */
+  transform: scale(0.98); 
 }
 
 .login-page .register {

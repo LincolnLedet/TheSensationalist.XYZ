@@ -31,54 +31,56 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="register-container">
-      <h1>Create Account</h1>
-      <form onSubmit={handleRegister}>
+    <div className="register-container-screen">
+      <div className="register-container">
+        <h1>Create Account</h1>
+        <form onSubmit={handleRegister}>
 
-        <div className="item">
-          <input
-            type="text"
-            className="input"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <i className='bx bx-user'></i>
+          <div className="item">
+            <input
+              type="text"
+              className="input"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <i className='bx bx-user'></i>
+          </div>
+
+          <div className="item">
+            <input
+              type="email"
+              className="input"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <i className='bx bx-envelope'></i>
+          </div>
+
+          <div className="item">
+            <input
+              type="password"
+              className="input"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <i className='bx bx-lock-alt' ></i>
+          </div>
+
+          <button className="register-button" type="submit">Register</button>
+        </form>
+
+        <div className="login">
+              <p>Already have an account? <a href="/login">Login</a></p>
         </div>
 
-        <div className="item">
-          <input
-            type="email"
-            className="input"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <i className='bx bx-envelope'></i>
+        <div className="guest">
+          <a href="/">Continue as guest</a>
         </div>
 
-        <div className="item">
-          <input
-            type="password"
-            className="input"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <i className='bx bx-lock-alt' ></i>
-        </div>
-
-        <button className="register-button" type="submit">Register</button>
-      </form>
-
-      <div className="login">
-            <p>Already have an account? <a href="/login">Login</a></p>
       </div>
-
-      <div className="guest">
-        <a href="/">Continue as guest</a>
-      </div>
-
     </div>
   );
 };
