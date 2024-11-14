@@ -44,6 +44,8 @@
   border-radius: 5px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
+
 .volume-cover-title {
   position: absolute;
   top: 50%;
@@ -54,4 +56,5 @@
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for contrast */
   padding: 10px 20px;
   border-radius: 5px;
+  font-family: "Libre Baskerville", serif;
 }
