@@ -46,11 +46,16 @@ body {
   border: 2px solid rgba(255, 255, 255, .2);
   border-radius: 40px;
   font-family: "Libre Baskerville", serif;
-  font-size: 16px;
+  font-size: 14px;
   color: #ffffff;
   box-sizing: border-box;
   padding-left: 15px; /* Space for text */
   padding-right: 45px; /* Space for icon */
+}
+
+.item .input::placeholder {
+  font-size: 14px;
+  color:#cacaca;
 }
 
 .login-page .inputs::placeholder {
@@ -75,6 +80,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   color: #000000;
+  font-size: 16px;
   font-weight: 600;
   font-family: "Libre Baskerville", serif;
   box-sizing: border-box;
@@ -114,4 +120,26 @@ body {
 .register p a:active {
   text-decoration: underline;
   font-size: 13px;
+}
+
+.login-page .guest {
+  font-size: 12px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.guest a {
+  color: #ffffff;
+  font-family: "Libre Baskerville", serif;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.guest a:hover {
+  text-decoration: underline;
+}
+
+.guest a:active {
+  text-decoration: underline;
+  font-size: 11px;
 }

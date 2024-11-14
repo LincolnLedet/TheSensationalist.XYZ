@@ -40,6 +40,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
+    
     <div className="login-page">
 
           <h1>Login</h1>
@@ -77,8 +78,12 @@ const LoginPage: React.FC = () => {
             <p>Don't have an account? <a href="/register">Register</a></p>
           </div>
 
-    </div>
+          <div className="guest">
+            <a href="/">Continue as guest</a>
+          </div>
 
+    
+    </div>
   );
 };
 

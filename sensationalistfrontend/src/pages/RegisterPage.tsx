@@ -75,6 +75,10 @@ const RegisterPage: React.FC = () => {
             <p>Already have an account? <a href="/login">Login</a></p>
       </div>
 
+      <div className="guest">
+        <a href="/">Continue as guest</a>
+      </div>
+
     </div>
   );
 };
