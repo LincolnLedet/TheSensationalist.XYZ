@@ -32,28 +32,49 @@ const RegisterPage: React.FC = () => {
 
   return (
     <div className="register-container">
-      <h2>Create Account</h2>
+      <h1>Create Account</h1>
       <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Register</button>
+
+        <div className="item">
+          <input
+            type="text"
+            className="input"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <i className='bx bx-user'></i>
+        </div>
+
+        <div className="item">
+          <input
+            type="email"
+            className="input"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <i className='bx bx-envelope'></i>
+        </div>
+
+        <div className="item">
+          <input
+            type="password"
+            className="input"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <i className='bx bx-lock-alt' ></i>
+        </div>
+
+        <button className="register-button" type="submit">Register</button>
       </form>
+
+      <div className="login">
+            <p>Already have an account? <a href="/login">Login</a></p>
+      </div>
+
     </div>
   );
 };
