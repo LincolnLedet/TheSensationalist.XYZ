@@ -67,7 +67,9 @@ const AnimatedHeader: React.FC = () => {
   return (
     <div className="NavHeaderContainer">
       <div className="NavHeader">
-        <SensationalLogo className="logo" />
+      <a href="/" className="Media-Logo" aria-label="Homepage">
+          <SensationalLogo className="logo" />
+        </a>
         <nav>
           <ul className="nav-links">
             <li>
@@ -99,13 +101,6 @@ const AnimatedHeader: React.FC = () => {
             <EmailLogo className="EmailLogo" />
           </a>
 
-          <div className="SearchBarContainer">
-            <input
-              type="search"
-              placeholder="Search..."
-              className="SearchBar"
-            />
-          </div>
 
           {/* Conditionally render based on login state */}
           {auth.isLoggedIn && auth.user ? (
