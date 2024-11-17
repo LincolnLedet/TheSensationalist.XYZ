@@ -3,10 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './AuthorBio.css';
 
-interface Contribution {
-  title: string;
-  link: string;
-}
+
 
 interface Author {
   pictureUrl: string;
@@ -15,6 +12,7 @@ interface Author {
   contributions: {
     title: string;
     link: string;
+    coverImage?: string;
   }[];
 }
 
@@ -37,9 +35,10 @@ const AuthorBio: React.FC = () => {
           name: response.data.name || 'Unknown Author',
           bio: response.data.bio || 'No biography available.',
           contributions: Array.isArray(articles)
-            ? articles.map((article: { title: string; id: number }) => ({
+            ? articles.map((article: { title: string; id: number; coverImage: string }) => ({
                 title: article.title,
-                link: `/articles/${article.id}`
+                link: `/articles/${article.id}`,
+                coverImage: article.coverImage, 
               }))
             : [] // Use an empty array if Articles is not an array
         };
@@ -69,8 +68,15 @@ const AuthorBio: React.FC = () => {
       <ul>
         {author.contributions.map((contribution, index) => (
           <li key={index}>
-            <a href={contribution.link}>{contribution.title}</a>
-          </li>
+          <a href={contribution.link}>{contribution.title}</a>
+          {contribution.coverImage && (
+            <img
+              src={`http://localhost:5000/${contribution.coverImage.replace(/\\/g, '/')}`}
+              alt={`${contribution.title} thumbnail`}
+              className="article-image"
+            />
+          )}
+        </li>
         ))}
       </ul>
     </div>

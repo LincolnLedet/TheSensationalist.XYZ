@@ -62,8 +62,7 @@ const IssueModule: React.FC = () => {
                   <img
                     src={`http://localhost:5000/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
-                    className="article-image"
-                  />
+                    className="article-image"/>
                   {/* Description on the Right */}
                   <div className="article-details">
                     <p className="article-description">{article.description}</p>
