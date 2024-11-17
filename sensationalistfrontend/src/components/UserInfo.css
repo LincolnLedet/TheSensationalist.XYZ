@@ -1,0 +1,78 @@
+/* UserInfo.css */
+
+/* Container styling */
+.user-info-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styling */
+  .user-info-heading {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  /* Details container */
+  .user-info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* Individual item styling */
+  .user-info-item {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .user-info-item strong {
+    color: #222;
+    margin-right: 8px;
+  }
+  
+  /* Loading and error messages */
+  .user-info-loading,
+  .user-info-error,
+  .user-info-login-prompt {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .user-info-error {
+    color: #e74c3c;
+  }
+  
+  .user-info-loading {
+    color: #3498db;
+  }
+  
+  .user-info-login-prompt {
+    color: #f39c12;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .user-info-container {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    .user-info-heading {
+      font-size: 24px;
+    }
+  
+    .user-info-item {
+      font-size: 16px;
+    }
+  }
+  

@@ -26,6 +26,10 @@ curl -X POST http://localhost:5000/api/auth/login \
     "password": "adminpassword"
   }'
 
+curl -X GET http://localhost:5000/api/auth/users/1 \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJMaW5jb2xuIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMxODY1NjIyLCJleHAiOjE3MzE4NjkyMjJ9.sBe7dIiPrfHO0-sCtFX8OV9L8_0b_TluBlTJH3jQIAg"
+
+
 Post-Author
 curl -X POST http://localhost:5000/api/articles/authors \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJMaW5jb2xuIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMwNzYzNjg2LCJleHAiOjE3MzA3NjcyODZ9.99qAwlBeea3_WSOPwU744dpPPQelBkzwNb2vo-KbXO8" \

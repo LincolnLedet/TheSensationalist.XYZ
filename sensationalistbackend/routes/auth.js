@@ -96,6 +96,46 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Middleware to authenticate JWT tokens
+// Middleware to authenticate JWT tokens
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) return res.sendStatus(401); // Unauthorized
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403); // Forbidden
+    req.user = user;
+    next();
+  });
+};
+
+// **Add this route to fetch user info**
+router.get('/users/:id', authenticateToken, async (req, res) => {
+  try {
+    const userId = parseInt(req.params.id);
+
+    // Ensure that users can only access their own information
+    if (userId !== req.user.id) {
+      return res.status(403).json({ message: 'Access denied.' });
+    }
+
+    const user = await User.findByPk(userId, {
+      attributes: { exclude: ['passwordHash'] }, // Exclude sensitive data
+    });
+
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ message: 'User not found.' });
+    }
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+});
+
 
 
 module.exports = router;
