@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search');
+
+.article-list {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.article-item {
+  margin-bottom: 20px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.article-link {
+  text-decoration: none;
+  display: block;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 100%; /* Add this line */
+}
+
+
+.article-link:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px); /* Slight lift effect on hover */
+}
+  
+.article-title {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #333;
+  font-family: "Libre Baskerville", serif;
+}
+
+.article-content-preview {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.article-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.article-details {
+  flex-grow: 1;
+}
+
+.article-description {
+  font-size: 1em;
+  color: #666;
+}
+
+/* Make the entire link act like a button on click */
+.article-link:active {
+  transform: scale(0.98); /* Slight shrink effect on click */
+}
+
+.search {
+  margin: 20px;
+}
+
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox-section {
+  display: flex;
+  align-items: center;
+}
+
+.search-label {
+  text-align: right;
+  margin-right: 20px;
+  font-family: "Libre Baskerville", serif;
+  font-size: 16px;
+}
+
+.checkbox-type {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.checkbox-label {
+  margin-right: 5px;
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+}
+
+.checkbox-box {
+  width: 20px;
+  height: 20px;
+}
+
+h1 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+}
+
+.filter-form {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 28px;
+  background-color: #eeeeee;
+  transition: box-shadow 0.25s;
+}
+
+.filter-form:focus-within {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-icon {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  display: inline-block;
+  margin-left: 10px;;
+}
+
+.search-icon::placeholder, .search-icon {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.filter-input {
+  font-size: 14px;
+  font-family: "Libre Baskerville", serif;
+  color: #555;
+  margin-left: 8px;
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 1000px;
+}

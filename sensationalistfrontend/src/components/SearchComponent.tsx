@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './IssueModule.css';
+import './SearchComponent.css';
 
 // Define the structure of an article
 interface Issue {
@@ -49,11 +49,47 @@ const IssueModule: React.FC = () => {
     // Add more fields to filter by here
   );
 
+  const [checkedIssue, setCheckedIssue] = useState(true);
+  const handleIssueCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckedIssue(event.target.checked);
+  }
+
+  const [checkedVolume, setCheckedVolume] = useState(true);
+  const handleVolumeCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckedVolume(event.target.checked);
+  }
+
   return (
-    <div>
-      <h1>Issues</h1>
+    <div className="search">
+      
+      <div className="search-header">
+        <h1>Issues</h1>
+        <div className="checkbox-section">
+          <label className="search-label">Search by type:</label>
+          <div className="checkbox-type">
+            <label className="checkbox-label">Issue</label>
+            <input 
+              type="checkbox" 
+              checked={checkedIssue}
+              onChange={handleIssueCheckboxChange}
+              className="checkbox-box"
+              />
+          </div>
+          <div className="checkbox-type">
+            <label className="checkbox-label">Volume</label>
+            <input 
+              type="checkbox" 
+              checked={checkedVolume}
+              onChange={handleVolumeCheckboxChange}
+              className="checkbox-box"
+            />
+          </div>  
+        </div>
+      </div>
+
       {/* Filter Form */}
       <form className="filter-form">
+        <span className="search-icon">search</span>
         <input
             type="text"
             placeholder="Filter articles by title or description"
@@ -81,7 +117,12 @@ const IssueModule: React.FC = () => {
 
       <ul className="article-list">
         {filteredArticles
-          .filter(article => article.filetype === 'Issue')
+          .filter(article => {
+            if (checkedIssue && article.filetype === 'Issue') return true;
+            if (checkedVolume && article.filetype === 'Volume') return true;
+            return false;
+          })
+            /*(article.filetype === 'Issue' || article.filetype === 'Volume'))*/
           .map(article => (
             <li key={article.id} className="article-item">
               <a
@@ -110,7 +151,9 @@ const IssueModule: React.FC = () => {
             </li>
           ))}
       </ul>
+      
     </div>
+   
   );
 };
 

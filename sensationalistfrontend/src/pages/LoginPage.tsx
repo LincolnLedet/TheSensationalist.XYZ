@@ -2,6 +2,7 @@ import React, { useState, useContext, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext'; // Adjust the path if necessary
 import './LoginPage.css'; // Your CSS file
+import { ReactComponent as SensationalistLogoCropped } from '.././components/SVGs/SensationalistLogoCropped.svg';
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -39,25 +40,49 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-page-screen">
+      <div className="login-page">
+
+          <h1>Login</h1>
+
+          <form onSubmit={handleLogin}>
+
+            <div className="item">
+              <input
+                type="text"
+                className="input"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <i className='bx bx-user'></i>
+            </div>
+
+            <div className="item">
+              <input
+                type="password"
+                className="input"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <i className='bx bx-lock-alt' ></i>
+            </div>
+
+            <button className="login-button" type="submit">Login</button>
+          </form>
+
+          <div className="register">
+            <p>Don't have an account? <a href="/register">Register</a></p>
+          </div>
+
+          <div className="guest">
+            <a href="/">Continue as guest</a>
+          </div>
+
+      </div>
     </div>
   );
 };

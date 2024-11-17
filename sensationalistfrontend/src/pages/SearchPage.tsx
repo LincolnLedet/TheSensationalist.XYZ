@@ -1,5 +1,5 @@
 import React from 'react';
-import SeachComponent from '../components/SeachComponent'; // Make sure this path is correct
+import SeachComponent from '../components/SearchComponent'; // Make sure this path is correct
 import AnimatedHeader from '../components/AnimatedHeader';
 
 const ItemDetailspage: React.FC = () => {
