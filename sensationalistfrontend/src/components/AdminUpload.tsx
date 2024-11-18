@@ -1,4 +1,5 @@
 // AdminUpload.tsx
+// AdminUpload.tsx
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../AuthContext';
 import axios from 'axios';
@@ -25,7 +26,9 @@ const AdminUpload: React.FC = () => {
 
   // Handlers for input changes
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -66,8 +69,8 @@ const AdminUpload: React.FC = () => {
 
   // Use useEffect for navigation side effect
   useEffect(() => {
-    if (!auth.isLoggedIn || auth.user?.role !== 'admin') {
-      navigate('/'); // Redirect to home or login page
+    if (!auth.isLoggedIn) {
+      navigate('/login'); // Redirect to home or login page
     }
   }, [auth, navigate]);
 
@@ -100,12 +103,16 @@ const AdminUpload: React.FC = () => {
     data.append('coverImage', coverImage);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/articles', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${auth.token}`,
-        },
-      });
+      const response = await axios.post(
+        'http://localhost:5000/api/articles',
+        data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
 
       setMessage('Article uploaded successfully!');
       // Optionally, reset the form or redirect
@@ -130,7 +137,133 @@ const AdminUpload: React.FC = () => {
       <h2>Upload Article/Issue</h2>
       {message && <p className="upload-message">{message}</p>}
       <form onSubmit={handleSubmit} className="upload-form">
-        {/* ... rest of your form ... */}
+        <label>
+          Title:
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+
+        <label>
+          Description:
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            required
+          ></textarea>
+        </label>
+
+        <label>
+          File Type:
+          <select
+            name="filetype"
+            value={formData.filetype}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Select File Type</option>
+            <option value="Volume">Volume</option>
+            <option value="Video">Video</option>
+            <option value="Image">Image</option>
+            <option value="Podcast">Podcast</option>
+            <option value="Issue">Issue</option>
+            <option value="Music">Music</option>
+            <option value="Misc">Misc</option>
+          </select>
+        </label>
+
+        <label>
+          View Count:
+          <input
+            type="number"
+            name="viewcount"
+            value={formData.viewcount}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label>
+          Download Count:
+          <input
+            type="number"
+            name="downloadcount"
+            value={formData.downloadcount}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label>
+          Author IDs:
+          {formData.authorIds.map((id, index) => (
+            <div key={index} className="author-id-input">
+              <input
+                type="text"
+                name={`authorId-${index}`}
+                value={id}
+                onChange={e => {
+                  const newAuthorIds = [...formData.authorIds];
+                  newAuthorIds[index] = e.target.value;
+                  setFormData(prev => ({ ...prev, authorIds: newAuthorIds }));
+                }}
+                placeholder="Enter Author ID"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  const newAuthorIds = formData.authorIds.filter(
+                    (_, i) => i !== index
+                  );
+                  setFormData(prev => ({ ...prev, authorIds: newAuthorIds }));
+                }}
+                className="remove-author-button"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() =>
+              setFormData(prev => ({ ...prev, authorIds: [...prev.authorIds, ''] }))
+            }
+            className="add-author-button"
+          >
+            Add Another Author
+          </button>
+        </label>
+
+        <div className="file-dropzone">
+          <label>Upload PDF:</label>
+          <div {...getRootPropsPdf()} className="dropzone">
+            <input {...getInputPropsPdf()} />
+            {pdfFile ? (
+              <p>{pdfFile.name}</p>
+            ) : (
+              <p>Drag & drop a PDF file here, or click to select file</p>
+            )}
+          </div>
+        </div>
+
+        <div className="file-dropzone">
+          <label>Upload Cover Image:</label>
+          <div {...getRootPropsImage()} className="dropzone">
+            <input {...getInputPropsImage()} />
+            {coverImage ? (
+              <p>{coverImage.name}</p>
+            ) : (
+              <p>Drag & drop an image here, or click to select file</p>
+            )}
+          </div>
+        </div>
+
+        <button type="submit" className="upload-button">
+          Submit
+        </button>
       </form>
     </div>
   );
