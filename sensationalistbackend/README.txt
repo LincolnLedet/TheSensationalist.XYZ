@@ -32,8 +32,8 @@ curl -X GET http://localhost:5000/api/auth/users/1 \
 
 Post-Author
 curl -X POST http://localhost:5000/api/articles/authors \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJMaW5jb2xuIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMwNzYzNjg2LCJleHAiOjE3MzA3NjcyODZ9.99qAwlBeea3_WSOPwU744dpPPQelBkzwNb2vo-KbXO8" \
-  -F "name=Henry Levitt" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJMaW5jb2xuIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMxOTU0NTUwLCJleHAiOjE3MzE5NTgxNTB9.8eEeyuGd9Ts2W-kGA4LJXxZTjZkkdQvx2OXs1MOKCes" \
+  -F "name=Henry Llllllevitt" \
   -F "bio=Henry Levitt is a true enigma from the quiet suburbia of Connecticut, now the eccentric president of the UGA Philosophy Club. His leadership has transformed the club into a philosophical circus, complete with debates that spiral into absurdity, like whether cereal counts as soup. Henry’s articles are infamous rollercoasters, bouncing from critiques of capitalism to love letters about rotary telephones, blending obscure references with bizarre humor. His most memorable piece, The Moral Dilemma of Owning Too Many Salt Shakers, leaves readers confused and amazed. When he’s not philosophizing, Henry is the bassist for Xur, a metal band that delivers chaos through tracks like Apocalyptic Dumpster Fire. His basslines stomp like elephants in a nightmare, and he often surprises bandmates by showing up dressed as a giant eyeball or freezing on stage like a musical gargoyle. Henry is the kind of guy who passionately argues that birds have secret societies and that Nietzsche would’ve been an excellent meme creator. Known for his lectures on the ethics of wacky waving tube men, Henry’s unique blend of weirdness and brilliance makes him unforgettable." \
   -F "profileImage=@C:\Users\linco\Desktop\Past Issues\Silly_cat2.jpg"
 
