@@ -60,3 +60,60 @@ a:hover {
   text-decoration: underline;
 }
 
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.article-item {
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.article-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.article-link {
+  text-decoration: none;
+  color: white;
+}
+
+.article-content-preview {
+  display: flex;
+  align-items: center;
+}
+
+.article-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.article-details {
+  flex: 1;
+}
+
+.article-title {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.article-description {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-viewcount {
+  color: #ccc;
+  font-size: 0.9rem;
+}
