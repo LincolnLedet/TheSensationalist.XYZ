@@ -18,6 +18,22 @@
     color: black;
   }
 
+  /* Cart.css */
+  
+  .empty-cart-message {
+    text-align: center;
+    font-size: 1.8em;
+    color: #555;
+    margin-top: 50px;
+  }
+  
+  .empty-cart-message::before {
+    content: '🛒';
+    display: block;
+    font-size: 4em;
+    margin-bottom: 20px;
+  }
+
   .checkout-button {
     display: block;
     width: 100%;

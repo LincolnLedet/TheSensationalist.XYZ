@@ -134,10 +134,11 @@ const Cart: React.FC = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
+  
   if (cartItems.length === 0) {
-    return <div>Your cart is empty.</div>;
+    return <div className="empty-cart-message">Your cart is empty.</div>;
   }
+  
 
   return (
     <div className="cart-container">

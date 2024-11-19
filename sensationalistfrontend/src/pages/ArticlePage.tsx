@@ -34,6 +34,20 @@ const ArticlePage: React.FC = () => {
       });
   }, [id]);
 
+  // Use another useEffect to increment the view count when the article is loaded
+  useEffect(() => {
+    if (article) {
+      // Call the increment view count API
+      axios.post(`http://localhost:5000/api/articles/${article.id}/increment-viewcount`)
+        .then(response => {
+          console.log('View count incremented:', response.data.viewcount);
+        })
+        .catch(error => {
+          console.error('Error incrementing view count:', error);
+        });
+    }
+  }, [article]);
+
   if (loading) return <div>Loading...</div>; // Display a loading message while fetching
   if (error) return <div>{error}</div>; // Display an error message if fetching fails
   if (!article) return <div>Article not found.</div>; // Handle case where article is not found

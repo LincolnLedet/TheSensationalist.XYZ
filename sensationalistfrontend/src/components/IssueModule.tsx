@@ -26,14 +26,7 @@ const IssueModule: React.FC = () => {
       });
   }, []);
 
-  const handleArticleClick = async (articleId: number) => {
-    try {
-      await axios.post(`http://localhost:5000/api/articles/${articleId}/increment-viewcount`);
-      console.log(`View count incremented for article ID: ${articleId}`);
-    } catch (error) {
-      console.error('Error incrementing view count:', error);
-    }
-  };
+
 
   return (
     <div>
@@ -49,10 +42,7 @@ const IssueModule: React.FC = () => {
                 className="article-link"
                 onClick={(e) => {
                   e.preventDefault(); // Prevent default navigation
-                  handleArticleClick(article.id).then(() => {
-                    // Redirect after incrementing view count
-                    window.location.href = `/articles/${article.id}`;
-                  });
+                  window.location.href = `/articles/${article.id}`;
                 }}
               >
                 {/* Title Above Both Image and Description */}
@@ -67,7 +57,7 @@ const IssueModule: React.FC = () => {
                   <div className="article-details">
                     <p className="article-description">{article.description}</p>
                     {/* Display the view count */}
-                    <p className="article-viewcount">View s: {article.viewcount || 0}</p>
+                    <p className="article-viewcount">Views: {article.viewcount || 0}</p>
                   </div>
                 </div>
               </a>

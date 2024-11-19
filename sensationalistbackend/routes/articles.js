@@ -182,7 +182,7 @@ router.put('/:id', authenticateToken, authorizeRoles('admin', 'editor'), uploadM
   }
 });
 
-router.post('/api/articles/:id/increment-viewcount', async (req, res) => {
+router.post('/:id/increment-viewcount', async (req, res) => {
   const { id } = req.params;
 
   try {
