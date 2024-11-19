@@ -76,7 +76,7 @@ const AnimatedHeader: React.FC = () => {
               <a href="#">COMMUNITY</a>
                 <ul>
                   <li><a href="#authors">Our Authors</a></li>
-                  <li><a href="#submityourself">Submit Yourself</a></li>
+                  <li><a href="mailto:frankievinehardt3@gmail.com">Submit Yourself</a></li>
                 </ul>
             </li>
             <li>
@@ -88,16 +88,13 @@ const AnimatedHeader: React.FC = () => {
             <li><a href="shop">SHOP</a>
             <ul>
               <li><a href="cart">Cart</a></li>
-            </ul>
+              </ul>
           </li>
         </ul>
     </nav>
         <ul className="Media-Logos">
           <a href="https://www.instagram.com/thesensationalist_mag/" target="_blank" rel="noopener noreferrer">
             <InstaLogo className="InstaLogo" />
-          </a>
-          <a href="mailto:frankievinehardt3@gmail.com" target="_blank" rel="noopener noreferrer">
-            <EmailLogo className="EmailLogo" />
           </a>
 
 

@@ -10,7 +10,7 @@
     grid-template-areas: 
     "header header header"
     "TopAuthors TopAuthors TopAuthors"
-    "IssueModule latestContent LatestContent";
+    "IssueModule LatestContent LatestContent";
     
   }
   .main-container {
@@ -27,6 +27,7 @@
   }
   .TopAuthors {
     grid-area: TopAuthors;
+    
   }
   .IssueModule {
     grid-area: IssueModule;
@@ -36,6 +37,8 @@
   .latestContent
   {
     grid-area: LatestContent;
+    max-width: 40vw;
+    padding-left : 80px;
   }
 
   

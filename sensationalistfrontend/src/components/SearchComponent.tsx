@@ -97,22 +97,8 @@ const IssueModule: React.FC = () => {
             onChange={handleFilterChange}
             className="filter-input"
         />
-        <label className="filter-checkbox">
-            <input
-            type="checkbox"
-            //checked={isChecked}
-            //onChange={handleCheckboxChange}
-            />
-            Show only popular articles
-        </label>
-        <label className="filter-checkbox">
-            <input
-            type="checkbox"
-            //checked={isChecked}
-            //onChange={handleCheckboxChange}
-            />
-            Show only popular articles
-        </label>
+
+
         </form>
 
       <ul className="article-list">
