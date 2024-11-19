@@ -75,7 +75,7 @@ const AnimatedHeader: React.FC = () => {
             <li>
               <a href="#">COMMUNITY</a>
                 <ul>
-                  <li><a href="#authors">Our Authors</a></li>
+                  <li><a href="authors">Our Authors</a></li>
                   <li><a href="mailto:frankievinehardt3@gmail.com">Submit Yourself</a></li>
                 </ul>
             </li>
