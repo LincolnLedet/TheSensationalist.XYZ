@@ -53,7 +53,7 @@ app.use('/api/checkout', checkoutRoutes); // Use the route with a specific prefi
 
 // 6. Start the server
 sequelize.sync().then(() => {
-  const PORT = 5000;
+  const PORT = process.env.PORT;
   app.listen(PORT, () => {
     console.log(`Backend server running on port ${PORT}`);
   });
