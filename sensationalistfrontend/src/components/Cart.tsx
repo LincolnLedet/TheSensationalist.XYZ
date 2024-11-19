@@ -4,10 +4,11 @@ import './Cart.css';
 import { useStripe } from '@stripe/react-stripe-js';
 
 interface CartItem {
-  id: number;
+  id: number; // CartItem ID
   quantity: number;
   priceAtAdd: number;
   Merch: {
+    id: number; // Merch ID
     title: string;
     description: string;
     price: number;
@@ -62,6 +63,31 @@ const Cart: React.FC = () => {
     fetchCartItems();
   }, [auth]);
 
+  const handleRemoveItem = async (cartItemId: number) => {
+    if (auth.isLoggedIn && auth.token) {
+      try {
+        const response = await fetch(`http://localhost:5000/api/cart/remove/${cartItemId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${auth.token}`,
+          },
+        });
+  
+        if (response.ok) {
+          setCartItems(cartItems.filter((item) => item.id !== cartItemId));
+        } else {
+          const errorData = await response.json();
+          setError(errorData.message || 'Failed to remove item from cart.');
+        }
+      } catch (error) {
+        console.error('Error removing item from cart:', error);
+        setError('An error occurred while removing the item.');
+      }
+    }
+  };
+  
+
   const handleCheckout = async () => {
     if (!stripe) {
       console.error('Stripe has not loaded yet.');
@@ -99,6 +125,8 @@ const Cart: React.FC = () => {
     }
   };
 
+  const total = cartItems.reduce((sum, item) => sum + item.quantity * item.priceAtAdd, 0);
+
   if (loading) {
     return <div>Loading your cart...</div>;
   }
@@ -125,10 +153,16 @@ const Cart: React.FC = () => {
             <div className="cart-info">
               <h3 className="cart-title">{item.Merch.title}</h3>
               <p className="cart-quantity">Quantity: {item.quantity}</p>
-              <p className="cart-price">Price: ${(item.priceAtAdd / 100).toFixed(2)}</p>
+              <p className="cart-price">Price: ${item.priceAtAdd.toFixed(2)}</p>
+              <button className="remove-button" onClick={() => handleRemoveItem(item.id)}>
+                Remove
+              </button>
             </div>
           </div>
         ))}
+      </div>
+      <div className="cart-total">
+        <h3>Total: ${total.toFixed(2)}</h3>
       </div>
       <button className="checkout-button" onClick={handleCheckout}>
         Proceed to Checkout

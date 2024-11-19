@@ -140,7 +140,6 @@ router.get('/users/:id', authenticateToken, async (req, res) => {
 
 module.exports = router;
 
-//
 //curl -X POST http://localhost:5000/api/articles \
 //-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczMDMwODg4MCwiZXhwIjoxNzMwMzEyNDgwfQ.cFVsaKGp9OsBV5CtJY8MkS0w8WHu-m08tJV6K4AA0Qc" \
 //-F "title=The Sensationalist Issue 1" \

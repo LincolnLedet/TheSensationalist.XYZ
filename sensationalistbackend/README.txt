@@ -17,7 +17,6 @@ curl -X POST http://localhost:5000/api/auth/register \
     "role": "admin"
   }'
 
-
 get user hash
 curl -X POST http://localhost:5000/api/auth/login \
   -H "Content-Type: application/json" \
@@ -28,7 +27,6 @@ curl -X POST http://localhost:5000/api/auth/login \
 
 curl -X GET http://localhost:5000/api/auth/users/1 \
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJMaW5jb2xuIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMxODY1NjIyLCJleHAiOjE3MzE4NjkyMjJ9.sBe7dIiPrfHO0-sCtFX8OV9L8_0b_TluBlTJH3jQIAg"
-
 
 Post-Author
 curl -X POST http://localhost:5000/api/articles/authors \
@@ -62,8 +60,15 @@ curl -X POST http://localhost:5000/api/articles \
   -F "pdf=@C:\Users\linco\Desktop\Past Issues\The_Sensationalist_vol2.pdf" \
   -F "coverImage=@C:\Users\linco\Desktop\Past Issues\The-Sensationalist-Cover-Vol2.png"
 
+
   curl -X GET http://localhost:5000/api/cart/ \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJMaW5jb2xuIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMxMjkzNTc3LCJleHAiOjE3MzEyOTcxNzd9.GC1Mk7kYzKbF9xVtaIWVZxJYJ2gssg7ZPNrV_CRRgvU" \
   -H "Content-Type: application/json"
 
 
+curl -X POST http://localhost:5000/api/merch \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -F "title=Cool T-Shirt" \
+  -F "description=A limited edition cool t-shirt for your collection." \
+  -F "price=29.99" \
+  -F "image=@/path/to/your/image.jpg"

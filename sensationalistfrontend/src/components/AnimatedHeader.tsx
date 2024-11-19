@@ -75,20 +75,19 @@ const AnimatedHeader: React.FC = () => {
             <li>
               <a href="#">COMMUNITY</a>
                 <ul>
-                  <li><a href="#authors">AUTHORS</a></li>
-                  <li><a href="#submityourself">SUBMIT YOURSELF</a></li>
+                  <li><a href="#authors">Our Authors</a></li>
+                  <li><a href="#submityourself">Submit Yourself</a></li>
                 </ul>
             </li>
             <li>
-              <a href="#">ARTICLES</a>
+              <a href="#">CONTENT</a>
                 <ul>
-                  <li><a href="#issues">ISSUES</a></li>
-                  <li><a href="#volumes">VOLUMES</a></li>
+                  <li><a href="search">Search</a></li>
                 </ul>
             </li>
-            <li><a href="#services">SHOP</a>
+            <li><a href="shop">SHOP</a>
             <ul>
-              <li><a href="#merch">MERCH</a></li>
+              <li><a href="cart">Cart</a></li>
             </ul>
           </li>
         </ul>
