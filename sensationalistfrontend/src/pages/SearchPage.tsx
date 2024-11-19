@@ -1,16 +1,20 @@
 import React from 'react';
-import SeachComponent from '../components/SearchComponent'; // Make sure this path is correct
+import SeachComponent from '../components/SearchComponent';
 import AnimatedHeader from '../components/AnimatedHeader';
+import Footer from '../components/Footer';
 
 const ItemDetailspage: React.FC = () => {
   return (
-    <div className="ItemDetailspage" style={{ backgroundColor: 'white', minHeight: '100vh' }}>
-      <div className="header">
-        <AnimatedHeader />
+    <div className="SearchPage">
+      <div className="search-header">
+        <AnimatedHeader/>
       </div>
-      <div className="ItemDetails">
-        <SeachComponent />
+      <div className="search-item-details">
+        <SeachComponent/>
       </div>
+      <footer className="search-footer">
+        <Footer/>
+      </footer>
     </div>
   );
 };

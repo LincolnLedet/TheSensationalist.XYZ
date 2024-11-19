@@ -1,0 +1,21 @@
+.SearchPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.search-item-details {
+    flex: 1;
+}
+
+.search-footer {
+    margin-top: auto;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+}
