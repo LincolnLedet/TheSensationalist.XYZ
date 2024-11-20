@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../AuthContext'; // Ensure this path is correct
 import './ItemDetails.css';
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 interface MerchItem {
     id: number;
@@ -25,7 +26,7 @@ const ItemDetails: React.FC = () => {
     const { auth } = authContext;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/merch/${id}`)
+        axios.get(`http://localhost:${backend_port}/api/merch/${id}`)
             .then(response => {
                 setItem(response.data);
                 setLoading(false);
@@ -39,7 +40,7 @@ const ItemDetails: React.FC = () => {
     const handleAddToCart = () => {
         if (item && auth.token) {
             axios.post(
-                'http://localhost:5000/api/cart/add',
+                `http://localhost:${backend_port}/api/cart/add`,
                 { merchId: item.id, quantity: 1 },
                 {
                     headers: {
@@ -69,7 +70,7 @@ const ItemDetails: React.FC = () => {
 
     return (
         <div className="item-details-container">
-            <img src={`http://localhost:5000/${item.image}`} alt={item.title} className="item-image" />
+            <img src={`http://localhost:${backend_port}/${item.image}`} alt={item.title} className="item-image" />
             <h1 className="item-title">{item.title}</h1>
             <p className="item-description">{item.description}</p>
             <p className="item-price">${item.price.toFixed(2)}</p>

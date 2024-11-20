@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css'; // Create and style your CSS file
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ const RegisterPage: React.FC = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        const response = await fetch('http://localhost:5000/api/auth/register', {
+        const response = await fetch(`http://localhost:${backend_port}/api/auth/register`, {
 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

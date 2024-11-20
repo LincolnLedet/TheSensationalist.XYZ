@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './AuthorBio.css';
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 interface Contribution {
   title: string;
@@ -24,7 +25,7 @@ const AuthorBio: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/articles/authors/${id}`)
+    axios.get(`http://localhost:${backend_port}/api/articles/authors/${id}`)
       .then(response => {
         console.log("API Response:", response.data);
 
@@ -32,7 +33,7 @@ const AuthorBio: React.FC = () => {
 
         const fetchedAuthor: Author = {
           pictureUrl: response.data.profileImage
-            ? `http://localhost:5000/${response.data.profileImage.replace(/\\/g, '/')}`
+            ? `http://localhost:${backend_port}}/${response.data.profileImage.replace(/\\/g, '/')}`
             : 'default-image-url', // Replace with a placeholder if no image is provided
           name: response.data.name || 'Unknown Author',
           bio: response.data.bio || 'No biography available.',

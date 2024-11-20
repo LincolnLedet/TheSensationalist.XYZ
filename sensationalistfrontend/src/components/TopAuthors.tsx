@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './TopAuthors.css'; // Import the CSS file
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 // Define the structure of an author
 interface Author {
@@ -16,7 +17,7 @@ const TopAuthors: React.FC = () => {
 
   // Fetch authors from the backend
   useEffect(() => {
-    axios.get('http://localhost:5000/api/articles/authors')
+    axios.get(`http://localhost:${backend_port}/api/articles/authors`)
       .then(response => {
         setAuthors(response.data);
       })
@@ -35,7 +36,7 @@ const TopAuthors: React.FC = () => {
         <div key={author.id} className="image-container">
           <Link to={`/authors/${author.id}`} className="image-link">
             <img
-              src={`http://localhost:5000/${author.profileImage.replace(/\\/g, '/')}`}
+              src={`http://localhost:${backend_port}/${author.profileImage.replace(/\\/g, '/')}`}
               alt={author.name}
               className="image"
             />

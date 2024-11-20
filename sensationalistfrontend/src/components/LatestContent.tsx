@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './LatestContent.css';
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 interface Volume {
   id: number;
@@ -15,7 +16,7 @@ const LatestContent: React.FC = () => {
   const [volumes, setVolumes] = useState<Volume[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/articles')
+    axios.get(`http://localhost:${backend_port}/api/articles`)
       .then(response => {
         const volumeData = response.data.filter((item: Volume) => item.filetype === 'Volume');
         setVolumes(volumeData);
@@ -39,7 +40,7 @@ const LatestContent: React.FC = () => {
           >
             <img 
               
-              src={`http://localhost:5000/${volume.coverImage.replace(/\\/g, '/')}`}
+              src={`http://localhost:${backend_port}/${volume.coverImage.replace(/\\/g, '/')}`}
               crossOrigin="anonymous" 
               alt={volume.title} 
               className="volume-cover-image"

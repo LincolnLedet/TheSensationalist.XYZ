@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext'; // Adjust the path if necessary
 import './LoginPage.css'; // Your CSS file
 import { ReactComponent as SensationalistLogoCropped } from '.././components/SVGs/SensationalistLogoCropped.svg';
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -20,7 +21,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`http://localhost:${backend_port}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

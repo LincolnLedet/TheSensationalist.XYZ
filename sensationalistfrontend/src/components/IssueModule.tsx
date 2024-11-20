@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './IssueModule.css';
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 // Define the structure of an article
 interface Issue {
@@ -17,7 +18,7 @@ const IssueModule: React.FC = () => {
   const [articles, setArticles] = useState<Issue[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/articles')
+    axios.get(`http://localhost:${backend_port}/api/articles`)
       .then(response => {
         setArticles(response.data);
       })
@@ -28,7 +29,7 @@ const IssueModule: React.FC = () => {
 
   const handleArticleClick = async (articleId: number) => {
     try {
-      await axios.post(`http://localhost:5000/api/articles/${articleId}/increment-viewcount`);
+      await axios.post(`http://localhost:${backend_port}/api/articles/${articleId}/increment-viewcount`);
       console.log(`View count incremented for article ID: ${articleId}`);
     } catch (error) {
       console.error('Error incrementing view count:', error);
@@ -60,7 +61,7 @@ const IssueModule: React.FC = () => {
                 <div className="article-content-preview">
                   {/* Cover Image on the Left */}
                   <img
-                    src={`http://localhost:5000/${article.coverImage.replace(/\\/g, '/')}`}
+                    src={`http://localhost:${backend_port}/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
                     className="article-image"
                   />

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext';
 import './Cart.css';
 import { useStripe } from '@stripe/react-stripe-js';
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 interface CartItem {
   id: number;
@@ -32,7 +33,7 @@ const Cart: React.FC = () => {
     const fetchCartItems = async () => {
       if (auth.isLoggedIn && auth.token) {
         try {
-          const response = await fetch('http://localhost:5000/api/cart/', {
+          const response = await fetch(`http://localhost:${backend_port}/api/cart/`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ const Cart: React.FC = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/checkout', {
+      const response = await fetch(`http://localhost:${backend_port}/api/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +119,7 @@ const Cart: React.FC = () => {
         {cartItems.map((item) => (
           <div key={item.id} className="cart-card">
             <img
-              src={`http://localhost:5000/${item.Merch.image}`}
+              src={`http://localhost:${backend_port}/${item.Merch.image}`}
               alt={item.Merch.title}
               className="cart-image"
             />

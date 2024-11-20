@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AnimatedHeader from '../components/AnimatedHeader';
 import './ArticlePage.css';
+const backend_port = process.env.REACT_APP_BACKEND_PORT;
 
 // Define the structure of an article
 interface Issue {
@@ -22,7 +23,7 @@ const ArticlePage: React.FC = () => {
 
   useEffect(() => {
     // Fetch the article data based on the ID
-    axios.get(`http://localhost:5000/api/articles/${id}`)
+    axios.get(`http://localhost:${backend_port}/api/articles/${id}`)
       .then(response => {
         setArticle(response.data);
         setLoading(false);
@@ -50,7 +51,7 @@ const ArticlePage: React.FC = () => {
         </div>
         {/* Display the article in an iframe */}
         <iframe
-          src={`http://localhost:5000/${article.pdfPath.replace(/\\/g, '/')}`}
+          src={`http://localhost:${backend_port}/${article.pdfPath.replace(/\\/g, '/')}`}
           title={article.title}
           width="100%"
           height="800px"
