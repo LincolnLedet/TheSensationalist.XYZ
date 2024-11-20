@@ -63,7 +63,7 @@ const AuthorBio: React.FC = () => {
     <div className="author-bio">
       <img src={author.pictureUrl} alt={`${author.name}'s profile`} className="author-image" />
       <h2>{author.name}</h2>
-      <p>{author.bio}</p>
+      <p className="author-bio-descriptions" >{author.bio}</p>
       <h2>Contributions</h2>
       <ul className="article-list">
         {author.contributions.map((article) => (

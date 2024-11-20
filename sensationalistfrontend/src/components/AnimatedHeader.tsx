@@ -1,4 +1,3 @@
-// AnimatedHeader.tsx
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext';
 import './AnimatedHeader.css';
@@ -67,42 +66,43 @@ const AnimatedHeader: React.FC = () => {
   return (
     <div className="NavHeaderContainer">
       <div className="NavHeader">
-      <a href="/" className="Media-Logo" aria-label="Homepage">
+        <a href="/" className="Media-Logo" aria-label="Homepage">
           <SensationalLogo className="logo" />
         </a>
         <nav>
           <ul className="nav-links">
             <li>
               <a href="#">COMMUNITY</a>
-                <ul>
-                  <li><a href="authors">Our Authors</a></li>
-                  <li><a href="mailto:frankievinehardt3@gmail.com">Submit Yourself</a></li>
-                </ul>
+              <ul>
+                <li><a href="authors">Our Authors</a></li>
+                <li><a href="mailto:frankievinehardt3@gmail.com">Submit Yourself</a></li>
+              </ul>
             </li>
             <li>
               <a href="#">CONTENT</a>
-                <ul>
-                  <li><a href="search">Search</a></li>
-                </ul>
-            </li>
-            <li><a href="shop">SHOP</a>
-            <ul>
-              <li><a href="cart">Cart</a></li>
+              <ul>
+                <li><a href="search">Search</a></li>
               </ul>
-          </li>
-        </ul>
-    </nav>
+            </li>
+            <li>
+              <a href="shop">SHOP</a>
+              <ul>
+                <li><a href="cart">Cart</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
         <ul className="Media-Logos">
           <a href="https://www.instagram.com/thesensationalist_mag/" target="_blank" rel="noopener noreferrer">
             <InstaLogo className="InstaLogo" />
           </a>
-
 
           {/* Conditionally render based on login state */}
           {auth.isLoggedIn && auth.user ? (
             <div className="user-menu">
               <span>Welcome, {auth.user.username}!</span>
               <button onClick={handleLogout}>Logout</button>
+              <button onClick={() => navigate('/userinfo')}>User Info</button>
             </div>
           ) : (
             <span className="auth-links">

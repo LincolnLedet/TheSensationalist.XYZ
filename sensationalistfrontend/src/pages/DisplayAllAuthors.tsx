@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthorsList from '../components/AuthorsList'; // Make sure this path is correct
+import AuthorsList from '../components/DisplayAllAuthors'; // Make sure this path is correct
 import AnimatedHeader from '../components/AnimatedHeader';
 import Footer from '../components/Footer';
 const AuthorPage: React.FC = () => {

@@ -22,11 +22,14 @@ h1 {
   text-transform: uppercase;
 }
 
+.author-bio-descriptions{
+  color : white
+}
+
 /*Author bio paragraph text*/
 p {
   font-size: 1.2rem; 
   margin-bottom: 2rem;
-  color: white;
   font-family: 'Arial', sans-serif; 
 }
 /* Styles all the h2 headings*/
