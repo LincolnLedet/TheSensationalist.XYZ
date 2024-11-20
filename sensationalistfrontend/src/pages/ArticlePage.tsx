@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AnimatedHeader from '../components/AnimatedHeader';
+import Footer from '../components/Footer';
 import './ArticlePage.css';
 
 // Define the structure of an article
@@ -10,7 +11,7 @@ interface Issue {
   title: string;
   description: string;
   pdfPath: string;
-  coverImage: string; 
+  coverImage: string;
   filetype: string;
 }
 
@@ -60,7 +61,7 @@ const ArticlePage: React.FC = () => {
       <div className="article-content">
         {/* Article Title */}
         <div className="article-content-title">
-            <h1>{article.title}</h1>
+          <h1>{article.title}</h1>
         </div>
         {/* Display the article in an iframe */}
         <iframe
@@ -71,6 +72,9 @@ const ArticlePage: React.FC = () => {
           frameBorder="0"
           allowFullScreen
         ></iframe>
+      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </div>
   );

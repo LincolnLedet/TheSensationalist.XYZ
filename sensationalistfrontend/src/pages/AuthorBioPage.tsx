@@ -2,6 +2,7 @@ import React from 'react';
 import AuthorBio from '../components/AuthorBio'; // Make sure this path is correct
 import AnimatedHeader from '../components/AnimatedHeader';
 import './AuthorBioPage.css';
+import Footer from '../components/Footer';
 
 const AuthorPage: React.FC = () => {
   return (
@@ -11,6 +12,9 @@ const AuthorPage: React.FC = () => {
       </div>
       <div className="author-page">
         <AuthorBio />
+      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </div>
   );

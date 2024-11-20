@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthorsList from '../components/AuthorsList'; // Make sure this path is correct
 import AnimatedHeader from '../components/AnimatedHeader';
+import Footer from '../components/Footer';
 const AuthorPage: React.FC = () => {
   return (
     <div className="ItemDetailspage" style={{ backgroundColor: 'white', minHeight: '100vh' }}>
@@ -10,6 +11,9 @@ const AuthorPage: React.FC = () => {
       <div className="Cart">
         <AuthorsList />
       </div>
+      <div className="footer">
+              <Footer />
+          </div>
     </div>
   );
 };

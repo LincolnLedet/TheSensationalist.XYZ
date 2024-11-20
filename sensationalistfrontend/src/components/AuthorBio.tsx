@@ -3,17 +3,19 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './AuthorBio.css';
 
-
+interface Article {
+  id: number;
+  title: string;
+  description: string;
+  coverImage: string;
+  viewcount: number;
+}
 
 interface Author {
   pictureUrl: string;
   name: string;
   bio: string;
-  contributions: {
-    title: string;
-    link: string;
-    coverImage?: string;
-  }[];
+  contributions: Article[];
 }
 
 const AuthorBio: React.FC = () => {
@@ -24,23 +26,21 @@ const AuthorBio: React.FC = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/api/articles/authors/${id}`)
       .then(response => {
-        console.log("API Response:", response.data);
-
         const articles = response.data.Articles || []; // Fallback to an empty array if Articles is not defined
 
         const fetchedAuthor: Author = {
           pictureUrl: response.data.profileImage
             ? `http://localhost:5000/${response.data.profileImage.replace(/\\/g, '/')}`
-            : 'default-image-url', // Replace with a placeholder if no image is provided
+            : 'default-image-url', 
           name: response.data.name || 'Unknown Author',
           bio: response.data.bio || 'No biography available.',
-          contributions: Array.isArray(articles)
-            ? articles.map((article: { title: string; id: number; coverImage: string }) => ({
-                title: article.title,
-                link: `/articles/${article.id}`,
-                coverImage: article.coverImage, 
-              }))
-            : [] // Use an empty array if Articles is not an array
+          contributions: articles.map((article: { id: number; title: string; description: string; coverImage: string; viewcount: number }) => ({
+            id: article.id,
+            title: article.title,
+            description: article.description,
+            coverImage: article.coverImage,
+            viewcount: article.viewcount || 0
+          }))
         };
 
         setAuthor(fetchedAuthor);
@@ -62,21 +62,38 @@ const AuthorBio: React.FC = () => {
   return (
     <div className="author-bio">
       <img src={author.pictureUrl} alt={`${author.name}'s profile`} className="author-image" />
-      <h1>{author.name}</h1>
+      <h2>{author.name}</h2>
       <p>{author.bio}</p>
       <h2>Contributions</h2>
-      <ul>
-        {author.contributions.map((contribution, index) => (
-          <li key={index}>
-          <a href={contribution.link}>{contribution.title}</a>
-          {contribution.coverImage && (
-            <img
-              src={`http://localhost:5000/${contribution.coverImage.replace(/\\/g, '/')}`}
-              alt={`${contribution.title} thumbnail`}
-              className="article-image"
-            />
-          )}
-        </li>
+      <ul className="article-list">
+        {author.contributions.map((article) => (
+          <li key={article.id} className="article-item">
+            <a
+              href={`/articles/${article.id}`}
+              className="article-link"
+              onClick={(e) => {
+                e.preventDefault(); // Prevent default navigation
+                axios.post(`http://localhost:5000/api/articles/${article.id}/increment-viewcount`)
+                  .then(() => {
+                    window.location.href = `/articles/${article.id}`;
+                  })
+                  .catch(error => console.error('Error incrementing view count:', error));
+              }}
+            >
+              <h3 className="article-title">{article.title}</h3>
+              <div className="article-content-preview">
+                <img
+                  src={`http://localhost:5000/${article.coverImage.replace(/\\/g, '/')}`}
+                  alt={article.title}
+                  className="article-image"
+                />
+                <div className="article-details">
+                  <p className="article-description">{article.description}</p>
+                  
+                </div>
+              </div>
+            </a>
+          </li>
         ))}
       </ul>
     </div>

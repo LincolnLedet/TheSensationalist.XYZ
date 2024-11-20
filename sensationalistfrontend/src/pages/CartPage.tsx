@@ -1,6 +1,7 @@
 import React from 'react';
 import Cart from '../components/Cart'; // Make sure this path is correct
 import AnimatedHeader from '../components/AnimatedHeader';
+import Footer from '../components/Footer';
 import './CartPage.css'; // Ensure this file exists for additional styling
 
 const ItemDetailspage: React.FC = () => {
@@ -11,6 +12,9 @@ const ItemDetailspage: React.FC = () => {
       </div>
       <div className="Cart">
         <Cart />
+      </div>
+      <div className="footer">
+          <Footer />
       </div>
     </div>
   );

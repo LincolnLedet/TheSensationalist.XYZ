@@ -5,6 +5,7 @@ import AnimatedHeader from "../components/AnimatedHeader";
 import AdminUpload from "../components/AdminUpload";
 import AdminAuthorUpload from "../components/AdminAuthorUpload";
 import AdminMerchUpload from "../components/AdminMerchUpload";
+import Footer from "../components/Footer";
 
 const ShopPage: React.FC = () => {
 
@@ -16,7 +17,10 @@ const ShopPage: React.FC = () => {
             <AdminUpload />
             <AdminAuthorUpload />
             <AdminMerchUpload />
+            <Footer />
+
         </div>
+        
     );
 }
 

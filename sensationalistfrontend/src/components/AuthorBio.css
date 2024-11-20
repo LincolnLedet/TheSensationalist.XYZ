@@ -1,41 +1,104 @@
-.author-bio-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-  }
+/*Styles all of the containers on the page basically*/
+.author-bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rem;
   
-  .author-bio-picture {
-    border-radius: 50%;
-    overflow: hidden;
-    width: 150px;
-    height: 150px;
-    margin-bottom: 1rem;
-  }
+}
+/* Styles the authors profile picture*/
+.author-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1rem;
+  border: 3px solid red;
+}
+/* The all the headigns on the page*/
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/*Author bio paragraph text*/
+p {
+  font-size: 1.2rem; 
+  margin-bottom: 2rem;
+  color: white;
+  font-family: 'Arial', sans-serif; 
+}
+/* Styles all the h2 headings*/
+h2 {
+  font-size: 1.8rem;
+  color: red;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+/* Stles the article description preview*/
+li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Syles the article description preview*/
+a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+
+/* the cards for the article previews*/
+.article-item {
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+/*when you hover over one of the article item previews*/
+.article-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+
+
+.article-content-preview {
+  display: flex;
+  align-items: center;
   
-  .author-bio-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .author-bio-bio {
-    text-align: center;
-    max-width: 600px;
-    margin-bottom: 2rem;
-  }
-  
-  .author-bio-contributions ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .author-bio-contributions a {
-    color: red;
-    text-decoration: none;
-  }
-  
-  .author-bio-contributions a:hover {
-    text-decoration: underline;
-  }
-  
+}
+/* Styles the img for the contribution previews*/
+.article-image {
+  border-radius: 12px; 
+  border: 2px solid black; 
+  width: 100px; 
+  height: 100px; 
+  object-fit: cover; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+  transition: transform 0.3s ease; 
+}
+
+
+.article-details {
+  flex: 1;
+}
+
+.article-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+
+
