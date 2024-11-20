@@ -5,10 +5,10 @@
   color: white; /* White text */
   padding: 20px;
   max-width: 100%;  /* Keep it responsive */
-  grid-template-columns: 1fr 1fr 1fr;  /* Define 3 columns */
+  
+  grid-template-columns: 1fr 2fr 1fr;  /* Define 3 columns */
   grid-template-areas: 
-    "logo logo  Media-Logos"
-    "logo logo nav-links";
+    "logo nav-links Media-Logos";
     position: sticky; /* Makes the header sticky */
     top: 0;
     padding: 0 15px 0 15px;
@@ -16,6 +16,7 @@
 
 .NavHeaderContainer {
   margin: 0 auto; /* Center the container */
+  max-width: 100%;
   width: 100%;
   position: sticky; /* Makes the header sticky */
   top: 0;
@@ -26,28 +27,43 @@
   justify-content: center;
   align-items: center;
   list-style: none;
+  max-width: 100%;
   gap: 10px;
   grid-area: Media-Logos;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  grid-area: nav-links;
+  max-width: 100%;
+  width: 100%;
 }
 
 .YoutubeLogo {
   height: 50px;
   width: auto;
+  max-width: 100%;
 }
 
 .InstaLogo {
   height: 50px;
   width: auto;
+  max-width: 100%;
 }
 .EmailLogo {
   height: 50px;
   width: auto;
+  max-width: 100%;
 }
 
 .auth-links a {
   color: white;
   text-decoration: none;
   padding: 10px;
+  max-width: 100%;
 }
 
 .auth-links a:hover {
@@ -58,11 +74,10 @@
   height: 100px;
   width: auto;
   grid-area: logo;
-  padding-right: 30vw;
+  max-width: 100%;
 }
 
 nav {
-  margin-left: 40px;
   padding: 0;
 }
 
@@ -80,11 +95,14 @@ nav li > ul {
 
 nav > ul {
   display: flex;
+  align-items: center;
+  max-width: 100%;
 }
 
 nav > ul > li {
   pointer-events: all;
   opacity: 1;
+  align-self: center;
 }
 
 nav ul li a {
@@ -150,30 +168,3 @@ nav > ul > li > ul > li {
   opacity: 0;
 }
 
-@media (max-width: 768px) {
-  .NavHeader {
-    grid-template-columns: 1fr; 
-    padding: 20px; 
-  }
-
-  .NavHeaderContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .logo {
-    padding-right: 0; 
-    justify-self: center; 
-  }
-
-  .Media-Logos {
-    justify-content: center;
-    width: 100%; 
-  }
-
-  nav > ul {
-    flex-direction: row; 
-    align-items: center; 
-  }
-}

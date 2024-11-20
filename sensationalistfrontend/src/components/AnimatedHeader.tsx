@@ -67,11 +67,13 @@ const AnimatedHeader: React.FC = () => {
   return (
     <div className="NavHeaderContainer">
       <div className="NavHeader">
-      <a href="/" className="Media-Logo" aria-label="Homepage">
-          <SensationalLogo className="logo" />
-        </a>
-        <nav>
-          <ul className="nav-links">
+      <a href='/' style={{ maxWidth: "fit-content" }}>
+      <SensationalLogo className="logo"/>
+      </a>
+        
+        
+        <nav className="nav-links">
+          <ul>
             <li>
               <a href="#">COMMUNITY</a>
                 <ul>
@@ -86,7 +88,7 @@ const AnimatedHeader: React.FC = () => {
                   <li><a href="#volumes">VOLUMES</a></li>
                 </ul>
             </li>
-            <li><a href="#services">SHOP</a>
+            <li><a href="/shop">SHOP</a>
             <ul>
               <li><a href="#merch">MERCH</a></li>
             </ul>
