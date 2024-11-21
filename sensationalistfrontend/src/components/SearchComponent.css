@@ -70,6 +70,7 @@
 
 .search {
   margin: 20px;
+  min-height: 80vh;
 }
 
 .search-header {
