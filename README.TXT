@@ -1,3 +1,5 @@
+Project by Lincoln Ledet, James R, Dino, Yen, and courtney 
+
 # Running The Sensationalist Project
 
 ## General Prerequisites
