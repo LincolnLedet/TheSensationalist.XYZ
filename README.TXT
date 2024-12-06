@@ -1,130 +1,57 @@
-██████╗ ███████╗ █████╗ ██████╗ 
-██╔══██╗██╔════╝██╔══██╗██╔══██╗
-██████╔╝█████╗  ███████║██║  ██║
-██╔══██╗██╔══╝  ██╔══██║██║  ██║
-██║  ██║███████╗██║  ██║██████╔╝
-╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ 
-     The Grand README
-------------------------------------------------
+# Running The Sensationalist Project
 
-😵 The Sensationalist WEBSITE! 😵
---------------------------
+## General Prerequisites
+To run this project, ensure you have the following installed:
+1. Node.js (version 12 or higher)
+2. Git
 
-      ;   :   ;
-   .   \_,!,_/   ,
-    `.,'     `.,'
-     /         \
-~ -- :         : -- ~
-     \         /
-    ,'`._   _.'`.
-   '   / `!` \   `
-      ;   :   ;                  
-----------------
-📜 **Table of Contents:** 📜
-----------------
- 1.   Description
- 2.   Features
- 3.   Technologies Used
- 4.   Installation
-    - Prerequisites
-    - Back End Setup
-    - Front End Setup
- 8.   Usage
- 9.   API Endpoints
- 10.  Database Schema
- 11.  Project Structure
+---
+
+## Steps to Run the Project
+
+### 1. Back-End Setup
+Navigate to the backend folder:
+    cd TheSensationalist.XYZ/sensationalistbackend
+
+Download dependcies:
+    npm install
+
+Start backend:
+    node index.js
 
 
----------------------------
-🏄 **1. Description:** 🏄
----------------------------
+The backend server will run on `http://localhost:5000`.
 
-The Article Management System is a full-stack web application that allows users to upload articles along with 
-PDF files and view them. It features a React front end and an Express.js back end. The back end uses Sequelize
-ORM with a SQLite database and handles file uploads using Multer. The front end is built with React, TypeScript,
-and React Router for client-side routing.
+---------------------------------------------------------------
 
-----------------------------
-🚀 **2. Features:** 🚀
-----------------------------
-    Article Upload: Users can upload articles with a title, description, and associated PDF file.
-    Article Listing: View a list of all uploaded articles.
-    Article Detail View: View detailed information about a specific article, including the option to download or view the PDF.
-    File Serving: Serve uploaded PDF files for download or viewing directly in the browser.
+### 2. Front-End Setup
 
+Navigate to the frontend folder:
+    cd TheSensationalist.XYZ/sensationalistfrontend
 
-----------------------------
-🚀 **3. Technologies Used:** 🚀
-----------------------------
--Back End
-    Node.js: JavaScript runtime for server-side programming.
-    Express.js: Web framework for Node.js.
-    Sequelize ORM: Object-Relational Mapping tool for interacting with the database.
-    SQLite: Lightweight relational database.
-    Multer: Middleware for handling multipart/form-data, primarily used for file uploads.
-    CORS: Middleware for enabling Cross-Origin Resource Sharing.
-    dotenv: Module for loading environment variables from a .env file.
--  Front End
-    React: JavaScript library for building user interfaces.
-    TypeScript: Superset of JavaScript that adds static typing.
-    React Router: Library for handling routing in React applications.
-    Axios: Promise-based HTTP client for the browser and Node.js.
-    CSS/SCSS: Styling for the application.
+Install dependencies:
+    npm install
 
-----------------------------
-🚀 **4. Installation:** 🚀
-----------------------------
-Prerequisites
-    Node.js (version 12 or higher)
-    npm or yarn
-    Git (optional)
+Start the frontend server:
+    npm start
 
-BackEnd Setup
-    - Clone the Repository
-        - git clone https://github.com/LincolnLedet/TheSensationalist.XYZ
-        - cd TheSensationalist.XYZ/sensationalistbackend
-        - node index.js 
-    
-FrontEnd
-    - cd TheSensationalist.XYZ/sensationalistfrontend
-    - npm install (install dependcies)
-    - npm start
+The frontend server will run on `http://localhost:3000`.
 
+---
+------------------------------------------------------------------
 
-How to add data files to data base. 
+IF YOU HAVE ISSUES PLEASE REINSTALL dependencies
 
-curl -X POST http://localhost:5000/api/articles \
-  -F 'title=The Sensationalist Issue #8' \
-  -F 'description=The Chain of Evolution, “Liminal Space”, On placebos, The Girl, You can’t stop me!, Alarm, The Death of Humanity, Hot Dog Art' \
-  -F "pdf=@\"C:/Users/linco/Desktop/Past Issues/The_Sensationalist_8.pdf\"" \
-  -F 'filetype=Article' \
-  -F 'viewcount=0' \
-  -F 'downloadcount=0' \
-  -F 'profane=False'
+# Step 1: Delete the node_modules folder
+rm -rf node_modules
 
-  Tasks for Project
-  - Frontend 
-    - Add animated header/topnav bar for homepage
-        - Create animated header for react component. sensationalistfrontend/src/compents/AnimatedHeader.tsx
-        - reference https://www.thrashermagazine.com/
-        - When a mouse hovers over Shop, Magazine or Community additonal options should be presented
-            -Shop list
-                - Subscribe
-            - Magazine
-                - articles
-                - volumes
-            - Community
-                - Authors 
-                - Submit yourself
-                - Events 
-    - Search bar
-        - Search bar in top right should Seach through article descriptions pulled from api and find article Ids that
-          match the Search. Artical hyberlinks will be displayed based on found ID
-    - Icon buttons (Email and instagram)
-        - Instagram Icon located in sensationalistfrontend/src/compents/AnimatedHeader.tsx should link to https://www.instagram.com/thesensationalist_mag/ page
-        - Email Icon should link to a new page that for emailing frankievinehardt3@gmail.com ideally with fill attachments. 
-  - BackEnd
-    - Viewcount incrementation  
-    - article download button (button that links to http://localhost:5000/uploads/The_Sensationalist_1.pdf)
-        - Downloadcount incrementation 
+Step 2: Delete the package-lock.json file
+rm package-lock.json
 
+Step 3: Clear npm cache
+npm cache clean --force
+
+Step 4: Reinstall all dependencies
+npm install
+
+That's it! Enjoy running **The Sensationalist**!
