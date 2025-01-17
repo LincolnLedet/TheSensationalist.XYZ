@@ -5,7 +5,6 @@ Project by Lincoln Ledet, James R, Dino, Yen, and courtney
 ## General Prerequisites
 To run this project, ensure you have the following installed:
 1. Node.js (version 12 or higher)
-2. Git
 
 ---
 
