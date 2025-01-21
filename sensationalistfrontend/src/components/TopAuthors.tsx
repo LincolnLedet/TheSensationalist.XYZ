@@ -16,7 +16,7 @@ const TopAuthors: React.FC = () => {
 
   // Fetch authors from the backend
   useEffect(() => {
-    axios.get('http://localhost:5000/api/articles/authors')
+    axios.get('/api/articles/authors')
       .then(response => {
         setAuthors(response.data);
       })
@@ -35,7 +35,7 @@ const TopAuthors: React.FC = () => {
         <div key={author.id} className="image-container">
           <Link to={`/authors/${author.id}`} className="image-link">
             <img
-              src={`http://localhost:5000/${author.profileImage.replace(/\\/g, '/')}`}
+              src={`/${author.profileImage.replace(/\\/g, '/')}`}
               alt={author.name}
               className="image"
             />
