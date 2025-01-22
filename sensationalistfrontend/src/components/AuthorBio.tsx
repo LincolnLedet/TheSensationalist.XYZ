@@ -3,6 +3,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './AuthorBio.css';
 
+
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 interface Article {
   id: number;
   title: string;
@@ -24,13 +30,13 @@ const AuthorBio: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/articles/authors/${id}`)
+    axios.get(`${baseURL}/api/articles/authors/${id}`)
       .then(response => {
         const articles = response.data.Articles || []; // Fallback to an empty array if Articles is not defined
 
         const fetchedAuthor: Author = {
           pictureUrl: response.data.profileImage
-            ? `http://localhost:5000/${response.data.profileImage.replace(/\\/g, '/')}`
+            ? `${baseURL}/${response.data.profileImage.replace(/\\/g, '/')}`
             : 'default-image-url', 
           name: response.data.name || 'Unknown Author',
           bio: response.data.bio || 'No biography available.',
@@ -73,7 +79,7 @@ const AuthorBio: React.FC = () => {
               className="article-link"
               onClick={(e) => {
                 e.preventDefault(); // Prevent default navigation
-                axios.post(`http://localhost:5000/api/articles/${article.id}/increment-viewcount`)
+                axios.post(`${baseURL}/api/articles/${article.id}/increment-viewcount`)
                   .then(() => {
                     window.location.href = `/articles/${article.id}`;
                   })
@@ -83,7 +89,7 @@ const AuthorBio: React.FC = () => {
               <h3 className="article-title">{article.title}</h3>
               <div className="article-content-preview">
                 <img
-                  src={`http://localhost:5000/${article.coverImage.replace(/\\/g, '/')}`}
+                  src={`${baseURL}/${article.coverImage.replace(/\\/g, '/')}`}
                   alt={article.title}
                   className="article-image"
                 />

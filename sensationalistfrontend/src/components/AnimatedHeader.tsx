@@ -6,6 +6,12 @@ import { ReactComponent as SensationalLogo } from './SVGs/SensationalistLogo.svg
 import { ReactComponent as InstaLogo } from './SVGs/instagram-svgrepo-com.svg';
 import { ReactComponent as EmailLogo } from './SVGs/email-svgrepo-com.svg';
 
+
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+    
 const AnimatedHeader: React.FC = () => {
   const authContext = useContext(AuthContext);
   if (!authContext) {

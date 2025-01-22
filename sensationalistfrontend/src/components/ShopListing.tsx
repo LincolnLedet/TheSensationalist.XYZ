@@ -12,12 +12,18 @@ interface MerchItem {
     image: string; // URL or path to the image
 }
 
+
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const ShopListing: React.FC = () => {
     const [merchItems, setMerchItems] = useState<MerchItem[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/merch')
+        axios.get(`${baseURL}/api/merch`)
             .then(response => {
                 setMerchItems(response.data);
                 setLoading(false);
@@ -37,7 +43,7 @@ const ShopListing: React.FC = () => {
             {merchItems.map((item) => (
                 <Link to={`/item/${item.id}`} key={item.id} className="gallery-item-link"> {/* Wrap in Link */}
                     <div className="gallery-item">
-                        <img src={`http://localhost:5000/${item.image}`} alt={item.title} />
+                        <img src={`${baseURL}/${item.image}`} alt={item.title} />
                         <h3 className="product-name">{item.title}</h3>
                         {item.description && <p className="product-description">{item.description}</p>}
                         <div className="price-cart-container">

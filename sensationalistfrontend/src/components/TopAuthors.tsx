@@ -11,12 +11,17 @@ interface Author {
   profileImage: string;
 }
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const TopAuthors: React.FC = () => {
   const [authors, setAuthors] = useState<Author[]>([]);
 
   // Fetch authors from the backend
   useEffect(() => {
-    axios.get('/api/articles/authors')
+    axios.get(`${baseURL}/api/articles/authors`)
       .then(response => {
         setAuthors(response.data);
       })
@@ -35,7 +40,7 @@ const TopAuthors: React.FC = () => {
         <div key={author.id} className="image-container">
           <Link to={`/authors/${author.id}`} className="image-link">
             <img
-              src={`/${author.profileImage.replace(/\\/g, '/')}`}
+              src={`${baseURL}/${author.profileImage.replace(/\\/g, '/')}`}
               alt={author.name}
               className="image"
             />

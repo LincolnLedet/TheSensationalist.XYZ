@@ -2,6 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Footer.css';
 import { ReactComponent as SensationalistLogo } from './SVGs/SensationalistLogo.svg';
 
+
+
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+    
 const Footer: React.FC = () => {
     return (
         <div className="footer"> 

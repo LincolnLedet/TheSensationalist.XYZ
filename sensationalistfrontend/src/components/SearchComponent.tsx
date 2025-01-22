@@ -13,12 +13,17 @@ interface Issue {
   viewcount: number;
 }
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const IssueModule: React.FC = () => {
   const [articles, setArticles] = useState<Issue[]>([]);
   const [filter, setFilter] = useState<string>(''); // State for the filter input
 
   useEffect(() => {
-    axios.get('/api/articles')
+    axios.get(`${baseURL}/api/articles`)
       .then(response => {
         setArticles(response.data);
       })
@@ -29,7 +34,7 @@ const IssueModule: React.FC = () => {
 
   const handleArticleClick = async (articleId: number) => {
     try {
-      await axios.post(`/api/articles/${articleId}/increment-viewcount`);
+      await axios.post(`${baseURL}/api/articles/${articleId}/increment-viewcount`);
       console.log(`View count incremented for article ID: ${articleId}`);
     } catch (error) {
       console.error('Error incrementing view count:', error);
@@ -124,7 +129,7 @@ const IssueModule: React.FC = () => {
                 <h2 className="article-title">{article.title}</h2>
                 <div className="article-content-preview">
                   <img
-                    src={`/${article.coverImage.replace(/\\/g, '/')}`}
+                    src={`${baseURL}/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
                     className="article-image"
                   />

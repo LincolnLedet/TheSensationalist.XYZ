@@ -3,6 +3,12 @@ import { AuthContext } from '../AuthContext';
 import './Cart.css';
 import { useStripe } from '@stripe/react-stripe-js';
 
+
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 interface CartItem {
   id: number; // CartItem ID
   quantity: number;
@@ -33,7 +39,7 @@ const Cart: React.FC = () => {
     const fetchCartItems = async () => {
       if (auth.isLoggedIn && auth.token) {
         try {
-          const response = await fetch('http://localhost:5000/api/cart/', {
+          const response = await fetch(`${baseURL}/api/cart/`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -66,7 +72,7 @@ const Cart: React.FC = () => {
   const handleRemoveItem = async (cartItemId: number) => {
     if (auth.isLoggedIn && auth.token) {
       try {
-        const response = await fetch(`http://localhost:5000/api/cart/remove/${cartItemId}`, {
+        const response = await fetch(`${baseURL}/api/cart/remove/${cartItemId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -95,7 +101,7 @@ const Cart: React.FC = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/checkout', {
+      const response = await fetch(`${baseURL}/api/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +153,7 @@ const Cart: React.FC = () => {
         {cartItems.map((item) => (
           <div key={item.id} className="cart-card">
             <img
-              src={`http://localhost:5000/${item.Merch.image}`}
+              src={`${baseURL}/${item.Merch.image}`}
               alt={item.Merch.title}
               className="cart-image"
             />

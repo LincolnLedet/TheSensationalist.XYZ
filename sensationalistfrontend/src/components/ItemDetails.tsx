@@ -12,6 +12,12 @@ interface MerchItem {
     image: string;
 }
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
+
 const ItemDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // Get the ID from the route params
     const [item, setItem] = useState<MerchItem | null>(null);
@@ -25,7 +31,7 @@ const ItemDetails: React.FC = () => {
     const { auth } = authContext;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/merch/${id}`)
+        axios.get(`${baseURL}/api/merch/${id}`)
             .then(response => {
                 setItem(response.data);
                 setLoading(false);
@@ -39,7 +45,7 @@ const ItemDetails: React.FC = () => {
     const handleAddToCart = () => {
         if (item && auth.token) {
             axios.post(
-                'http://localhost:5000/api/cart/add',
+                `${baseURL}/api/cart/add`,
                 { merchId: item.id, quantity: 1 },
                 {
                     headers: {
@@ -69,7 +75,7 @@ const ItemDetails: React.FC = () => {
 
     return (
         <div className="item-details-container">
-            <img src={`http://localhost:5000/${item.image}`} alt={item.title} className="item-image" />
+            <img src={`${baseURL}/${item.image}`} alt={item.title} className="item-image" />
             <h1 className="item-title">{item.title}</h1>
             <p className="item-description">{item.description}</p>
             <p className="item-price">${item.price.toFixed(2)}</p>

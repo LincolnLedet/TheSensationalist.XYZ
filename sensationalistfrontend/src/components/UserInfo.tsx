@@ -12,6 +12,11 @@ interface User {
   role?: string;
 }
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const UserInfo: React.FC = () => {
     const authContext = useContext(AuthContext);
     const [userData, setUserData] = useState<User | null>(null);
@@ -32,7 +37,7 @@ const UserInfo: React.FC = () => {
       if (auth.isLoggedIn && auth.user && auth.token) {
         console.log('Making axios request'); // Add this line
         axios
-          .get(`http://localhost:5000/api/auth/users/${auth.user.id}`, {
+          .get(`${baseURL}/api/auth/users/${auth.user.id}`, {
             headers: {
               Authorization: `Bearer ${auth.token}`,
             },

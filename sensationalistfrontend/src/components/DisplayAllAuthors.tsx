@@ -10,6 +10,12 @@ interface Author {
   profileImage: string;
 }
 
+
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const DisplayAllAuthors: React.FC = () => {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +24,7 @@ const DisplayAllAuthors: React.FC = () => {
   useEffect(() => {
     const fetchAuthors = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/articles/authors");
+        const response = await axios.get(`${baseURL}/api/articles/authors`);
         setAuthors(response.data); // Update state with API response
       } catch (err) {
         setError("Failed to fetch authors.");
@@ -41,7 +47,7 @@ const DisplayAllAuthors: React.FC = () => {
           <div key={author.id} className={styles.authorCard}>
             <Link to={`/authors/${author.id}`} className={styles.imageLink}>
               <img
-                src={`http://localhost:5000/${author.profileImage.replace(/\\/g, "/")}`}
+                src={`${baseURL}/${author.profileImage.replace(/\\/g, "/")}`}
                 alt={`${author.name}'s profile`}
                 className={styles.authorImage}
               />

@@ -11,11 +11,16 @@ interface Volume {
   filetype: string;
 }
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const LatestContent: React.FC = () => {
   const [volumes, setVolumes] = useState<Volume[]>([]);
 
   useEffect(() => {
-    axios.get('/api/articles')
+    axios.get(`${baseURL}/api/articles`)
       .then(response => {
         const volumeData = response.data.filter((item: Volume) => item.filetype === 'Volume');
         setVolumes(volumeData);
@@ -39,7 +44,7 @@ const LatestContent: React.FC = () => {
           >
             <img 
               
-              src={`/${volume.coverImage.replace(/\\/g, '/')}`}
+              src={`${baseURL}/${volume.coverImage.replace(/\\/g, '/')}`}
               crossOrigin="anonymous" 
               alt={volume.title} 
               className="volume-cover-image"

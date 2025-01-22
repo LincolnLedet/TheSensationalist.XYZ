@@ -12,12 +12,19 @@ interface Issue {
   filetype: string;
   viewcount: number; // Include viewcount in the interface
 }
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
 
+
+    
+console.log(baseURL);
 const IssueModule: React.FC = () => {
   const [articles, setArticles] = useState<Issue[]>([]);
 
   useEffect(() => {
-    axios.get('/api/articles')
+    axios.get(`${baseURL}/api/articles`)
       .then(response => {
         setArticles(response.data);
       })
@@ -50,7 +57,7 @@ const IssueModule: React.FC = () => {
                 <div className="article-content-preview">
                   {/* Cover Image on the Left */}
                   <img
-                    src={`/${article.coverImage.replace(/\\/g, '/')}`}
+                    src={`${baseURL}/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
                     className="article-image"/>
                   {/* Description on the Right */}

@@ -5,6 +5,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const AdminMerchUpload: React.FC = () => {
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
@@ -75,7 +80,7 @@ const AdminMerchUpload: React.FC = () => {
     data.append('image', merchImage);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/merch', data, {
+      const response = await axios.post(`${baseURL}/api/merch`, data, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },

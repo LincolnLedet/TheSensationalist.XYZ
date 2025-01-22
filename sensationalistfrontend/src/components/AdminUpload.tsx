@@ -7,6 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 import './AdminUpload.css';
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const AdminUpload: React.FC = () => {
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
@@ -104,7 +109,7 @@ const AdminUpload: React.FC = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/articles',
+        `${baseURL}/api/articles`,
         data,
         {
           headers: {
