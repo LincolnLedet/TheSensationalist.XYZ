@@ -4,12 +4,9 @@
     display: grid;
     background-color: black;
     color: white;
-    min-width: 30vw;
-    max-width: 85vw;
-
+    padding: 30px;
     grid-template-areas: 
     "header header header"
-    "TopAuthors TopAuthors TopAuthors"
     "IssueModule LatestContent LatestContent"
     "footer footer footer";
     
@@ -36,14 +33,11 @@
   }
   .IssueModule {
     grid-area: IssueModule;
-    min-width : 30vw;
   }
 
   .latestContent
   {
     grid-area: LatestContent;
-    max-width: 40vw;
-    padding-left : 80px;
   }
 
   

@@ -13,9 +13,6 @@ const HomePage: React.FC = () => {
           <div className="header">
               <AnimatedHeader />
           </div>
-          <div className="TopAuthors">
-              <TopAuthors />
-          </div>
           <div className="IssueModule">
               <IssueModule />
           </div>
