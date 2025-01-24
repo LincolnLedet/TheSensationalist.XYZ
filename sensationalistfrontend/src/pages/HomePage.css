@@ -6,16 +6,19 @@
     color: white;
     padding: 30px;
     grid-template-areas: 
-    "header header header"
-    "IssueModule LatestContent LatestContent"
-    "footer footer footer";
+    "header header"
+    "IssueModule LatestContent"
+    "footer footer";
+    grid-template-columns: 2fr 1fr; /* Adjust column proportions dynamically */
+    grid-template-rows: auto auto; /* Automatically size rows based on content */
+    gap: 20px; /* Add spacing between grid items */
+    width: 100%; /* Full container width */
     
   }
   .main-container {
     display: flex;
     justify-content: center; /* Centers the grid horizontally */
     align-items: center; /* Centers the grid vertically */
-    min-height: 100vh; /* Ensures the main container fills the viewport height */
     background-color: black;
     
   }
@@ -53,3 +56,27 @@
       transform: rotate(360deg);
     }
   }
+  @media (max-width: 768px) {
+    .grid-container {
+        grid-template-areas: 
+            "IssueModule"
+            "LatestContent"
+            "footer";
+        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-rows: auto auto auto; /* Automatically size rows */
+    }
+
+    .header {
+        display: none; /* Hide header on mobile */
+    }
+
+    .IssueModule {
+        grid-area: IssueModule;
+        width: 100%; /* Take up full width */
+    }
+
+    .latestContent {
+        grid-area: LatestContent;
+        width: 100%; /* Take up full width */
+    }
+}

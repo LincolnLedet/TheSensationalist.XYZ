@@ -37,7 +37,7 @@ const IssueModule: React.FC = () => {
 
   return (
     <div>
-      <h1>Issues</h1>
+      <div className = "IssueListTitle">Issues</div>
       <ul className="article-list">
         {articles
           .filter(article => article.filetype === 'Issue')

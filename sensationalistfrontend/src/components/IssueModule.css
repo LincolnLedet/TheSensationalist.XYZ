@@ -5,7 +5,10 @@
 
 .article-item {
   margin-bottom: 20px;
+  display: flex;
   border-radius: 8px;
+  overflow: auto;
+
 }
 
 .article-link {
@@ -51,6 +54,11 @@
   flex-grow: 1;
 }
 
+.IssueListTitle {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
 .article-description {
   font-size: 1em;
   color: #666;
@@ -58,5 +66,41 @@
 
 /* Make the entire link act like a button on click */
 .article-link:active {
-  transform: scale(0.98); /* Slight shrink effect on click */
+  transform: scale(0.97); /* Slight shrink effect on click */
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .article-item {
+    flex-direction: column; /* Stack image and text vertically for mobile */
+    align-items: center; /* Center-align content */
+  }
+
+  .article-title {
+    text-align: center; /* Center the title */
+  }
+
+  .article-content-preview {
+    flex-direction: column; /* Stack image above text */
+    align-items: center;
+    gap: 10px; /* Reduce gap for a tighter mobile layout */
+  }
+
+  .article-details {
+    text-align: center; /* Center-align the text description */
+  }
+
+  .article-image {
+    width: 100%; /* Make image responsive */
+    max-width: 300px; /* Limit the maximum width for better scaling */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .IssueListTitle {
+    font-size: 3em;
+    margin-bottom: 15px;
+    display: flex; /* Make the parent a flex container */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+  }
 }
