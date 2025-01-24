@@ -44,7 +44,7 @@ const LatestContent: React.FC = () => {
           >
             <img 
               
-              src={`${baseURL}/${volume.coverImage.replace(/\\/g, '/')}`}
+              src={`${baseURL}/api/${volume.coverImage.replace(/\\/g, '/')}`}
               crossOrigin="anonymous" 
               alt={volume.title} 
               className="volume-cover-image"

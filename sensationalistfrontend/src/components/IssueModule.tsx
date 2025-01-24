@@ -57,7 +57,7 @@ const IssueModule: React.FC = () => {
                 <div className="article-content-preview">
                   {/* Cover Image on the Left */}
                   <img
-                    src={`${baseURL}/${article.coverImage.replace(/\\/g, '/')}`}
+                    src={`${baseURL}/api/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
                     className="article-image"/>
                   {/* Description on the Right */}
