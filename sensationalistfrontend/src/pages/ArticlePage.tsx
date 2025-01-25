@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AnimatedHeader from '../components/AnimatedHeader';
 import Footer from '../components/Footer';
-import 
 import './ArticlePage.css';
 
 // Define the structure of an article
@@ -45,7 +44,7 @@ const ArticlePage: React.FC = () => {
   useEffect(() => {
     if (article) {
       // Call the increment view count API
-      axios.post(`{baseURL}/api/articles/${article.id}/increment-viewcount`)
+      axios.post(`${baseURL}/api/articles/${article.id}/increment-viewcount`)
         .then(response => {
           console.log('View count incremented:', response.data.viewcount);
         })
@@ -70,7 +69,7 @@ const ArticlePage: React.FC = () => {
         </div>
         {/* Display the article in an iframe */}
         <object
-          data={`{baseURL}/api/${article.pdfPath.replace(/\\/g, '/')}`}
+          data={`${baseURL}/api/${article.pdfPath.replace(/\\/g, '/')}`}
           title={article.title}
           height="800px"
         ></object>
