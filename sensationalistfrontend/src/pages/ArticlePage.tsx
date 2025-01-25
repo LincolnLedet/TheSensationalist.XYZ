@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AnimatedHeader from '../components/AnimatedHeader';
 import Footer from '../components/Footer';
+import 
 import './ArticlePage.css';
 
 // Define the structure of an article
@@ -15,6 +16,11 @@ interface Issue {
   filetype: string;
 }
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // In production, requests default to the same origin
+
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Access the 'id' parameter from the URL
   const [article, setArticle] = useState<Issue | null>(null); // State to hold the article data
@@ -23,7 +29,7 @@ const ArticlePage: React.FC = () => {
 
   useEffect(() => {
     // Fetch the article data based on the ID
-    axios.get(`http://localhost:5000/api/articles/${id}`)
+    axios.get(`${baseURL}/api/articles/${id}`)
       .then(response => {
         setArticle(response.data);
         setLoading(false);
@@ -39,7 +45,7 @@ const ArticlePage: React.FC = () => {
   useEffect(() => {
     if (article) {
       // Call the increment view count API
-      axios.post(`http://localhost:5000/api/articles/${article.id}/increment-viewcount`)
+      axios.post(`{baseURL}/api/articles/${article.id}/increment-viewcount`)
         .then(response => {
           console.log('View count incremented:', response.data.viewcount);
         })
@@ -64,7 +70,7 @@ const ArticlePage: React.FC = () => {
         </div>
         {/* Display the article in an iframe */}
         <object
-          data={`http://localhost:5000/api/${article.pdfPath.replace(/\\/g, '/')}`}
+          data={`{baseURL}/api/${article.pdfPath.replace(/\\/g, '/')}`}
           title={article.title}
           height="800px"
         ></object>
