@@ -13,7 +13,6 @@
 }
 
 .NavHeaderContainer {
-  margin: 0 auto; /* Center the container */
   position: sticky; /* Makes the header sticky */
   top: 0;
   width: 100%; /* Full width */

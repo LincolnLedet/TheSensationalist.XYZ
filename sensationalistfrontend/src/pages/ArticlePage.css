@@ -1,9 +1,17 @@
 .article-flex-container {
     display: flex;
     flex-direction: column;
-    min-height: 110vh;
 }
 .article-content{
     display: flex;
     flex-direction: column;
+}
+
+
+.article-content-title{
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: black;
+    color: white;
 }

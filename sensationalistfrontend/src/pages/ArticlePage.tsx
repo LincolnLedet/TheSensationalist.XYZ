@@ -59,19 +59,15 @@ const ArticlePage: React.FC = () => {
         <AnimatedHeader />
       </div>
       <div className="article-content">
-        {/* Article Title */}
         <div className="article-content-title">
-          <h1>{article.title}</h1>
+          <h5>{article.title}</h5>
         </div>
         {/* Display the article in an iframe */}
-        <iframe
-          src={`http://localhost:5000/${article.pdfPath.replace(/\\/g, '/')}`}
+        <object
+          data={`http://localhost:5000/api/${article.pdfPath.replace(/\\/g, '/')}`}
           title={article.title}
-          width="100%"
           height="800px"
-          frameBorder="0"
-          allowFullScreen
-        ></iframe>
+        ></object>
       </div>
       <div className="footer">
         <Footer />
