@@ -59,6 +59,7 @@
   @media (max-width: 768px) {
     .grid-container {
         grid-template-areas: 
+            "header"
             "IssueModule"
             "LatestContent"
             "footer";
@@ -67,7 +68,7 @@
     }
 
     .header {
-        display: none; /* Hide header on mobile */
+        grid-area: header;
     }
 
     .IssueModule {

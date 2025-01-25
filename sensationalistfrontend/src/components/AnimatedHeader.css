@@ -4,11 +4,9 @@
   background-color: black;
   color: white; /* White text */
   padding: 20px;
-  max-width: 100%;  /* Keep it responsive */
   grid-template-columns: 1fr 1fr 1fr;  /* Define 3 columns */
   grid-template-areas: 
-    "logo logo  Media-Logos"
-    "logo logo nav-links";
+    "logo nav-links Media-Logos";
     position: sticky; /* Makes the header sticky */
     top: 0;
     padding: 0 15px 0 15px;
@@ -16,9 +14,9 @@
 
 .NavHeaderContainer {
   margin: 0 auto; /* Center the container */
-  width: 100%;
   position: sticky; /* Makes the header sticky */
   top: 0;
+  width: 100%; /* Full width */
 
 }
 .Media-Logos {
@@ -58,7 +56,6 @@
   height: 100px;
   width: auto;
   grid-area: logo;
-  padding-right: 30vw;
 }
 
 nav {
@@ -106,6 +103,7 @@ nav > ul > li > a {
   position: relative;
   text-align: center;
   text-decoration: none;
+  grid-area: 'nav-links'; 
 }
 
 nav > ul > li > ul > li > a {
@@ -185,4 +183,36 @@ nav > ul > li > ul > li {
     flex-direction: row; 
     align-items: center; 
   }
+}
+
+@media (max-width: 768px) {
+
+  .NavHeader {
+    display: grid;
+    align-items: center;
+    background-color: black;
+    color: white; /* White text */
+    padding: 2px;
+    grid-template-columns: 1fr 1fr;  /* Define 3 columns */
+    grid-template-areas: 
+      "logo Media-Logos";
+    
+  }
+
+  .NavHeader {
+    display: grid;
+    align-items: center;
+    background-color: black;
+    color: white; /* White text */
+    padding: 2px;
+    grid-template-columns: 1fr 1fr;  /* Define 3 columns */
+    grid-template-areas: 
+      "logo Media-Logos";
+    
+  }
+
+  .nav-links {
+    display: none;
+  }
+
 }
