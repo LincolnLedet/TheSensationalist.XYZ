@@ -19,6 +19,7 @@ const baseURL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:5000' // Backend URL in development
     : ''; // In production, requests default to the same origin
+    
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Access the 'id' parameter from the URL
@@ -58,6 +59,10 @@ const ArticlePage: React.FC = () => {
   if (error) return <div>{error}</div>; // Display an error message if fetching fails
   if (!article) return <div>Article not found.</div>; // Handle case where article is not found
 
+
+  const pdfURL = `${baseURL}/api/${article.pdfPath.replace(/\\/g, '/')}`;
+  const googleViewerURL = `https://docs.google.com/gview?url=${encodeURIComponent(pdfURL)}&embedded=true`;
+
   return (
     <div className="article-flex-container">
       <div className="header">
@@ -67,12 +72,12 @@ const ArticlePage: React.FC = () => {
         <div className="article-content-title">
           <h5>{article.title}</h5>
         </div>
-        {/* Display the article in an iframe */}
-        <object
-          data={`${baseURL}/api/${article.pdfPath.replace(/\\/g, '/')}`}
-          title={article.title}
-          height="800px"
-        ></object>
+        {/* Display the article in an iframe {`http://localhost:5000/api/${article.pdfPath.replace(/\\/g, '/')}`} */}
+        <iframe
+        src={googleViewerURL}
+        style={{ width: '100%', height: '800px', border: 'none' }}
+      ></iframe>
+
       </div>
       <div className="footer">
         <Footer />
