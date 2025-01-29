@@ -127,6 +127,25 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get the most recently uploaded article
+router.get('/latest', async (req, res) => {
+  try {
+    const latestArticle = await Article.findOne({
+      order: [['uploadedAt', 'DESC']], // Sort by uploadedAt in descending order
+      include: Author // Include associated authors
+    });
+
+    if (!latestArticle) {
+      return res.status(404).json({ message: 'No articles found' });
+    }
+
+    res.json(latestArticle);
+  } catch (err) {
+    console.error('Error fetching latest article:', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 // Get a single article by ID
 router.get('/:id', async (req, res) => {
   try {

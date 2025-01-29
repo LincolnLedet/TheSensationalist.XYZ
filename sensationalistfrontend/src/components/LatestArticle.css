@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
+
+.latest-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.volume-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  font-family: "Libre Baskerville", serif;
+}
+
+.volume-cover-button {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 400px; /* Adjust to control image size */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.volume-cover-button:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.volume-cover-button:active {
+  transform: scale(0.98);
+}
+
+.volume-cover-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.volume-cover-title {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.5em;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  width: 90%;
+  max-width: 320px;
+}
+
+.volume-upload-date {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #666;
+  font-family: "Libre Baskerville", serif;
+}
+
+@media (max-width: 768px) {
+  .volume-cover-button {
+    max-width: 300px;
+  }
+
+  .volume-cover-title {
+    font-size: 1.2em;
+    padding: 8px 12px;
+  }
+}

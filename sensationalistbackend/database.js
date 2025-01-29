@@ -27,6 +27,7 @@ const Article = sequelize.define('Article', {
   uploadedAt: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
+    allowNull: false,
   },
   filetype: {
     type: DataTypes.ENUM('Volume', 'Video', 'Image', 'Podcast', 'Issue', 'Music', 'Misc'),

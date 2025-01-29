@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './LatestContent.css';
+import './VolumeModule.css';
 
 interface Volume {
   id: number;
@@ -16,7 +16,7 @@ const baseURL =
     ? 'http://localhost:5000' // Backend URL in development
     : ''; // In production, requests default to the same origin
 
-const LatestContent: React.FC = () => {
+const VolumeModule: React.FC = () => {
   const [volumes, setVolumes] = useState<Volume[]>([]);
 
   useEffect(() => {
@@ -57,4 +57,4 @@ const LatestContent: React.FC = () => {
   );
 };
 
-export default LatestContent;
+export default VolumeModule;
