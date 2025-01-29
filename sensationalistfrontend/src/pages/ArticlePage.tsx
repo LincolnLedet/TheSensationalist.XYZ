@@ -60,7 +60,7 @@ const ArticlePage: React.FC = () => {
   if (!article) return <div>Article not found.</div>; // Handle case where article is not found
 
 
-  const pdfURL = `${baseURL}/api/${article.pdfPath.replace(/\\/g, '/')}`;
+  const pdfURL = `http://155.186.183.90/api/${article.pdfPath.replace(/\\/g, '/')}`;
   const googleViewerURL = `https://docs.google.com/gview?url=${encodeURIComponent(pdfURL)}&embedded=true`;
 
   return (
