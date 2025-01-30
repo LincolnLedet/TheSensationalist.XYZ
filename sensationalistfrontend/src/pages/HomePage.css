@@ -4,7 +4,7 @@
     display: grid;
     background-color: black;
     color: white;
-    padding: 30px;
+    padding: 1em;
     grid-template-areas: 
     "header header"
     "LatestArticle LatestVolume"
@@ -21,7 +21,7 @@
     justify-content: center; /* Centers the grid horizontally */
     align-items: center; /* Centers the grid vertically */
     background-color: black;
-    
+    width: 100vw; /* Full container width */
   }
 
   .header {
