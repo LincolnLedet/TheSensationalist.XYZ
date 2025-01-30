@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
           <div className="IssueModule">
               <IssueModule />
           </div>
-          <div className="latestContent">
+          <div className="LatestVolume">
               <VolumeModule />
           </div>
           <div className="footer">

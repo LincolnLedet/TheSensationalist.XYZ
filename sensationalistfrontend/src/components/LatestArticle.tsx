@@ -45,7 +45,7 @@ const LatestArticle: React.FC = () => {
   });
 
   return (
-    <div className="volume-container">
+    <div className="latest-content-container">
       <h1>Latest Article</h1>
       <div className="latest-content">
         <Link to={`/articles/${latestArticle.id}`} className="volume-cover-button">
@@ -53,10 +53,12 @@ const LatestArticle: React.FC = () => {
             src={`${baseURL}/api/${latestArticle.coverImage.replace(/\\/g, '/')}`}
             crossOrigin="anonymous"
             alt={latestArticle.title}
-            className="volume-cover-image"
+            className="latest-content-cover-image"
           />
-          <h2 className="volume-cover-title">{latestArticle.title}</h2>
-          <p className="volume-upload-date">Uploaded on: {formattedDate}</p>
+          <div className="latest-content-cover-title">
+            <h3>{latestArticle.title}</h3>
+            <div className="latest-content-upload-date">Uploaded on: {formattedDate}</div>
+          </div>
         </Link>
       </div>
     </div>

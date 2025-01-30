@@ -7,8 +7,8 @@
     padding: 30px;
     grid-template-areas: 
     "header header"
-    "LatestArticle LatestContent"
-    "IssueModule LatestContent"
+    "LatestArticle LatestVolume"
+    "IssueModule LatestVolume"
     "footer footer";
     grid-template-columns: 2fr 1fr; /* Adjust column proportions dynamically */
     grid-template-rows: auto auto; /* Automatically size rows based on content */
@@ -43,9 +43,9 @@
     grid-area: IssueModule;
   }
 
-  .latestContent
+  .LatestVolume
   {
-    grid-area: LatestContent;
+    grid-area: LatestVolume;
   }
 
   
@@ -63,26 +63,35 @@
   }
   @media (max-width: 768px) {
     .grid-container {
+      display: grid;
         grid-template-areas: 
             "header"
+            "LatestArticle"
             "IssueModule"
-            "LatestContent"
+            "LatestVolume"
             "footer";
-        grid-template-columns: 1fr; /* Single column layout */
-        grid-template-rows: auto auto auto; /* Automatically size rows */
+            grid-template-columns: 1fr !important; /* Force single column */
+            /* Single column layout */
+        grid-template-rows: auto auto auto auto; /* Automatically size rows */
+        justify-content: center;
+
     }
 
+    .LatestArticle {
+        grid-area: LatestArticle;
+    }
     .header {
         grid-area: header;
     }
+
 
     .IssueModule {
         grid-area: IssueModule;
         width: 100%; /* Take up full width */
     }
 
-    .latestContent {
-        grid-area: LatestContent;
+    .LatestVolume {
+        grid-area: "LatestVolume";
         width: 100%; /* Take up full width */
     }
 }

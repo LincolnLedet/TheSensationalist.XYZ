@@ -7,10 +7,10 @@
   justify-content: center;
   text-align: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
 }
 
-.volume-container {
+.latest-content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,39 +19,39 @@
   font-family: "Libre Baskerville", serif;
 }
 
-.volume-cover-button {
+.latest-content-cover-button {
   display: block;
   position: relative;
   text-decoration: none;
   color: white;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   width: 100%;
-  max-width: 400px; /* Adjust to control image size */
   border-radius: 8px;
   overflow: hidden;
 }
 
-.volume-cover-button:hover {
+.latest-content-cover-button:hover {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
 
-.volume-cover-button:active {
+.latest-content-cover-button:active {
   transform: scale(0.98);
 }
 
-.volume-cover-image {
+.latest-content-cover-image {
   width: 100%;
   height: auto;
   border-radius: 8px;
   display: block;
 }
 
-.volume-cover-title {
+.latest-content-cover-title {
   position: absolute;
   bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20%;
+  top: 30%;
+  bottom: 30%;
   color: white;
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0.7);
@@ -59,14 +59,13 @@
   border-radius: 5px;
   font-family: "Oswald", sans-serif;
   text-align: center;
-  width: 90%;
-  max-width: 320px;
+  width: 60%;
 }
 
-.volume-upload-date {
+.latest-content-upload-date {
   margin-top: 10px;
-  font-size: 1em;
-  color: #666;
+  font-size: .5em;
+  color: white;
   font-family: "Libre Baskerville", serif;
 }
 
