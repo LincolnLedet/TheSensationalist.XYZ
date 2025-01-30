@@ -22,7 +22,7 @@
 }
 
 .volume-cover-button:active {
-  transform: scale(0.98); /* Slight shrink effect on click */
+  transform: scale(0.98); /* Slight shrink effect on click */    
 }
 
 .h4 {
