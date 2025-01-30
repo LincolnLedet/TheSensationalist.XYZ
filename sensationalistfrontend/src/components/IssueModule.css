@@ -31,6 +31,7 @@
   font-size: 1.5em;
   margin-bottom: 15px;
   color: #333;
+  
 }
 
 .article-content-preview {
@@ -55,8 +56,15 @@
 }
 
 .IssueListTitle {
-  font-size: 3em;
   margin-bottom: 15px;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  font-family: "Libre Baskerville", serif;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .article-description {

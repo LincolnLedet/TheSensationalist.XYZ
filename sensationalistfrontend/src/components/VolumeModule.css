@@ -39,7 +39,7 @@
 .volume-cover-image {
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
   
 }
 
@@ -64,7 +64,5 @@
     height: 100%;
     border-radius: 5px;
     align-items: center;
-    
-
   }
 }

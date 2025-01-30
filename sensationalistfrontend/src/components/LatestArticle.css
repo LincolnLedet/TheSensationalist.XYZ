@@ -75,7 +75,11 @@
   }
 
   .volume-cover-title {
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 8px 12px;
+  }
+
+  h3{
+    font-size: .6em;
   }
 }
