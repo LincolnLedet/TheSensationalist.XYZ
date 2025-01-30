@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css'; // Create and style your CSS file
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // Production uses the same origin
+
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -11,7 +16,7 @@ const RegisterPage: React.FC = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        const response = await fetch('http://localhost:5000/api/auth/register', {
+        const response = await fetch(`${baseURL}/api/api/auth/register`, {
 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

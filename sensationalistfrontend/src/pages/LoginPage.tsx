@@ -4,6 +4,11 @@ import { AuthContext } from '../AuthContext'; // Adjust the path if necessary
 import './LoginPage.css'; // Your CSS file
 import { ReactComponent as SensationalistLogoCropped } from '.././components/SVGs/SensationalistLogoCropped.svg';
 
+const baseURL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000' // Backend URL in development
+    : ''; // Production uses the same origin
+
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +25,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${baseURL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
