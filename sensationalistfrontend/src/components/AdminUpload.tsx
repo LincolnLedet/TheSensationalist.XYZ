@@ -10,13 +10,12 @@ import './AdminUpload.css';
 const baseURL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:5000' // Backend URL in development
-    : ''; // In production, requests default to the same origin
+    : '';
 
 const AdminUpload: React.FC = () => {
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Always call Hooks at the top level
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -24,67 +23,55 @@ const AdminUpload: React.FC = () => {
     viewcount: 0,
     downloadcount: 0,
     authorIds: [''],
+    uploadDate: new Date().toISOString().split('T')[0], // Default to today's date
   });
+
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [message, setMessage] = useState<string>('');
 
-  // Handlers for input changes
   const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]:
-        name === 'viewcount' || name === 'downloadcount' ? Number(value) : value,
+      [name]: name === 'viewcount' || name === 'downloadcount' ? Number(value) : value,
     }));
   };
 
-  // Handlers for drag-and-drop
-  const onDropPdf = (acceptedFiles: File[]) => {
-    setPdfFile(acceptedFiles[0]);
+  const setTodayDate = () => {
+    setFormData(prev => ({
+      ...prev,
+      uploadDate: new Date().toISOString().split('T')[0],
+    }));
   };
 
-  const onDropCoverImage = (acceptedFiles: File[]) => {
-    setCoverImage(acceptedFiles[0]);
-  };
+  const onDropPdf = (acceptedFiles: File[]) => setPdfFile(acceptedFiles[0]);
+  const onDropCoverImage = (acceptedFiles: File[]) => setCoverImage(acceptedFiles[0]);
 
-  const { getRootProps: getRootPropsPdf, getInputProps: getInputPropsPdf } =
-    useDropzone({
-      onDrop: onDropPdf,
-      accept: { 'application/pdf': ['.pdf'] },
-      multiple: false,
-    });
+  const { getRootProps: getRootPropsPdf, getInputProps: getInputPropsPdf } = useDropzone({
+    onDrop: onDropPdf,
+    accept: { 'application/pdf': ['.pdf'] },
+    multiple: false,
+  });
 
-  const { getRootProps: getRootPropsImage, getInputProps: getInputPropsImage } =
-    useDropzone({
-      onDrop: onDropCoverImage,
-      accept: { 'image/*': ['.jpeg', '.png', '.jpg'] },
-      multiple: false,
-    });
+  const { getRootProps: getRootPropsImage, getInputProps: getInputPropsImage } = useDropzone({
+    onDrop: onDropCoverImage,
+    accept: { 'image/*': ['.jpeg', '.png', '.jpg'] },
+    multiple: false,
+  });
 
-  if (!authContext) {
-    throw new Error('AuthContext must be used within an AuthProvider');
-  }
+  if (!authContext) throw new Error('AuthContext must be used within an AuthProvider');
 
   const { auth } = authContext;
 
-  // Use useEffect for navigation side effect
   useEffect(() => {
-    if (!auth.isLoggedIn) {
-      navigate('/login'); // Redirect to home or login page
-    }
+    if (!auth.isLoggedIn) navigate('/login');
   }, [auth, navigate]);
 
-  // If not authorized, don't render the form
-  if (!auth.isLoggedIn || auth.user?.role !== 'admin') {
-    return null;
-  }
+  if (!auth.isLoggedIn || auth.user?.role !== 'admin') return null;
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -99,36 +86,18 @@ const AdminUpload: React.FC = () => {
     data.append('filetype', formData.filetype);
     data.append('viewcount', String(formData.viewcount));
     data.append('downloadcount', String(formData.downloadcount));
-
-    formData.authorIds.forEach(id => {
-      if (id) data.append('authorIds[]', id);
-    });
-
+    data.append('uploadDate', formData.uploadDate);
+    formData.authorIds.forEach(id => id && data.append('authorIds[]', id));
     data.append('pdf', pdfFile);
     data.append('coverImage', coverImage);
 
     try {
-      const response = await axios.post(
-        `${baseURL}/api/articles`,
-        data,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${auth.token}`,
-          },
-        }
-      );
+      await axios.post(`${baseURL}/api/articles`, data, {
+        headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${auth.token}` },
+      });
 
       setMessage('Article uploaded successfully!');
-      // Optionally, reset the form or redirect
-      setFormData({
-        title: '',
-        description: '',
-        filetype: '',
-        viewcount: 0,
-        downloadcount: 0,
-        authorIds: [''],
-      });
+      setFormData({ title: '', description: '', filetype: '', viewcount: 0, downloadcount: 0, authorIds: [''], uploadDate: new Date().toISOString().split('T')[0] });
       setPdfFile(null);
       setCoverImage(null);
     } catch (error) {
@@ -142,6 +111,10 @@ const AdminUpload: React.FC = () => {
       <h2>Upload Article/Issue</h2>
       {message && <p className="upload-message">{message}</p>}
       <form onSubmit={handleSubmit} className="upload-form">
+        <label>Upload Date:
+          <input type="date" name="uploadDate" value={formData.uploadDate} onChange={handleInputChange} />
+          <button type="button" onClick={setTodayDate}>Today</button>
+        </label>
         <label>
           Title:
           <input

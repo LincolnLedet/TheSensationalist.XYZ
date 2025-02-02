@@ -1,0 +1,50 @@
+.remove-uploads-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .remove-uploads-container h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .upload-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .upload-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .upload-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .upload-title {
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .delete-button {
+    padding: 8px 14px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+  

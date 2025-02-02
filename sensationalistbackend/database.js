@@ -24,13 +24,17 @@ const Article = sequelize.define('Article', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  weblink: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   uploadedAt: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
     allowNull: false,
   },
   filetype: {
-    type: DataTypes.ENUM('Volume', 'Video', 'Image', 'Podcast', 'Issue', 'Music', 'Misc'),
+    type: DataTypes.ENUM('Volume', 'Video', 'Image', 'Podcast', 'Issue', 'Article', 'Music', 'Misc'),
     allowNull: false,
   },
   viewcount: {
@@ -60,6 +64,17 @@ const Author = sequelize.define('Author', {
   profileImage: {
     type: DataTypes.STRING,
     allowNull: true, // Stores the file path of the image
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    validate: {
+      isEmail: true, // Validates email format
+    },
+  },
+  phone: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
 });
 
@@ -157,6 +172,18 @@ const Order = sequelize.define('Order', {
   status: {
     type: DataTypes.ENUM('Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'),
     defaultValue: 'Pending',
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  phone: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  paymentInfo : {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   orderDate: {
     type: DataTypes.DATE,

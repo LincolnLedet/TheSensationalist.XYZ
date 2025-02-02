@@ -6,6 +6,7 @@ import AdminUpload from "../components/AdminUpload";
 import AdminAuthorUpload from "../components/AdminAuthorUpload";
 import AdminMerchUpload from "../components/AdminMerchUpload";
 import Footer from "../components/Footer";
+import RemoveUploads from "../components/RemoveUploads";
 
 const ShopPage: React.FC = () => {
 
@@ -17,6 +18,7 @@ const ShopPage: React.FC = () => {
             <AdminUpload />
             <AdminAuthorUpload />
             <AdminMerchUpload />
+            <RemoveUploads />
             <Footer />
 
         </div>

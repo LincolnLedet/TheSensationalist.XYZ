@@ -60,6 +60,9 @@ const AdminAuthorUpload: React.FC = () => {
 
   // If not authorized, don't render the form
   if (!auth.isLoggedIn || auth.user?.role !== 'admin') {
+    console.log(auth.user?.role); // Add this line
+    console.log('MAJOR ERROR:'); // Add this line
+
     return null;
   }
 
