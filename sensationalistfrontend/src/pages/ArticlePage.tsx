@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import AnimatedHeader from '../components/AnimatedHeader';
 import Footer from '../components/Footer';
+import { Viewer, Worker } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css'; 
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import './ArticlePage.css';
 
 // Define the structure of an article
@@ -23,12 +26,11 @@ const baseURL =
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Access the 'id' parameter from the URL
-  const [article, setArticle] = useState<Issue | null>(null); // State to hold the article data
-  const [loading, setLoading] = useState<boolean>(true); // State to manage loading state
-  const [error, setError] = useState<string | null>(null); // State to handle errors
+  const [article, setArticle] = useState<Issue | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch the article data based on the ID
     axios.get(`${baseURL}/api/articles/${id}`)
       .then(response => {
         setArticle(response.data);
@@ -41,10 +43,8 @@ const ArticlePage: React.FC = () => {
       });
   }, [id]);
 
-  // Use another useEffect to increment the view count when the article is loaded
   useEffect(() => {
     if (article) {
-      // Call the increment view count API
       axios.post(`${baseURL}/api/articles/${article.id}/increment-viewcount`)
         .then(response => {
           console.log('View count incremented:', response.data.viewcount);
@@ -55,13 +55,11 @@ const ArticlePage: React.FC = () => {
     }
   }, [article]);
 
-  if (loading) return <div>Loading...</div>; // Display a loading message while fetching
-  if (error) return <div>{error}</div>; // Display an error message if fetching fails
-  if (!article) return <div>Article not found.</div>; // Handle case where article is not found
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!article) return <div>Article not found.</div>;
 
-
-  const pdfURL = `http://155.186.183.90/api/${article.pdfPath.replace(/\\/g, '/')}`;
-  const googleViewerURL = `https://docs.google.com/gview?url=${encodeURIComponent(pdfURL)}&embedded=true`;
+  const pdfURL = `http://the-sensationalist/api/${article.pdfPath.replace(/\\/g, '/')}`;
 
   return (
     <div className="article-flex-container">
@@ -72,11 +70,13 @@ const ArticlePage: React.FC = () => {
         <div className="article-content-title">
           <h5>{article.title}</h5>
         </div>
-        {/* Display the article in an iframe {`http://localhost:5000/api/${article.pdfPath.replace(/\\/g, '/')}`} */}
-        <iframe
-        src={googleViewerURL}
-        style={{ width: '100%', height: '800px', border: 'none' }}
-      ></iframe>
+        
+        {/* PDF.js Viewer */}
+        <div style={{ height: '800px', width: '100%' }}>
+          <Worker workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.worker.min.js`}>
+            <Viewer fileUrl={pdfURL} />
+          </Worker>
+        </div>
 
       </div>
       <div className="footer">

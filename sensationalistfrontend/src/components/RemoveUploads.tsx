@@ -10,15 +10,17 @@ const baseURL =
 
 const RemoveUploads: React.FC = () => {
   const authContext = useContext(AuthContext);
+  if (!authContext) throw new Error('AuthContext must be used within an AuthProvider');
+
+  const { auth } = authContext;
   const [articles, setArticles] = useState<any[]>([]);
   const [merch, setMerch] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState<'articles' | 'merch'>('articles');
 
-  if (!authContext) throw new Error('AuthContext must be used within an AuthProvider');
-  const { auth } = authContext;
-
   useEffect(() => {
     const fetchData = async () => {
+      if (!auth.isLoggedIn || auth.user?.role !== 'admin') return; // Prevent API calls if unauthorized
+
       try {
         const [articlesResponse, merchResponse] = await Promise.all([
           axios.get(`${baseURL}/api/articles`, {
@@ -35,10 +37,16 @@ const RemoveUploads: React.FC = () => {
         console.error('Error fetching data:', error);
       }
     };
+
     fetchData();
-  }, [auth.token]);
+  }, [auth.isLoggedIn, auth.user?.role, auth.token]); // Depend on auth changes
 
   const deleteItem = async (id: number, type: 'articles' | 'merch') => {
+    if (auth.user?.role !== 'admin') {
+      console.error('Admin login required.');
+      return;
+    }
+
     try {
       await axios.delete(`${baseURL}/api/${type}/${id}`, {
         headers: { Authorization: `Bearer ${auth.token}` },
@@ -53,6 +61,11 @@ const RemoveUploads: React.FC = () => {
       console.error(`Error deleting ${type === 'articles' ? 'article' : 'merch'}:`, error);
     }
   };
+
+  // Instead of early return, return null in JSX
+  if (!auth.isLoggedIn || auth.user?.role !== 'admin') {
+    return null;
+  }
 
   return (
     <div className="remove-uploads-container">
