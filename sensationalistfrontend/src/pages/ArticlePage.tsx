@@ -59,7 +59,7 @@ const ArticlePage: React.FC = () => {
   if (error) return <div>{error}</div>;
   if (!article) return <div>Article not found.</div>;
 
-  const pdfURL = `https://the-sensationalist/api/${article.pdfPath.replace(/\\/g, '/')}`;
+  const pdfURL = `https://the-sensationalist.xyz/api/${article.pdfPath.replace(/\\/g, '/')}`;
 
   return (
     <div className="article-flex-container">
