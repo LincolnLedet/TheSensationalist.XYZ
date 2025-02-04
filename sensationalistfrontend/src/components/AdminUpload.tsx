@@ -43,7 +43,7 @@ const AdminUpload: React.FC = () => {
     filetype: '',
     viewcount: 0,
     downloadcount: 0,
-    authorIds: [],
+    authorIds: [], // Start with no author dropdown fields (or prefill with [''] if desired)
     uploadDate: new Date().toISOString().split('T')[0],
   });
 
@@ -76,7 +76,7 @@ const AdminUpload: React.FC = () => {
 
     const fetchAuthors = async () => {
       try {
-        const response = await axios.get(`${baseURL}/api/authors`, {
+        const response = await axios.get(`${baseURL}/api/articles/authors`, {
           headers: { Authorization: `Bearer ${auth.token}` },
         });
         // Assumes the API returns an array of authors with { id, name }
@@ -89,7 +89,7 @@ const AdminUpload: React.FC = () => {
     fetchAuthors();
   }, [auth, navigate]);
 
-  // Instead of returning early before calling hooks, conditionally render the UI.
+  // Instead of returning early, conditionally render the UI.
   if (!auth.isLoggedIn || auth.user?.role !== 'admin') {
     return <div>You are not authorized to view this page.</div>;
   }
@@ -113,21 +113,18 @@ const AdminUpload: React.FC = () => {
     }));
   };
 
-  // Handle author selection from dropdown.
-  const handleAuthorSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedId = e.target.value;
-    if (selectedId && !formData.authorIds.includes(selectedId)) {
-      setFormData(prev => ({
-        ...prev,
-        authorIds: [...prev.authorIds, selectedId],
-      }));
-    }
+  // For multiple authors, we map over an array of dropdown fields.
+  // Each dropdown represents one selected author.
+  const handleAuthorSelect = (index: number, selectedId: string) => {
+    const newAuthorIds = [...formData.authorIds];
+    newAuthorIds[index] = selectedId;
+    setFormData(prev => ({ ...prev, authorIds: newAuthorIds }));
   };
 
-  const removeAuthor = (id: string) => {
+  const removeAuthor = (index: number) => {
     setFormData(prev => ({
       ...prev,
-      authorIds: prev.authorIds.filter(authorId => authorId !== id),
+      authorIds: prev.authorIds.filter((_, i) => i !== index),
     }));
   };
 
@@ -250,35 +247,39 @@ const AdminUpload: React.FC = () => {
             onChange={handleInputChange}
           />
         </label>
+
+        {/* Multiple author dropdowns */}
         <label>
           Authors:
-          <select onChange={handleAuthorSelect} defaultValue="">
-            <option value="" disabled>
-              Select an author
-            </option>
-            {authors.map(author => (
-              <option key={author.id} value={author.id}>
-                {author.name}
-              </option>
-            ))}
-          </select>
+          {formData.authorIds.map((selectedId, index) => (
+            <div key={index} className="author-select-input">
+              <select
+                name={`authorId-${index}`}
+                value={selectedId}
+                onChange={(e) => handleAuthorSelect(index, e.target.value)}
+              >
+                <option value="">Select an author</option>
+                {authors.map(author => (
+                  <option key={author.id} value={author.id}>
+                    {author.name}
+                  </option>
+                ))}
+              </select>
+              <button type="button" onClick={() => removeAuthor(index)}>
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() =>
+              setFormData(prev => ({ ...prev, authorIds: [...prev.authorIds, ''] }))
+            }
+          >
+            Add Another Author
+          </button>
         </label>
-        {/* Display selected authors */}
-        <div className="selected-authors">
-          {formData.authorIds.map(id => {
-            const author = authors.find(a => a.id === id);
-            return (
-              author && (
-                <div key={id} className="author-tag">
-                  {author.name}
-                  <button type="button" onClick={() => removeAuthor(id)}>
-                    ✕
-                  </button>
-                </div>
-              )
-            );
-          })}
-        </div>
+
         <div className="file-dropzone">
           <label>Upload PDF:</label>
           <div {...getRootPropsPdf()} className="dropzone">
@@ -290,6 +291,7 @@ const AdminUpload: React.FC = () => {
             )}
           </div>
         </div>
+
         <div className="file-dropzone">
           <label>Upload Cover Image:</label>
           <div {...getRootPropsImage()} className="dropzone">
@@ -301,6 +303,7 @@ const AdminUpload: React.FC = () => {
             )}
           </div>
         </div>
+
         <button type="submit" className="upload-button">
           Submit
         </button>
