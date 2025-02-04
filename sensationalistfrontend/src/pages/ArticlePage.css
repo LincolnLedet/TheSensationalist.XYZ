@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     background-color: black;
-    min-height: 100%;
 }
 .article-content{
     display: flex;
@@ -21,14 +20,19 @@
 }
 
 .pdf-container {
-    width: 80%;
-    max-width: 1000px; /* Optional: Prevents it from getting too large on wide screens */
+    width: 70%;
     margin: 0 auto; /* Centers it horizontally */
-    height: 800px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #f5f5f5; /* Optional: Adds a slight background to differentiate */
     padding: 10px; /* Optional: Adds spacing */
   }
+
+  @media (max-width: 768px) {
+    .pdf-container {
+        width: 91%;
+        }
+    }
   
