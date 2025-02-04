@@ -8,6 +8,7 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import './ArticlePage.css';
 
+
 // Define the structure of an article
 interface Issue {
   id: number;
@@ -20,7 +21,7 @@ interface Issue {
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000' // Backend URL in development
+    ? 'https://the-sensationalist.xyz' // Backend URL in development
     : ''; // In production, requests default to the same origin
     
 
@@ -66,13 +67,13 @@ const ArticlePage: React.FC = () => {
       <div className="header">
         <AnimatedHeader />
       </div>
-      <div className="article-content">
-        <div className="article-content-title">
+      <div className="article-content-title">
           <h5>{article.title}</h5>
         </div>
+      <div className="article-content">
         
         {/* PDF.js Viewer */}
-        <div style={{ height: '800px', width: '100%' }}>
+        <div className="pdf-container">
           <Worker workerUrl={`https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.worker.min.js`}>
             <Viewer fileUrl={pdfURL} />
           </Worker>
@@ -83,6 +84,7 @@ const ArticlePage: React.FC = () => {
         <Footer />
       </div>
     </div>
+    
   );
 };
 

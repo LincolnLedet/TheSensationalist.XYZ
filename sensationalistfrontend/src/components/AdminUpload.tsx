@@ -9,7 +9,7 @@ import './AdminUpload.css';
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000' // Backend URL in development
+    ? 'https://the-sensationalist.xyz' // Backend URL in development
     : '';
 
 const AdminUpload: React.FC = () => {

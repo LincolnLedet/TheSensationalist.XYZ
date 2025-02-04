@@ -44,12 +44,13 @@
   height: auto;
   border-radius: 8px;
   display: block;
+  max-width: 38em;
 }
 
 .latest-content-cover-title {
   position: absolute;
   bottom: 10px;
-  left: 16.8%;
+  left: 12.5%;
   top: 30%;
   bottom: 30%;
   color: white;
@@ -59,7 +60,7 @@
   border-radius: 5px;
   font-family: "Oswald", sans-serif;
   text-align: center;
-  width: 60%;
+  width: 70%;
 }
 
 .latest-content-upload-date {
@@ -71,12 +72,15 @@
 
 @media (max-width: 768px) {
   .volume-cover-button {
-    max-width: 300px;
+    max-width: 500px;
   }
-
+  
+  .latest-content-cover-image {
+    max-width: 1000em;
+  }
+  
   .volume-cover-title {
     font-size: 1em;
-    padding: 8px 12px;
   }
 
   h3{

@@ -9,7 +9,7 @@ import { ReactComponent as EmailLogo } from './SVGs/email-svgrepo-com.svg';
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000' // Backend URL in development
+    ? 'https://the-sensationalist.xyz' // Backend URL in development
     : ''; // In production, requests default to the same origin
     
 const AnimatedHeader: React.FC = () => {

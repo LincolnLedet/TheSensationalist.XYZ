@@ -6,12 +6,12 @@ import { ReactComponent as SensationalistLogo } from './SVGs/SensationalistLogo.
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000' // Backend URL in development
+    ? 'https://the-sensationalist.xyz' // Backend URL in development
     : ''; // In production, requests default to the same origin
     
 const Footer: React.FC = () => {
     return (
-        <div className="footer"> 
+        <footer className="footer"> 
             <div className="footer-left">
             <i className='bx bx-copyright'> 2024 The Sensationalist. All Rights Reserved.</i>
 
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             </div>
             
              
-        </div>
+        </footer>
 
     );
 }

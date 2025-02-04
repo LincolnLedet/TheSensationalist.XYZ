@@ -10,11 +10,12 @@ interface Article {
   coverImage: string;
   filetype: string;
   uploadedAt: string; // Include upload date
+  description: string;
 }
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000' // Backend URL in development
+    ? 'https://the-sensationalist.xyz' // Backend URL in development
     : ''; // Production uses the same origin
 
 const LatestArticle: React.FC = () => {
@@ -46,7 +47,7 @@ const LatestArticle: React.FC = () => {
 
   return (
     <div className="latest-content-container">
-      <h1>Latest Article</h1>
+      <h1>Latest Content</h1>
       <div className="latest-content">
         <Link to={`/articles/${latestArticle.id}`} className="volume-cover-button">
           <img
@@ -57,7 +58,8 @@ const LatestArticle: React.FC = () => {
           />
           <div className="latest-content-cover-title">
             <h3>{latestArticle.title}</h3>
-            <div className="latest-content-upload-date">Uploaded on: {formattedDate}</div>
+            <div className="latest-content-upload-date">{latestArticle.description} </div>
+            <div className="latest-content-upload-date">{formattedDate}</div>
           </div>
         </Link>
       </div>
