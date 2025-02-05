@@ -10,13 +10,7 @@ dotenv.config();
 const app = express();
 
 // 1. Apply CORS middleware first
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://www.the-sensationalist.xyz"], // Allow both local dev and production frontend
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // If using cookies or authentication
-  })
-);
+app.use(cors({ origin: "*" }));
 
 // 2. Temporarily disable Helmet for testing
 // Comment out Helmet to rule out interference
