@@ -48,8 +48,23 @@ const AdminUpload: React.FC = () => {
   });
 
   // Set up dropzone hooks unconditionally.
-  const onDropPdf = (acceptedFiles: File[]) => setPdfFile(acceptedFiles[0]);
-  const onDropCoverImage = (acceptedFiles: File[]) => setCoverImage(acceptedFiles[0]);
+  const onDropPdf = (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (file && file.name.includes(' ')) {
+      setMessage('Error: File names cannot contain spaces.');
+      return;
+    }
+    setPdfFile(file);
+  };
+  
+  const onDropCoverImage = (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (file && file.name.includes(' ')) {
+      setMessage('Error: File names cannot contain spaces.');
+      return;
+    }
+    setCoverImage(file);
+  };
 
   const { getRootProps: getRootPropsPdf, getInputProps: getInputPropsPdf } = useDropzone({
     onDrop: onDropPdf,
