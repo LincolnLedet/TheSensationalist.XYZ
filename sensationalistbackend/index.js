@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -9,52 +8,43 @@ dotenv.config();
 
 const app = express();
 
-// 1. Apply CORS middleware first
-app.use(cors({ origin: "*" }));
+// ❌ Disable CORS restrictions completely
+app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  next();
+});
 
-// 2. Temporarily disable Helmet for testing
-// Comment out Helmet to rule out interference
-// app.use(helmet());
+// ❌ Temporarily disable Helmet (sometimes it messes with CORS)
+app.use(helmet({ contentSecurityPolicy: false }));
 
-// 3. Parse JSON bodies
+// ✅ Parse JSON bodies
 app.use(express.json());
 
-// 4. Serve static files from the 'uploads' directory
-app.use('/api/uploads', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // Frontend origin
-  res.header('Access-Control-Allow-Origin', 'https://www.the-sensationalist.xyz'); // Frontend origin
-  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-}, express.static(path.join(__dirname, 'uploads')));
+// ✅ Serve static files from 'uploads' directory
+app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// 5. Import and use route
-
+// ✅ Import and use routes
 const articleRoutes = require('./routes/articles');
-const authRoutes = require('./routes/auth'); // Add auth routes
+const authRoutes = require('./routes/auth');
 const merchRoutes = require('./routes/merch');
 const cartRoutes = require('./routes/cart');
-const checkoutRoutes = require('./routes/checkout'); // Import the checkout route
-
-
-
+const checkoutRoutes = require('./routes/checkout');
 
 app.use('/api/articles', articleRoutes);
-app.use('/api/auth', authRoutes); // Use the auth routes
+app.use('/api/auth', authRoutes);
 app.use('/api/merch', merchRoutes);
 app.use('/api/cart', cartRoutes);
-app.use('/api/checkout', checkoutRoutes); // Use the route with a specific prefix (e.g., '/api')
+app.use('/api/checkout', checkoutRoutes);
 
-
-
-
-// 6. Start the server
+// ✅ Start the server
 sequelize.sync().then(() => {
   const PORT = 5000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Backend server running on port ${PORT}`);
-});
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Backend server running on port ${PORT}`);
+  });
 }).catch((err) => {
   console.error('Unable to connect to the database:', err);
 });
-
