@@ -34,13 +34,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3%;
+  padding: 4%;
 }
 
 .volume-cover-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+  width: 90%;
+  height: 90%;
+  border-radius: 15px;
+  aspect-ratio: 5 / 4; /* Ensures a 4:5 aspect ratio */
+  padding: 10px;
+
   
 }
 

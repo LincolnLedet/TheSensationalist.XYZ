@@ -40,12 +40,14 @@
 }
 
 .latest-content-cover-image {
-  width: 100%;
-  height: auto;
+  width: 45vw; /* Fixed width */
+  height: 35em; /* Fixed height - adjust as needed */
   border-radius: 8px;
   display: block;
-  max-width: 38em;
+  object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
+  object-position: center; /* Centers the image */
 }
+
 
 .latest-content-cover-title {
   position: absolute;
@@ -75,8 +77,14 @@
     max-width: 500px;
   }
   
+
   .latest-content-cover-image {
-    max-width: 1000em;
+    width: 100%; /* Fixed width */
+    height: 40em; /* Fixed height - adjust as needed */
+    border-radius: 8px;
+    display: block;
+    object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
+    object-position: center; /* Centers the image */
   }
   
   .volume-cover-title {

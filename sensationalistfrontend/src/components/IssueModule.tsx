@@ -59,7 +59,9 @@ const IssueModule: React.FC = () => {
                   <img
                     src={`${baseURL}/api/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
+                    crossOrigin="anonymous" 
                     className="article-image"/>
+                    
                   {/* Description on the Right */}
                   <div className="article-details">
                     <p className="article-description">{article.description}</p>
