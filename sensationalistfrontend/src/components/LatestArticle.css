@@ -41,7 +41,7 @@
 
 .latest-content-cover-image {
   width: 45vw; /* Fixed width */
-  height: 35em; /* Fixed height - adjust as needed */
+  height: 30em; /* Fixed height - adjust as needed */
   border-radius: 8px;
   display: block;
   object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
@@ -80,7 +80,7 @@
 
   .latest-content-cover-image {
     width: 100%; /* Fixed width */
-    height: 40em; /* Fixed height - adjust as needed */
+    height: 30em; /* Fixed height - adjust as needed */
     border-radius: 8px;
     display: block;
     object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
