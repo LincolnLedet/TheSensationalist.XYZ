@@ -47,7 +47,7 @@ const LatestArticle: React.FC = () => {
 
   return (
     <div className="latest-content-container">
-      <h1>Latest Contents</h1>
+      <h1>Latest Content</h1>
       <div className="latest-content">
         <Link to={`/articles/${latestArticle.id}`} className="volume-cover-button">
           <img
