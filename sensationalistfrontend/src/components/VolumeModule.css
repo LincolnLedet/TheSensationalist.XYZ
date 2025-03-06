@@ -1,11 +1,3 @@
-.latest-content {
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  position: center;
-  flex-direction: column ;
-
-}
 
 .volume-cover-button {
   display: block;
