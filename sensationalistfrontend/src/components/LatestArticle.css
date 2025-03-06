@@ -54,7 +54,7 @@
   top: 30%;
   bottom: 30%;
   color: white;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px 15px;
   border-radius: 5px;
@@ -65,7 +65,7 @@
 
 .latest-content-upload-date {
   margin-top: 10px;
-  font-size: .5em;
+  font-size: .5rem;
   color: white;
   font-family: "Libre Baskerville", serif;
 }
@@ -78,7 +78,7 @@
 
   .latest-content-cover-image {
     width: 100%; /* Fixed width */
-    height: 30em; /* Fixed height - adjust as needed */
+    height: 30rem; /* Fixed height - adjust as needed */
     border-radius: 8px;
     display: block;
     object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
@@ -86,10 +86,10 @@
   }
   
   .volume-cover-title {
-    font-size: 1em;
+    font-size: 1rem;
   }
 
   h3{
-    font-size: .6em;
+    font-size: .6rem;
   }
 }

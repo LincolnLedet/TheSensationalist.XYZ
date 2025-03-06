@@ -4,7 +4,7 @@
     display: grid;
     background-color: black;
     color: white;
-    padding: 2em;
+    padding: 2rem;
     grid-template-areas: 
     "header header" 
     "LatestArticle LatestVolume"
