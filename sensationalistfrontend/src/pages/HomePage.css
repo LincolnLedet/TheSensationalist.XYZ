@@ -4,7 +4,7 @@
     display: grid;
     background-color: black;
     color: white;
-    padding: 2rem;
+    padding: 20px;
     grid-template-areas: 
     "header header" 
     "LatestArticle LatestVolume"
@@ -12,7 +12,7 @@
     "footer footer";
     grid-template-columns: 2fr 1fr; /* Adjust column proportions dynamically */
     grid-template-rows: auto auto; /* Automatically size rows based on content */
-    gap: 20px; /* Add spacing between grid items */
+    gap: 40px; /* Add spacing between grid items */
     width: 100%; /* Full container width */
     
   }
