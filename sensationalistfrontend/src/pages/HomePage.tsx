@@ -10,13 +10,14 @@ import './HomePage.css'; // Import the CSS file
 const HomePage: React.FC = () => {
   return (
     <div className="main-container">
-      <div className="grid-container">
-          <div className="header">
+      <div className="header">
               <AnimatedHeader />
           </div>
-          <div className="LatestArticle">
-              <LatestArticle />
+          <div className ="HomepageTitle">
+            <h3>LATEST PUBLICATIONS</h3>
+            <hr className="latest-line"></hr>
           </div>
+      <div className="grid-container">
           <div className="IssueModule">
               <IssueModule />
           </div>

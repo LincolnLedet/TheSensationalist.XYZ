@@ -15,6 +15,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  font-family: "Libre Baskerville", serif;
 }
 
 .latest-content-cover-button {
@@ -39,7 +41,7 @@
 
 .latest-content-cover-image {
   width: 45vw; /* Fixed width */
-  height: 35vh; 
+  height: 30em; /* Fixed height - adjust as needed */
   border-radius: 8px;
   display: block;
   object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
@@ -54,7 +56,7 @@
   top: 30%;
   bottom: 30%;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 10px 15px;
   border-radius: 5px;
@@ -65,7 +67,7 @@
 
 .latest-content-upload-date {
   margin-top: 10px;
-  font-size: .5rem;
+  font-size: .5em;
   color: white;
   font-family: "Libre Baskerville", serif;
 }
@@ -78,7 +80,7 @@
 
   .latest-content-cover-image {
     width: 100%; /* Fixed width */
-    height: 30rem; /* Fixed height - adjust as needed */
+    height: 30em; /* Fixed height - adjust as needed */
     border-radius: 8px;
     display: block;
     object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
@@ -86,10 +88,10 @@
   }
   
   .volume-cover-title {
-    font-size: 1rem;
+    font-size: 1em;
   }
 
   h3{
-    font-size: .6rem;
+    font-size: .6em;
   }
 }

@@ -61,13 +61,7 @@ a {
 
 
 /* the cards for the article previews*/
-.article-item {
-  margin-bottom: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
-  border-radius: 10px;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
+
 /*when you hover over one of the article item previews*/
 .article-item:hover {
   background: rgba(255, 255, 255, 0.2);

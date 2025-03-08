@@ -7,6 +7,7 @@
   margin-bottom: 20px;
   display: flex;
   border-radius: 8px;
+  flex-direction: row;
 
 
 }
@@ -14,24 +15,20 @@
 .article-link {
   text-decoration: none;
   display: block;
-  background-color: white;
-  border: 1px solid #ddd;
   padding: 10px;
   border-radius: 4px;
   width: 100%;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 
 .article-link:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px); /* Slight lift effect on hover */
 }
 
 .article-title {
-  font-size: 1.5em;
-  margin-bottom: 15px;
-  color: #333;
+  font-size: 1em;
+  margin-bottom: 10px;
+  color: whitesmoke;
   
 }
 
@@ -44,26 +41,32 @@
   gap: 20px;
 }
 
+
 .article-image {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 2px;
   flex-shrink: 0;
+  border-radius: 6px;
 }
 
 .article-details {
   flex-grow: 1;
 }
 
+.IssueListTitle::before {
+  content: "|";
+  color: rgb(201, 0, 0);
+  margin-right: 8px;
+}
 .IssueListTitle {
   margin-bottom: 15px;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 0.4rem;
-  text-transform: uppercase;
   font-family: "Libre Baskerville", serif;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   display: flex;
 }

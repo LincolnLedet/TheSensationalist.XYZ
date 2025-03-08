@@ -6,14 +6,13 @@
     color: white;
     padding: 20px;
     grid-template-areas: 
-    "header header" 
-    "LatestArticle LatestVolume"
-    "IssueModule LatestVolume"
-    "footer footer";
+    "IssueModule LatestVolume LatestVolume"
+    "IssueModule LatestVolume LatestVolume"
+    "footer footer footer";
     grid-template-columns: 2fr 1fr; /* Adjust column proportions dynamically */
     grid-template-rows: auto auto; /* Automatically size rows based on content */
-    gap: 40px; /* Add spacing between grid items */
-    width: 100%; /* Full container width */
+    gap: 4px; /* Add spacing between grid items */
+    width: 1000px; /* Full container width */
     
   }
   .main-container {
@@ -21,15 +20,19 @@
     justify-content: center; /* Centers the grid horizontally */
     align-items: center; /* Centers the grid vertically */
     background-color: black;
+    flex-direction: column;
+  }
+
+  .h4{
+    font-size: 40px;
+    color: azure;
   }
 
   .header {
     grid-area: header;
   }
 
-  .LatestArticle{
-    grid-area: LatestArticle;
-  }
+  
 
   .footer{
     grid-area: footer;
@@ -40,6 +43,19 @@
   }
   .IssueModule {
     grid-area: IssueModule;
+
+  }
+
+  .HomepageTitle{
+    grid-area: HomepageTitle;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+  }
+  .latest-line {
+    width: 100px; /* Controls line length */
+    border: 1px solid rgb(197, 0, 0); /* Line thickness and color */
+    margin-top: 5px; /* Space between the text and the line */
   }
 
   .LatestVolume

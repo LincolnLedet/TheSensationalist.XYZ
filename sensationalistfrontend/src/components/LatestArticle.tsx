@@ -49,6 +49,8 @@ const LatestArticle: React.FC = () => {
     <div className="latest-content-container">
       <h1>Latest Content</h1>
       <div className="latest-content">
+      <div className="latest-content-cover-title">
+            <h3>{latestArticle.title}</h3>
         <Link to={`/articles/${latestArticle.id}`} className="volume-cover-button">
           <img
             src={`${baseURL}/api/${latestArticle.coverImage.replace(/\\/g, '/')}`}
@@ -56,12 +58,8 @@ const LatestArticle: React.FC = () => {
             alt={latestArticle.title}
             className="latest-content-cover-image"
           />
-          <div className="latest-content-cover-title">
-            <h3>{latestArticle.title}</h3>
-            <div className="latest-content-upload-date">{latestArticle.description} </div>
-            <div className="latest-content-upload-date">{formattedDate}</div>
-          </div>
         </Link>
+        </div>
       </div>
     </div>
   );

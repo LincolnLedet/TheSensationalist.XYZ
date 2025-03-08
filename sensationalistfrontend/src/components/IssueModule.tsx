@@ -37,7 +37,7 @@ const IssueModule: React.FC = () => {
 
   return (
     <div>
-      <div className = "IssueListTitle">Issues</div>
+      <div className = "IssueListTitle">Todays Picks</div>
       <ul className="article-list">
         {articles
           .filter(article => article.filetype === 'Issue')
@@ -52,8 +52,7 @@ const IssueModule: React.FC = () => {
                   window.location.href = `/articles/${article.id}`;
                 }}
               >
-                {/* Title Above Both Image and Description */}
-                <h2 className="article-title">{article.title}</h2>
+                
                 <div className="article-content-preview">
                   {/* Cover Image on the Left */}
                   <img
@@ -63,10 +62,13 @@ const IssueModule: React.FC = () => {
                     className="article-image"/>
                     
                   {/* Description on the Right */}
+                  
                   <div className="article-details">
-                    <p className="article-description">{article.description}</p>
+
+
+                    <h2 className="article-title">{article.title}</h2>
                     {/* Display the view count */}
-                    <p className="article-viewcount">Views: {article.viewcount || 0}</p>
+                    {/* <p className="article-viewcount">Views: {article.viewcount || 0}</p> */}
                   </div>
                 </div>
               </a>
