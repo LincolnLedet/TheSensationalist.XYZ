@@ -1,97 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
 
-.latest-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  padding: 10px;
-}
-
 .latest-content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-
-  font-family: "Libre Baskerville", serif;
-}
-
-.latest-content-cover-button {
-  display: block;
-  position: relative;
-  text-decoration: none;
-  color: white;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.latest-content-cover-button:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
-}
-
-.latest-content-cover-button:active {
-  transform: scale(0.98);
-}
-
-.latest-content-cover-image {
-  width: 45vw; /* Fixed width */
-  height: 30em; /* Fixed height - adjust as needed */
-  border-radius: 8px;
-  display: block;
-  object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
-  object-position: center; /* Centers the image */
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    text-align: center;
 }
 
 
-.latest-content-cover-title {
-  position: absolute;
-  bottom: 10px;
-  left: 12.5%;
-  top: 30%;
-  bottom: 30%;
-  color: white;
-  font-size: 1.5em;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-family: "Oswald", sans-serif;
-  text-align: center;
-  width: 70%;
+.latest-content-cover-title img{
+    width:100%;
+
 }
 
-.latest-content-upload-date {
-  margin-top: 10px;
-  font-size: .5em;
-  color: white;
-  font-family: "Libre Baskerville", serif;
-}
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
 
-@media (max-width: 768px) {
-  .volume-cover-button {
-    max-width: 500px;
-  }
-  
-
-  .latest-content-cover-image {
-    width: 100%; /* Fixed width */
-    height: 30em; /* Fixed height - adjust as needed */
-    border-radius: 8px;
-    display: block;
-    object-fit: cover; /* Ensures image fills the box while keeping aspect ratio */
-    object-position: center; /* Centers the image */
-  }
-  
-  .volume-cover-title {
-    font-size: 1em;
-  }
-
-  h3{
-    font-size: .6em;
-  }
 }

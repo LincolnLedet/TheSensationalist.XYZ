@@ -6,12 +6,11 @@
     color: white;
     padding: 20px;
     grid-template-areas: 
-    "IssueModule LatestVolume LatestVolume"
-    "IssueModule LatestVolume LatestVolume"
-    "footer footer footer";
-    grid-template-columns: 2fr 1fr; /* Adjust column proportions dynamically */
+    "IssueModule LatestContentAndVolumes "
+    "IssueModule LatestContentAndVolumes ";
+    grid-template-columns: 1fr 2fr; /* Adjust column proportions dynamically */
     grid-template-rows: auto auto; /* Automatically size rows based on content */
-    gap: 4px; /* Add spacing between grid items */
+    gap: 60px; /* Add spacing between grid items */
     width: 1000px; /* Full container width */
     
   }
@@ -37,10 +36,6 @@
   .footer{
     grid-area: footer;
   }
-  .TopAuthors {
-    grid-area: TopAuthors;
-    
-  }
   .IssueModule {
     grid-area: IssueModule;
 
@@ -58,9 +53,11 @@
     margin-top: 5px; /* Space between the text and the line */
   }
 
-  .LatestVolume
+  .LatestContentAndVolumes
   {
-    grid-area: LatestVolume;
+    display:flex;
+    flex-direction: column;
+    grid-area: LatestContentAndVolumes;
   }
 
   

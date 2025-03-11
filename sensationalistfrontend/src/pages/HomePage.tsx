@@ -11,22 +11,20 @@ const HomePage: React.FC = () => {
   return (
     <div className="main-container">
       <div className="header">
-              <AnimatedHeader />
-          </div>
-          <div className ="HomepageTitle">
-            <h3>LATEST PUBLICATIONS</h3>
-            <hr className="latest-line"></hr>
-          </div>
+        <AnimatedHeader />
+      </div>
+      <div className="HomepageTitle">
+        <h3>OUR PUBLICATIONS</h3>
+        <hr className="latest-line"></hr>
+      </div>
       <div className="grid-container">
-          <div className="IssueModule">
-              <IssueModule />
-          </div>
-          <div className="LatestVolume">
-              <VolumeModule />
-          </div>
-          <div className="footer">
-              <Footer />
-          </div>
+        <div className="IssueModule">
+          <IssueModule />
+        </div>
+        <div className="LatestContentAndVolumes">
+          <LatestArticle />
+          <VolumeModule />
+        </div>
       </div>
     </div>
   );

@@ -47,19 +47,24 @@ const LatestArticle: React.FC = () => {
 
   return (
     <div className="latest-content-container">
-      <h1>Latest Content</h1>
       <div className="latest-content">
       <div className="latest-content-cover-title">
-            <h3>{latestArticle.title}</h3>
+
         <Link to={`/articles/${latestArticle.id}`} className="volume-cover-button">
-          <img
-            src={`${baseURL}/api/${latestArticle.coverImage.replace(/\\/g, '/')}`}
-            crossOrigin="anonymous"
-            alt={latestArticle.title}
-            className="latest-content-cover-image"
-          />
+        <div className="image-overlay-container">
+            <img
+              src={`${baseURL}/api/${latestArticle.coverImage.replace(/\\/g, '/')}`}
+              crossOrigin="anonymous"
+              alt={latestArticle.title}
+              className="latest-content-cover-image"
+            />
+            <div className="overlay-text">
+              <h2>{latestArticle.title}</h2>
+              <p>{formattedDate}</p>
+            </div>
+          </div>
         </Link>
-        </div>
+        </div> 
       </div>
     </div>
   );
