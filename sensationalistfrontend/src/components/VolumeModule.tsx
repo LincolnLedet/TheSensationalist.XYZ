@@ -50,6 +50,7 @@ const VolumeModule: React.FC = () => {
               crossOrigin="anonymous" 
               alt={volume.title} 
               className="volume-cover-image"
+              loading="lazy"  /* ✅ Lazy loads images only when they enter the viewport */
             />
             <div className = "volume-bottom-text">
               <div>{volume.title}</div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './IssueModule.css';
 
-// Define the structure of an article
+// Define the structure of an issue
 interface Issue {
   id: number;
   title: string;
@@ -12,68 +12,61 @@ interface Issue {
   filetype: string;
   viewcount: number; // Include viewcount in the interface
 }
+
 const baseURL =
   process.env.NODE_ENV === 'development'
     ? 'https://the-sensationalist.xyz' // Backend URL in development
     : ''; // In production, requests default to the same origin
 
-
-    
-console.log(baseURL);
 const IssueModule: React.FC = () => {
   const [articles, setArticles] = useState<Issue[]>([]);
 
   useEffect(() => {
     axios.get(`${baseURL}/api/articles`)
       .then(response => {
-        setArticles(response.data);
+        const latestIssues = response.data
+          .filter((article: Issue) => article.filetype === 'Issue') // Only issues
+          .sort((a: Issue, b: Issue) => b.id - a.id) // Sort by most recent first
+          .slice(1, 7); // Get only the latest 6
+
+        setArticles(latestIssues);
       })
       .catch(error => {
         console.error("Error fetching articles:", error);
       });
   }, []);
 
-
-
   return (
     <div>
-      <div className = "IssueListTitle">Todays Picks</div>
+      <div className="IssueListTitle">Today's Picks</div>
       <ul className="article-list">
-        {articles
-          .filter(article => article.filetype === 'Issue')
-          .map(article => (
-            <li key={article.id} className="article-item">
-              {/* Add onClick event to call handleArticleClick */}
-              <a
-                href={`/articles/${article.id}`}
-                className="article-link"
-                onClick={(e) => {
-                  e.preventDefault(); // Prevent default navigation
-                  window.location.href = `/articles/${article.id}`;
-                }}
-              >
-                
-                <div className="article-content-preview">
-                  {/* Cover Image on the Left */}
-                  <img
-                    src={`${baseURL}/api/${article.coverImage.replace(/\\/g, '/')}`}
-                    alt={article.title}
-                    crossOrigin="anonymous" 
-                    className="article-image"/>
-                    
-                  {/* Description on the Right */}
-                  
-                  <div className="article-details">
-
-
-                    <h2 className="article-title">{article.title}</h2>
-                    {/* Display the view count */}
-                    {/* <p className="article-viewcount">Views: {article.viewcount || 0}</p> */}
-                  </div>
+        {articles.map(article => (
+          <li key={article.id} className="article-item">
+            <a
+              href={`/articles/${article.id}`}
+              className="article-link"
+              onClick={(e) => {
+                e.preventDefault(); // Prevent default navigation
+                window.location.href = `/articles/${article.id}`;
+              }}
+            >
+              <div className="article-content-preview">
+                {/* Cover Image on the Left */}
+                <img
+                  src={`${baseURL}/api/${article.coverImage.replace(/\\/g, '/')}`}
+                  alt={article.title}
+                  crossOrigin="anonymous" 
+                  className="article-image"
+                  loading="lazy"  /* ✅ Lazy loads images only when they enter the viewport */
+                />
+                {/* Description on the Right */}
+                <div className="article-details">
+                  <h2 className="article-title">{article.title}</h2>
                 </div>
-              </a>
-            </li>
-          ))}
+              </div>
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

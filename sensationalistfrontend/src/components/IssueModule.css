@@ -15,8 +15,6 @@
 .article-link {
   text-decoration: none;
   display: block;
-  padding: 10px;
-  border-radius: 4px;
   width: 100%;
 }
 
@@ -43,12 +41,11 @@
 
 
 .article-image {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 2px;
   flex-shrink: 0;
-  border-radius: 6px;
 }
 
 .article-details {
