@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import './VolumeModule.css';
 
 interface Volume {
   id: number;
   title: string;
+  description: string;
   pdfPath: string;
   coverImage: string;
   filetype: string;
@@ -13,8 +14,8 @@ interface Volume {
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'https://the-sensationalist.xyz' // Backend URL in development
-    : ''; // In production, requests default to the same origin
+    ? 'https://the-sensationalist.xyz'
+    : '';
 
 const VolumeModule: React.FC = () => {
   const [volumes, setVolumes] = useState<Volume[]>([]);
@@ -22,7 +23,11 @@ const VolumeModule: React.FC = () => {
   useEffect(() => {
     axios.get(`${baseURL}/api/articles`)
       .then(response => {
-        const volumeData = response.data.filter((item: Volume) => item.filetype === 'Volume');
+        const volumeData = response.data
+          .filter((item: Volume) => item.filetype === 'Volume')
+          .sort((a: Volume, b: Volume) => b.id - a.id) // Sort by most recent (assuming higher id = newer)
+          .slice(0, 2); // Get only the latest 2
+
         setVolumes(volumeData);
       })
       .catch(error => {
@@ -34,25 +39,25 @@ const VolumeModule: React.FC = () => {
 
   return (
     <div className="volume-container">
-      <h1>Volumes</h1>
-      <div className="latest-content">
         {volumes.map(volume => (
           <Link
             key={volume.id}
-            to={`/articles/${volume.id}`} // Corrected this to use volume.id
+            to={`/articles/${volume.id}`}
             className="volume-cover-button"
           >
             <img 
-              
               src={`${baseURL}/api/${volume.coverImage.replace(/\\/g, '/')}`}
               crossOrigin="anonymous" 
               alt={volume.title} 
               className="volume-cover-image"
             />
-            <h2 className="volume-cover-title">{volume.title}</h2>
+            <div className = "volume-bottom-text">
+              <div>{volume.title}</div>
+              <div>{volume.description}</div>
+            </div>
           </Link>
         ))}
-      </div>
+
     </div>
   );
 };

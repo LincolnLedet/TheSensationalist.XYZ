@@ -48,7 +48,6 @@ const LatestArticle: React.FC = () => {
   return (
     <div className="latest-content-container">
       <div className="latest-content">
-      <div className="latest-content-cover-title">
 
         <Link to={`/articles/${latestArticle.id}`} className="volume-cover-button">
         <div className="image-overlay-container">
@@ -64,7 +63,6 @@ const LatestArticle: React.FC = () => {
             </div>
           </div>
         </Link>
-        </div> 
       </div>
     </div>
   );

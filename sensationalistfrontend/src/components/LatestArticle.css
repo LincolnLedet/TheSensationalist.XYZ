@@ -8,21 +8,36 @@
     text-align: center;
 }
 
-
-.latest-content-cover-title img{
-    width:100%;
-
-}
-
 .overlay-text {
     position: absolute;
-    top: 50%;
+    top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    background: rgba(0, 0, 0, 0.44); /* Semi-transparent black */
     color: white;
-    padding: 10px 15px;
+    padding: 10px 50px;
     border-radius: 5px;
     text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
 
+.latest-content-cover-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center center; /* Keeps the zoom centered */
+    border-radius: 2px;
+}
+
+.image-overlay-container:hover .latest-content-cover-image {
+    transform: scale(1.1); /* Zooms in while staying in place */
+}
+
+.image-overlay-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Prevents the zoomed image from overflowing */
+    width: 100%; /* Ensures container matches the image size */
+    height: 400px;
 }
