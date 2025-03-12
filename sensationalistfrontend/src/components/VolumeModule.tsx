@@ -38,24 +38,29 @@ const VolumeModule: React.FC = () => {
   if (volumes.length === 0) return <div>Loading volumes...</div>;
 
   return (
+    
     <div className="volume-container">
+      
         {volumes.map(volume => (
           <Link
             key={volume.id}
             to={`/articles/${volume.id}`}
-            className="volume-cover-button"
+            style={{ textDecoration: 'none' }}
           >
-            <img 
-              src={`${baseURL}/api/${volume.coverImage.replace(/\\/g, '/')}`}
-              crossOrigin="anonymous" 
-              alt={volume.title} 
-              className="volume-cover-image"
-              loading="lazy"  /* ✅ Lazy loads images only when they enter the viewport */
-            />
-            <div className = "volume-bottom-text">
-              <div>{volume.title}</div>
-              <div>{volume.description}</div>
+            <div className="volume-button">
+              <img 
+                src={`${baseURL}/api/${volume.coverImage.replace(/\\/g, '/')}`}
+                crossOrigin="anonymous" 
+                alt={volume.title} 
+                className="volume-cover-image"
+                loading="lazy"  /* Lazy loads images only when they enter the viewport */
+              />
+              <div className = "volume-bottom-text">
+                <h3>{volume.title}</h3>
+                <p>{volume.description}</p>
+              </div>
             </div>
+            
           </Link>
         ))}
 

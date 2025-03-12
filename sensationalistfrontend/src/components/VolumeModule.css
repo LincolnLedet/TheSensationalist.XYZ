@@ -1,18 +1,30 @@
 
-.volume-cover-button {
-  display: block;
-  position: relative;
-  text-decoration: none;
-  color: white;
-  padding: 10px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+.volume-button {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+
+
 }
 .volume-bottom-text{
   background-color: whitesmoke;
   color: black;
 }
 
-.volume-cover-button:hover {
+.volume-bottom-text h3{
+  text-align: center;
+  text-decoration: none;
+  text-decoration: none;
+  color: inherit; /* Keeps text the same color as normal text */
+  display: block; /* Ensures the entire div is clickable */
+}
+
+.volume-bottom-text p{
+  text-align: center;
+  text-decoration: none !important;
+}
+
+.volume-button:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px); /* Slight lift effect on hover */
 }
@@ -26,7 +38,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  gap:12px;
 }
 
 .volume-cover-image {
@@ -34,21 +46,11 @@
   height: 100%;
   border-radius: 1px;
   aspect-ratio: 5 / 4; /* Ensures a 4:5 aspect ratio */
-
   
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
 
-.volume-cover-title {
-
-  color: white;
-  font-size: 1.2rem;
-  padding: 15px 15px;
-  border-radius: 5px;
-  font-family: "Libre Baskerville", serif;
-  
-}
 
 @media (max-width: 768px) {
   .volume-cover-image {

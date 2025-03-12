@@ -62,6 +62,7 @@ const IssueModule: React.FC = () => {
                 {/* Description on the Right */}
                 <div className="article-details">
                   <h2 className="article-title">{article.title}</h2>
+                  <p className="article-date">Views: {article.viewcount}</p>
                 </div>
               </div>
             </a>

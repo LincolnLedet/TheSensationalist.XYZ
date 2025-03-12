@@ -11,12 +11,14 @@
     grid-template-columns: 1fr 2fr; /* Adjust column proportions dynamically */
     grid-template-rows: auto auto; /* Automatically size rows based on content */
     gap: 60px; /* Add spacing between grid items */
-    width: 1000px; /* Full container width */
+    width: 60vw; /* Full container width */
+    height:82vh;
+    max-width: 1100px;
     
   }
-  .main-container {
+  .landing-container {
     display: flex;
-    justify-content: center; /* Centers the grid horizontally */
+    justify-content: top; /* Centers the grid horizontally */
     align-items: center; /* Centers the grid vertically */
     background-color: black;
     flex-direction: column;

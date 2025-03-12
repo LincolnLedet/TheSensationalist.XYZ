@@ -30,6 +30,16 @@
   
 }
 
+.article-title:hover{
+  text-decoration: underline;
+  
+}
+
+.article-date{
+  color: rgba(255, 255, 255, .6);
+  size: 100px;
+}
+
 .article-content-preview {
   display: flex;
   flex-direction: row;
@@ -49,7 +59,7 @@
 }
 
 .article-details {
-  flex-grow: 1;
+  padding-top: 10px;
 }
 
 .IssueListTitle::before {
