@@ -29,18 +29,19 @@ const HomePage: React.FC = () => {
           <VolumeModule />
         </div>
         
+        
       </div>
-      
-
-
-      <div className="Final Fridays">
+      <div className="Recordings">
         <Recordings />
       </div>
 
       <div className="footer">
         <Footer />
       </div>
+
+
     </div>
+    
   );
 };
 

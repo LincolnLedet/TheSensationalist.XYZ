@@ -1,13 +1,11 @@
-.recordingSection {
-    width: 100vw;
-    height: 100vh; /* Takes up half the screen height */
-    overflow: hidden;
-    justify-content: center;
-    display: flex;
-}
 
-.video-background {
-    width: 100vw;
-    height: 120%;
-    object-fit: fill; /* Stretches video to fill the container */
+
+
+.recordingSection{
+    height: 60vh;
+    overflow: hidden;
+}
+.recordingSection video{
+    height: 60vh;
+    overflow: hidden;
 }
