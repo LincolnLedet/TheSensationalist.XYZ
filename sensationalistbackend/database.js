@@ -23,10 +23,13 @@ const Article = sequelize.define('Article', {
   pdfPath: {
     type: DataTypes.STRING,
     allowNull: true,
-  },
-  weblink: {
-    type: DataTypes.STRING,
-    allowNull: true,
+    validate: {
+      isPdfFormat(value) {
+        if (value && !value.toLowerCase().endsWith('.pdf')) {
+          throw new Error('Only PDF files are allowed');
+        }
+      }
+    }
   },
   uploadedAt: {
     type: DataTypes.DATE,
@@ -34,7 +37,15 @@ const Article = sequelize.define('Article', {
     allowNull: false,
   },
   filetype: {
-    type: DataTypes.ENUM('Volume', 'Video', 'Image', 'Podcast', 'Issue', 'Article', 'Music', 'Misc'),
+    type: DataTypes.ENUM('Volume', 'Article', 'misc'),
+    allowNull: false,
+  },
+  contentType: {
+    type: DataTypes.ENUM('Poem', 'Story', 'Interview', 'Tutorial', 'Review', 'Comedy', 'Travel', 'Lifestyle', 
+      'Science', 'Tech', 'Music', 'Skateboarding', 'Activity', 'Opinion', 'News', 'Biography', 'Satire', 'Analysis', 
+      'Memoir', 'Horror', 'Fantasy', 'Sci-Fi', 'Drama', 'Mystery', 'History', 'Education', 'Gaming', 'Photography', 
+      'Film', 'Food', 'Health', 'Fitness', 'DIY', 'Finance', 'Business', 'Motivation', 'Philosophy', 'Psychology', 
+      'Spirituality', 'Environment', 'Politics', 'Fashion' , 'Weird'),
     allowNull: false,
   },
   viewcount: {
@@ -50,6 +61,75 @@ const Article = sequelize.define('Article', {
     allowNull: true,
   },
 });
+
+
+const Band = sequelize.define('Band', {
+  title: { type: DataTypes.STRING, allowNull: false },
+  description: { type: DataTypes.TEXT, allowNull: true },
+  spotifyLink: { type: DataTypes.STRING, allowNull: true },
+  appleMusicLink: { type: DataTypes.STRING, allowNull: true },
+  landingImage: { type: DataTypes.STRING, allowNull: true },
+  websiteLink: { type: DataTypes.STRING, allowNull: true },
+  instagramLink: { type: DataTypes.STRING, allowNull: true },
+  email: { type: DataTypes.STRING, allowNull: true },
+  phone: { type: DataTypes.STRING, allowNull: true }
+});
+
+
+const AudioTrack = sequelize.define('AudioTrack', {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  filePath: {
+    type: DataTypes.STRING, 
+    allowNull: false,
+    validate: {
+      isMp3Format(value) {
+        if (!value.toLowerCase().endsWith('.mp3')) {
+          throw new Error('Only .mp3 files are allowed');
+        }
+      }
+    }
+  },
+  albumArt: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    validate: {
+      isJpegFormat(value) {
+        if (value && !value.toLowerCase().endsWith('.jpeg') && !value.toLowerCase().endsWith('.jpg')) {
+          throw new Error('Only JPEG files are allowed');
+        }
+      }
+    }
+  }
+
+});
+
+const BandPhoto = sequelize.define('BandPhoto', {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  filePath : {
+    type: DataTypes.STRING,
+    allowNull: true,
+    validate: {
+      isJpegFormat(value) {
+        if (value && !value.toLowerCase().endsWith('.jpeg') && !value.toLowerCase().endsWith('.jpg')) {
+          throw new Error('Only JPEG files are allowed');
+        }
+      }
+    }
+  }
+});
+
+Band.hasMany(AudioTrack, { foreignKey: 'bandId', onDelete: 'CASCADE' });
+AudioTrack.belongsTo(Band, { foreignKey: 'bandId' });
+
+Band.hasMany(BandPhoto, { foreignKey: 'bandId', onDelete: 'CASCADE' });
+BandPhoto.belongsTo(Band, { foreignKey: 'bandId' });
+
 
 // Define the Author model
 const Author = sequelize.define('Author', {
@@ -245,5 +325,44 @@ OrderItem.belongsTo(Merch, { foreignKey: 'merchId' });
 // You may remove or comment out sequelize.sync() here if you synchronize the database elsewhere
 // sequelize.sync({ /* force: true */ });
 
+
+//Formates File Names
+const sanitizeFileName = (filename) => {
+  return filename
+    .toLowerCase()  // Convert to lowercase
+    .replace(/\s+/g, '_') // Replace spaces with underscores
+    .replace(/[^a-z0-9_.-]/g, ''); // Remove special characters except _ . -
+};
+
+// Sanitize `pdfPath` in `Article`
+Article.beforeSave(async (article) => {
+  if (article.pdfPath) {
+    article.pdfPath = sanitizeFileName(article.pdfPath);
+  }
+});
+
+AudioTrack.beforeSave(async (audioTrack) => {
+  if (audioTrack.filePath) {
+    audioTrack.filePath = sanitizeFileName(audioTrack.filePath);
+  }
+  if (audioTrack.albumArt) {
+    audioTrack.albumArt = sanitizeFileName(audioTrack.albumArt);
+  }
+});
+
+Band.beforeSave(async (band) => {
+  if (band.landingImage) {
+    band.landingImage = sanitizeFileName(band.landingImage);
+  }
+});
+
+// ✅ Fix: Ensure `BandPhoto` sanitizes `filePath`, not `albumArt`
+BandPhoto.beforeSave(async (bandPhoto) => {
+  if (bandPhoto.filePath) {
+    bandPhoto.filePath = sanitizeFileName(bandPhoto.filePath);
+  }
+});
+
+
 // Export sequelize and models
-module.exports = { sequelize, Article, Author, User, Merch, Cart, CartItem, Order, OrderItem };
+module.exports = { sequelize, Article, Author, User, Band, BandPhoto, AudioTrack, Merch, Cart, CartItem, Order, OrderItem };

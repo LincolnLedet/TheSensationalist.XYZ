@@ -1,0 +1,47 @@
+const multer = require('multer');
+const path = require('path');
+
+// Function to sanitize filenames
+const sanitizeFileName = (filename) => {
+  return filename
+    .toLowerCase()
+    .replace(/\s+/g, '_') // Replace spaces with underscores
+    .replace(/[^a-z0-9_.-]/g, ''); // Remove special characters except _ . -
+};
+
+// Storage engine setup
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    let uploadPath = 'uploads/';
+    if (file.mimetype.startsWith('image/')) uploadPath += 'images/';
+    if (file.mimetype.startsWith('audio/')) uploadPath += 'tracks/';
+    cb(null, path.join(__dirname, uploadPath));
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const name = path.basename(file.originalname, ext);
+    const sanitized = sanitizeFileName(name) + ext;
+    cb(null, Date.now() + '-' + sanitized);
+  }
+});
+
+// File filter for allowed file types
+const fileFilter = (req, file, cb) => {
+  if (file.fieldname === 'audioFile' && file.mimetype !== 'audio/mpeg') {
+    return cb(new Error('Only MP3 files are allowed for audio uploads'), false);
+  }
+  if ((file.fieldname === 'photo' || file.fieldname === 'landingImage') &&
+      !['image/jpeg', 'image/jpg'].includes(file.mimetype)) {
+    return cb(new Error('Only JPEG images are allowed for photos'), false);
+  }
+  cb(null, true);
+};
+
+// Multer upload configuration
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: { fileSize: 128 * 1024 * 1024 }, // Max file size: 128MB
+});
+
+module.exports = upload;
