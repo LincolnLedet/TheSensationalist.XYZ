@@ -21,6 +21,7 @@ router.post('/bands', async (req, res) => {
       appleMusicLink,
       websiteLink,
       instagramLink,
+      videoLink,
       email,
       phone
     });

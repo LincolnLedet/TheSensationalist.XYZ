@@ -71,6 +71,7 @@ const Band = sequelize.define('Band', {
   landingImage: { type: DataTypes.STRING, allowNull: true },
   websiteLink: { type: DataTypes.STRING, allowNull: true },
   instagramLink: { type: DataTypes.STRING, allowNull: true },
+  videoLink: { type: DataTypes.STRING, allowNull: true },
   email: { type: DataTypes.STRING, allowNull: true },
   phone: { type: DataTypes.STRING, allowNull: true }
 });
