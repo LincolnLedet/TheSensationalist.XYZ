@@ -6,10 +6,10 @@ const Recordings: React.FC = () => {
   return (
     <div className="recordingSection">
       <div className="video-overlay">
-        <video className="video-background" autoPlay loop muted playsInline>
-          <source src="/videos/backGroundVid.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <video className="video-background" autoPlay loop muted playsInline>
+    <source src="/videos/backGroundVid.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
       </div>
       <p>FINAL TAKE FRIDAYS</p>
       <div className="RecordTheRanchArtists">
