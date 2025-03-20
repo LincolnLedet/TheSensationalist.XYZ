@@ -1,4 +1,5 @@
 // routes/articles.js
+const fs = require('fs');
 const express = require('express');
 const multer = require('multer');
 const { Article, Author } = require('../database');
@@ -229,6 +230,16 @@ router.delete('/:id', authenticateToken, authorizeRoles('admin', 'editor'), asyn
 
     if (!article) {
       return res.status(404).json({ message: 'Article not found' });
+    }
+
+     // Assuming your article model has a file path stored in a field like 'imagePath' or 'filePath'
+     if (article.filePath) {
+      const filePath = path.join(__dirname, '../uploads', article.filePath);
+
+      // Check if file exists before deleting
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath); // Delete the file
+      }
     }
 
     await article.destroy();
