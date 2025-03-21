@@ -11,7 +11,6 @@ interface FormDataType {
   description: string;
   filetype: string;
   contentType: string; // ← ADD THIS
-
   viewcount: number;
   downloadcount: number;
   authorIds: string[];
@@ -161,6 +160,7 @@ const AdminUpload: React.FC = () => {
     data.append('description', formData.description);
     data.append('filetype', formData.filetype);
     data.append('viewcount', String(formData.viewcount));
+    data.append('contentType', String(formData.contentType));
     data.append('downloadcount', String(formData.downloadcount));
     data.append('uploadDate', formData.uploadDate);
     formData.authorIds.forEach(id => {
