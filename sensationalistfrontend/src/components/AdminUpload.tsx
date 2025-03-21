@@ -10,6 +10,8 @@ interface FormDataType {
   title: string;
   description: string;
   filetype: string;
+  contentType: string; // ← ADD THIS
+
   viewcount: number;
   downloadcount: number;
   authorIds: string[];
@@ -42,6 +44,8 @@ const AdminUpload: React.FC = () => {
     description: '',
     filetype: '',
     viewcount: 0,
+    contentType: '', // ← ADD THIS
+
     downloadcount: 0,
     authorIds: [], // Start with no author dropdown fields (or prefill with [''] if desired)
     uploadDate: new Date().toISOString().split('T')[0],
@@ -177,6 +181,7 @@ const AdminUpload: React.FC = () => {
         title: '',
         description: '',
         filetype: '',
+        contentType: '',
         viewcount: 0,
         downloadcount: 0,
         authorIds: [],
@@ -234,16 +239,67 @@ const AdminUpload: React.FC = () => {
             onChange={handleInputChange}
             required
           >
-            <option value="">Select File Type</option>
             <option value="Volume">Volume</option>
-            <option value="Video">Video</option>
-            <option value="Image">Image</option>
-            <option value="Podcast">Podcast</option>
-            <option value="Issue">Issue</option>
-            <option value="Music">Music</option>
-            <option value="Misc">Misc</option>
+            <option value="Article">Article</option>
+            <option value="misc">Misc</option>
           </select>
         </label>
+        <label>
+          Content Type:
+          <select
+            name="contentType"
+            value={formData.contentType}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Select Content Type</option>
+            <option value="Poem">Poem</option>
+            <option value="Story">Story</option>
+            <option value="Interview">Interview</option>
+            <option value="Tutorial">Tutorial</option>
+            <option value="Review">Review</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Travel">Travel</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Science">Science</option>
+            <option value="Tech">Tech</option>
+            <option value="Music">Music</option>
+            <option value="Skateboarding">Skateboarding</option>
+            <option value="Activity">Activity</option>
+            <option value="Opinion">Opinion</option>
+            <option value="News">News</option>
+            <option value="Biography">Biography</option>
+            <option value="Satire">Satire</option>
+            <option value="Analysis">Analysis</option>
+            <option value="Memoir">Memoir</option>
+            <option value="Horror">Horror</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Drama">Drama</option>
+            <option value="Mystery">Mystery</option>
+            <option value="History">History</option>
+            <option value="Education">Education</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Photography">Photography</option>
+            <option value="Film">Film</option>
+            <option value="Food">Food</option>
+            <option value="Health">Health</option>
+            <option value="Fitness">Fitness</option>
+            <option value="DIY">DIY</option>
+            <option value="Finance">Finance</option>
+            <option value="Business">Business</option>
+            <option value="Motivation">Motivation</option>
+            <option value="Philosophy">Philosophy</option>
+            <option value="Psychology">Psychology</option>
+            <option value="Spirituality">Spirituality</option>
+            <option value="Environment">Environment</option>
+            <option value="Politics">Politics</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Weird">Weird</option>
+          </select>
+        </label>
+
+
         <label>
           View Count:
           <input
@@ -262,6 +318,7 @@ const AdminUpload: React.FC = () => {
             onChange={handleInputChange}
           />
         </label>
+        
 
         {/* Multiple author dropdowns */}
         <label>
