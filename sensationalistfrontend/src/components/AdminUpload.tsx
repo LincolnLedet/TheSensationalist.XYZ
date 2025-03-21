@@ -43,7 +43,7 @@ const AdminUpload: React.FC = () => {
     description: '',
     filetype: '',
     viewcount: 0,
-    contentType: '', // ← ADD THIS
+    contentType: 'Weird', // ← ADD THIS
 
     downloadcount: 0,
     authorIds: [], // Start with no author dropdown fields (or prefill with [''] if desired)
