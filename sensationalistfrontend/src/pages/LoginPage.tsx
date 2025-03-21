@@ -6,7 +6,7 @@ import { ReactComponent as SensationalistLogoCropped } from '.././components/SVG
 
 const baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000' // Backend URL in development
+    ? 'https://the-sensationalist.xyz' // Backend URL in development
     : ''; // Production uses the same origin
 
 const LoginPage: React.FC = () => {
