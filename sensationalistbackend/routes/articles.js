@@ -4,6 +4,7 @@ const express = require('express');
 const multer = require('multer');
 const { Article, Author } = require('../database');
 const path = require('path');
+
 const { authenticateToken, authorizeRoles } = require('../middleware/auth');
 
 const router = express.Router();
@@ -84,7 +85,7 @@ router.get('/authors/:id', async (req, res) => {
 router.post('/', authenticateToken, authorizeRoles('admin', 'editor'), uploadMultiple, async (req, res) => {
   try {
     // Extract data from request body
-    const { title, description, filetype, viewcount, downloadcount, authorIds } = req.body;
+    const { title, description, filetype, contentType, viewcount, downloadcount, authorIds } = req.body;
 
     // Handle uploaded files
     const pdfPath = req.files['pdf'] ? req.files['pdf'][0].path : null;
@@ -96,6 +97,7 @@ router.post('/', authenticateToken, authorizeRoles('admin', 'editor'), uploadMul
       description,
       pdfPath,
       coverImage: coverImagePath,
+      contentType,
       filetype,
       viewcount: parseInt(viewcount) || 0,
       downloadcount: parseInt(downloadcount) || 0,
@@ -235,6 +237,7 @@ router.delete('/:id', authenticateToken, authorizeRoles('admin', 'editor'), asyn
      // Assuming your article model has a file path stored in a field like 'imagePath' or 'filePath'
      if (article.filePath) {
       const filePath = path.join(__dirname, '../uploads', article.filePath);
+      console.log(filePath);
 
       // Check if file exists before deleting
       if (fs.existsSync(filePath)) {
