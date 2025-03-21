@@ -168,6 +168,10 @@ const AdminUpload: React.FC = () => {
     });
     data.append('pdf', pdfFile);
     data.append('coverImage', coverImage);
+    const entriesArray = Array.from(data.entries());
+for (let [key, value] of entriesArray) {
+  console.log(key, value);
+}
 
     try {
       await axios.post(`${baseURL}/api/articles`, data, {
@@ -181,7 +185,7 @@ const AdminUpload: React.FC = () => {
         title: '',
         description: '',
         filetype: '',
-        contentType: '',
+        contentType: 'Weird',
         viewcount: 0,
         downloadcount: 0,
         authorIds: [],
