@@ -332,7 +332,7 @@ const sanitizeFileName = (filename) => {
   return filename
     .toLowerCase()  // Convert to lowercase
     .replace(/\s+/g, '_') // Replace spaces with underscores
-    .replace(/[^a-z0-9_.-]/g, ''); // Remove special characters except _ . -
+    .replace(/[^a-z0-9_.\-\/\\]/g, ''); // Allow _ . - / \
 };
 
 // Sanitize `pdfPath` in `Article`

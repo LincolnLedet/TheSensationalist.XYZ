@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/'); // Save files in 'uploads' folder
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname); // Saves the file with the original name
+    cb(null, file.originalname.toLocaleLowerCase()); // Saves the file with the original name
   }
 });
 
@@ -89,13 +89,14 @@ router.post('/', authenticateToken, authorizeRoles('admin', 'editor'), uploadMul
 
     // Handle uploaded files
     const pdfPath = req.files['pdf'] ? req.files['pdf'][0].path : null;
+    console.log("This is my pdf path                 0000" + pdfPath);
     const coverImagePath = req.files['coverImage'] ? req.files['coverImage'][0].path : null;
 
     // Create the article
     const article = await Article.create({
       title,
       description,
-      pdfPath,
+      pdfPath: pdfPath,
       coverImage: coverImagePath,
       contentType,
       filetype,
@@ -227,21 +228,33 @@ router.post('/:id/increment-viewcount', async (req, res) => {
 
 // Delete an article (requires authentication)
 router.delete('/:id', authenticateToken, authorizeRoles('admin', 'editor'), async (req, res) => {
+  console.log("delete in progress");
   try {
     const article = await Article.findByPk(req.params.id);
 
     if (!article) {
       return res.status(404).json({ message: 'Article not found' });
     }
+    console.log("article.filePath:   " + article.pdfPath);
 
      // Assuming your article model has a file path stored in a field like 'imagePath' or 'filePath'
-     if (article.filePath) {
-      const filePath = path.join(__dirname, '../uploads', article.filePath);
-      console.log(filePath);
-
+     if (article.pdfPath) {
+      const pdfPath = path.join(__dirname, '..', article.pdfPath);
+      console.log("Resolved file path:", pdfPath);
+      console.log(pdfPath);
       // Check if file exists before deleting
-      if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath); // Delete the file
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath); // Delete the file
+      }
+    }
+
+    if (article.coverImage) {
+      const coverImage = path.join(__dirname, '..', article.coverImage);
+      console.log("Resolved file path:", coverImage);
+      console.log(coverImage);
+      // Check if file exists before deleting
+      if (fs.existsSync(coverImage)) {
+        fs.unlinkSync(coverImage); // Delete the file
       }
     }
 
