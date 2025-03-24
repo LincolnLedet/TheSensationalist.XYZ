@@ -168,6 +168,7 @@ const AdminUpload: React.FC = () => {
     });
     data.append('pdf', pdfFile);
     data.append('coverImage', coverImage);
+    console.log(data);
 
     try {
       await axios.post(`${baseURL}/api/articles`, data, {

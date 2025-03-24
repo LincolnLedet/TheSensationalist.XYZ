@@ -62,6 +62,7 @@ const ArticlePage: React.FC = () => {
 
   const pdfURL = `https://the-sensationalist.xyz/api/${article.pdfPath.replace(/\\/g, '/')}`;
 
+  console.log(article.pdfPath);
   return (
     <div className="article-flex-container">
       <div className="header">

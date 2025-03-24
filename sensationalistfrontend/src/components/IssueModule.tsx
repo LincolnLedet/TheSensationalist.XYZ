@@ -25,7 +25,7 @@ const IssueModule: React.FC = () => {
     axios.get(`${baseURL}/api/articles`)
       .then(response => {
         const latestIssues = response.data
-          .filter((article: Issue) => article.filetype === 'Issue') // Only issues
+          .filter((article: Issue) => article.filetype === 'Article') // Only issues
           .sort((a: Issue, b: Issue) => b.id - a.id) // Sort by most recent first
           .slice(1, 7); // Get only the latest 6
 
