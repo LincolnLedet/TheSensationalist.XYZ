@@ -73,7 +73,8 @@ const Band = sequelize.define('Band', {
   instagramLink: { type: DataTypes.STRING, allowNull: true },
   videoLink: { type: DataTypes.STRING, allowNull: true },
   email: { type: DataTypes.STRING, allowNull: true },
-  phone: { type: DataTypes.STRING, allowNull: true }
+  phone: { type: DataTypes.STRING, allowNull: true },
+  genre: { type: DataTypes.STRING, allowNull: true }
 });
 
 
@@ -363,6 +364,15 @@ BandPhoto.beforeSave(async (bandPhoto) => {
     bandPhoto.filePath = sanitizeFileName(bandPhoto.filePath);
   }
 });
+
+sequelize.sync({ alter: true })
+  .then(() => {
+    console.log('Database synced with model changes.');
+  })
+  .catch((err) => {
+    console.error('Sync failed:', err);
+  });
+
 
 
 // Export sequelize and models
