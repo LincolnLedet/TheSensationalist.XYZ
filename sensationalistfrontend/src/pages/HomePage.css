@@ -5,6 +5,7 @@
     background-color: black;
     color: white;
     padding: 20px;
+    padding-bottom: 50px;
     grid-template-areas: 
     "IssueModule LatestContentAndVolumes "
     "IssueModule LatestContentAndVolumes ";
@@ -13,8 +14,16 @@
     gap: 60px; /* Add spacing between grid items */
     width: 60vw; /* Full container width */
     height:82vh;
-    max-width: 1100px;
+    min-height: 750px;
+    max-width: 950px;
+    min-width: 950px;
     
+  }
+
+  .Recordings{
+    grid-area: Recordings;
+
+
   }
   .landing-container {
     display: flex;
@@ -80,15 +89,16 @@
       display: grid;
         grid-template-areas: 
             "header"
-            "LatestArticle"
+            "LatestContentAndVolumes"
             "IssueModule"
-            "LatestVolume"
-            "footer";
+            "Recordings";
             grid-template-columns: 1fr !important; /* Force single column */
             /* Single column layout */
         grid-template-rows: auto auto auto auto; /* Automatically size rows */
         justify-content: center;
         padding: 1em;
+        height: 3400px;
+        min-width:500px;
 
     }
 

@@ -5,14 +5,20 @@ import ArtistCard from "./ArtistCard";
 const Recordings: React.FC = () => {
   return (
     <div className="recordingSection">
-      <div className="video-overlay">
-      <video className="video-background" autoPlay loop muted playsInline>
-    <source src="/videos/backGroundVid.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-      </div>
       <p>FINAL TAKE FRIDAYS</p>
+      <div className="video-overlay">
+        <video className="video-background" autoPlay loop muted playsInline>
+          <source src="/videos/backGroundVid.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="RecordTheRanchArtists">
+        <ArtistCard
+          name="John Doe"
+          genre="Indie Rock"
+          image="https://themoonlife.com/cdn/shop/files/ttb_diptych_NATEMOONLIFE_web_night2foil_1024x1024.png?v=1722783512"
+        />
+
         <ArtistCard
           name="John Doe"
           genre="Indie Rock"

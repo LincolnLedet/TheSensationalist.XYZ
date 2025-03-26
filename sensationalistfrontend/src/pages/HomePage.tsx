@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
         <AnimatedHeader />
       </div>
       <div className="HomepageTitle">
-        <h3>OUR PUBLICATIONS</h3>
+        <h3>PUBLICATIONS</h3>
         <hr className="latest-line"></hr>
       </div>
 
