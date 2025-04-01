@@ -1,0 +1,105 @@
+.band-upload-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .upload-form label {
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+  
+  .upload-form input,
+  .upload-form select,
+  .upload-form textarea {
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .file-dropzone {
+    margin-bottom: 16px;
+  }
+  
+  .dropzone {
+    padding: 20px;
+    border: 2px dashed #bbb;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .dropzone p {
+    margin: 0;
+    color: #999;
+  }
+  
+  .upload-button {
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .upload-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .upload-message {
+    margin-bottom: 16px;
+    color: #e74c3c;
+  }
+  
+  /* Additional styling for audio track and band photo inputs */
+  .audio-track-input,
+  .photo-input {
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  
+  .audio-track-input label,
+  .photo-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .audio-track-input input,
+  .photo-input input {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .audio-track-input button,
+  .photo-input button {
+    margin-top: 8px;
+    padding: 8px 16px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .audio-track-input button:hover,
+  .photo-input button:hover {
+    background-color: #c0392b;
+  }
+  

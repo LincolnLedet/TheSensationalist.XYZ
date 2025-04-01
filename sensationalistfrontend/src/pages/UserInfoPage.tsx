@@ -3,6 +3,7 @@ import './UserInfoPage.css';
 import UserInfo from '../components/UserInfo';
 import AnimatedHeader from "../components/AnimatedHeader";
 import AdminUpload from "../components/AdminUpload";
+import BandUpload from "../components/BandUpload";
 import AdminAuthorUpload from "../components/AdminAuthorUpload";
 import AdminMerchUpload from "../components/AdminMerchUpload";
 import Footer from "../components/Footer";
@@ -16,6 +17,7 @@ const ShopPage: React.FC = () => {
             <AnimatedHeader />
             <UserInfo />
             <AdminUpload />
+            <BandUpload />
             <AdminAuthorUpload />
             <AdminMerchUpload />
             <RemoveUploads />
