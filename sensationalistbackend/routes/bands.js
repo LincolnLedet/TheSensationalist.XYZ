@@ -7,7 +7,7 @@ const router = express.Router();
  * 🟢 Create a New Band
  * Allows adding band details like title, description, and links.
  */
-router.post('/bands', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { title, description, spotifyLink, appleMusicLink, websiteLink, instagramLink, email, phone } = req.body;
 
@@ -35,7 +35,7 @@ router.post('/bands', async (req, res) => {
 /**
  * 🟢 Upload Band Landing Image (Profile Picture)
  */
-router.post('/bands/:bandId/upload-image', upload.single('landingImage'), async (req, res) => {
+router.post('/:bandId/upload-image', upload.single('landingImage'), async (req, res) => {
   try {
     const { bandId } = req.params;
     const band = await Band.findByPk(bandId);
@@ -54,7 +54,7 @@ router.post('/bands/:bandId/upload-image', upload.single('landingImage'), async 
 /**
  * 🟢 Upload MP3 Track & Assign to a Band
  */
-router.post('/bands/:bandId/upload-track', upload.single('audioFile'), async (req, res) => {
+router.post('/:bandId/upload-track', upload.single('audioFile'), async (req, res) => {
   try {
     const { bandId } = req.params;
     const { title } = req.body;
@@ -79,7 +79,7 @@ router.post('/bands/:bandId/upload-track', upload.single('audioFile'), async (re
 /**
  * 🟢 Upload Band Photos & Assign to a Band
  */
-router.post('/bands/:bandId/upload-photo', upload.single('photo'), async (req, res) => {
+router.post('/:bandId/upload-photo', upload.single('photo'), async (req, res) => {
   try {
     const { bandId } = req.params;
     const { title } = req.body;
@@ -105,7 +105,7 @@ router.post('/bands/:bandId/upload-photo', upload.single('photo'), async (req, r
  * 🟢 Get All Bands
  * Fetches all bands with their details.
  */
-router.get('/bands', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const bands = await Band.findAll();
     res.json(bands);
@@ -117,7 +117,7 @@ router.get('/bands', async (req, res) => {
 /**
  * 🟢 Get a Specific Band with Tracks & Photos
  */
-router.get('/bands/:bandId', async (req, res) => {
+router.get('/:bandId', async (req, res) => {
   try {
     const { bandId } = req.params;
 
