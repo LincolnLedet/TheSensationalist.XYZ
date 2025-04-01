@@ -9,7 +9,7 @@ const router = express.Router();
  */
 router.post('/', async (req, res) => {
   try {
-    const { title, description, spotifyLink, appleMusicLink, websiteLink, instagramLink, email, phone } = req.body;
+    const { title, description, spotifyLink, appleMusicLink, websiteLink, instagramLink,videoLink, email, phone } = req.body;
 
     // Ensure title is provided
     if (!title) return res.status(400).json({ error: 'Band title is required' });
