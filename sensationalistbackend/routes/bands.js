@@ -47,6 +47,7 @@ router.post('/:bandId/upload-image', upload.single('landingImage'), async (req, 
 
     res.json({ message: 'Landing image uploaded successfully', band });
   } catch (error) {
+    console.error('Upload image error:', error);
     res.status(500).json({ error: error.message });
   }
 });

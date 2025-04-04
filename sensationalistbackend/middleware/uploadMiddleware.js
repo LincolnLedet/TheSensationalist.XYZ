@@ -1,5 +1,7 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
+
 
 // Function to sanitize filenames
 const sanitizeFileName = (filename) => {
@@ -15,13 +17,17 @@ const storage = multer.diskStorage({
     let uploadPath = 'uploads/';
     if (file.mimetype.startsWith('image/')) uploadPath += 'images/';
     if (file.mimetype.startsWith('audio/')) uploadPath += 'tracks/';
-    cb(null, path.join(__dirname, uploadPath));
+    const fullPath = path.join(__dirname, '..', uploadPath);
+    fs.mkdirSync(fullPath, { recursive: true });
+    cb(null, fullPath);
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
     const name = path.basename(file.originalname, ext);
     const sanitized = sanitizeFileName(name) + ext;
-    cb(null, Date.now() + '-' + sanitized);
+    // Append Date.now() and a random number for extra uniqueness
+    const uniquePrefix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    cb(null, uniquePrefix + '-' + sanitized);
   }
 });
 
