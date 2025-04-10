@@ -1,45 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Recordings.css";
 import ArtistCard from "./ArtistCard";
+import axios from "axios";
+
+interface Band {
+  id: string;
+  name: string;
+  genre: string;
+  landingImage: string;
+}
 
 const Recordings: React.FC = () => {
+  const [bands, setBands] = useState<Band[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    axios
+      .get<Band[]>("https://www.the-sensationalist.xyz/api/bands")
+      .then((response) => {
+        setBands(response.data); // log jason
+        console.log("Bands fetched:", response.data);
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching bands:", err);
+        setError("Error fetching band data.");
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="recordingSection">
       <p>FINAL TAKE FRIDAYS</p>
+
       <div className="video-overlay">
         <video className="video-background" autoPlay loop muted playsInline>
           <source src="/videos/backGroundVid.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="RecordTheRanchArtists">
-        <ArtistCard
-          name="John Doe"
-          genre="Indie Rock"
-          image="https://themoonlife.com/cdn/shop/files/ttb_diptych_NATEMOONLIFE_web_night2foil_1024x1024.png?v=1722783512"
-        />
 
-        <ArtistCard
-          name="John Doe"
-          genre="Indie Rock"
-          image="https://themoonlife.com/cdn/shop/files/ttb_diptych_NATEMOONLIFE_web_night2foil_1024x1024.png?v=1722783512"
-        />
-        <ArtistCard
-          name="Jane Smith"
-          genre="Electronic"
-          image="https://tse4.mm.bing.net/th?id=OIP.4lzS1XzVIGifBgGCL4UWlAHaLG&w=200&h=300&c=7"
-        />
-        <ArtistCard
-          name="Jane Smith"
-          genre="Electronic"
-          image="https://tse2.mm.bing.net/th?id=OIP.ptHjEE1gv2lmV6qKk2npeQHaLH&w=200&h=300&c=7"
-        />
-        <ArtistCard
-          name="Jane Smith"
-          genre="Electronic"
-          image="https://tse2.mm.bing.net/th?id=OIP.IBTTXKw-43DKL3Lop8AuRAHaKl&w=200&h=286&c=7"
-        />
+      <div className="RecordTheRanchArtists">
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          bands.map((band) => (
+            
+            <ArtistCard
+              key={band.id}
+              name={band.name}
+              genre={band.genre}
+              image={`https://www.the-sensationalist.xyz/api/uploads/images/${band.landingImage}
+              `}
+            />
+            
+          
+          ))
+        )}
       </div>
+      
     </div>
   );
 };

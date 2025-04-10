@@ -43,5 +43,5 @@
     color: white; /* Example: Change text color */
     font-size: 3rem; /* Example: Increase font size */
     font-weight: bold;    
-    z-index: 1; /* Keeps text above video */
+    z-index: -2; /* Keeps text above video */
 }

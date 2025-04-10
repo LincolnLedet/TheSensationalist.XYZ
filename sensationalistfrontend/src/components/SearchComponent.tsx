@@ -72,7 +72,7 @@ const IssueModule: React.FC = () => {
         <div className="checkbox-section">
           <label className="search-label">Search by type:</label>
           <div className="checkbox-type">
-            <label className="checkbox-label">Issue</label>
+            <label className="checkbox-label">Articles</label>
             <input 
               type="checkbox" 
               checked={checkedIssue}
@@ -109,7 +109,7 @@ const IssueModule: React.FC = () => {
       <ul className="article-list">
         {filteredArticles
           .filter(article => {
-            if (checkedIssue && article.filetype === 'Issue') return true;
+            if (checkedIssue && article.filetype === 'Article') return true;
             if (checkedVolume && article.filetype === 'Volume') return true;
             return false;
           })
@@ -129,7 +129,7 @@ const IssueModule: React.FC = () => {
                 <h2 className="article-title">{article.title}</h2>
                 <div className="article-content-preview">
                   <img
-                    src={`${baseURL}/${article.coverImage.replace(/\\/g, '/')}`}
+                    src={`${baseURL}/api/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
                     className="article-image"
                   />

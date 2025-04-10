@@ -4,7 +4,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    z-index: -2; /* Ensures it's above the video */
+    z-index: 1; /* Ensures it's above the video */
 }
 
 .artist-image {

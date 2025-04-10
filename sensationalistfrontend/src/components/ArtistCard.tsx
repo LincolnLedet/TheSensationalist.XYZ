@@ -6,8 +6,12 @@ const ArtistCard: React.FC<{ name: string; genre: string; image: string }> = ({
   genre,
   image,
 }) => {
+
+  console.log(genre);
   return (
     <div className="artist-card">
+      <h3>{name}</h3>
+      <p>{genre}</p>
       <img className="artist-image" src={image} alt={name} />
       <div className="artist-info">
         <h3>{name}</h3>
@@ -18,3 +22,4 @@ const ArtistCard: React.FC<{ name: string; genre: string; image: string }> = ({
 };
 
 export default ArtistCard;
+
