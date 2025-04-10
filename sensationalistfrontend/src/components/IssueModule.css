@@ -18,6 +18,17 @@
   width: 100%;
 }
 
+.Link_to_view_more a {
+  text-decoration: none; /* Removes underline */
+  font-weight: bold;     /* Makes text bold */
+  color: rgb(173, 4, 4); 
+}
+
+.Link_to_view_more a:hover {
+  text-decoration: underline; /* Removes underline */
+  font-weight: bold;     /* Makes text bold */
+  color: rgb(253, 6, 6); 
+}
 
 .article-link:hover {
   transform: translateY(-3px); /* Slight lift effect on hover */

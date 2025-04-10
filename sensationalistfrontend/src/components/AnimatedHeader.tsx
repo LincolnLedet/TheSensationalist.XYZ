@@ -77,25 +77,25 @@ const AnimatedHeader: React.FC = () => {
         </a>
         <nav>
           <ul className="nav-links">
-            <li>
+            {/* <li>
               <a href="#">COMMUNITY</a>
               <ul>
                 <li><a href="/authors">Our Authors</a></li>
                 <li><a href="mailto:frankievinehardt3@gmail.com">Submit Yourself</a></li>
               </ul>
-            </li>
+            </li> */}
             <li>
               <a href="#">CONTENT</a>
               <ul>
                 <li><a href="/search">Search</a></li>
               </ul>
             </li>
-            <li>
+            {/* <li>
               <a href="/shop">SHOP</a>
               <ul>
                 <li><a href="/cart">Cart</a></li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </nav>
         <ul className="Media-Logos">

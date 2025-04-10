@@ -106,7 +106,7 @@ const IssueModule: React.FC = () => {
 
         </form>
 
-      <ul className="article-list">
+      <ul className="search-article-list">
         {filteredArticles
           .filter(article => {
             if (checkedIssue && article.filetype === 'Article') return true;
@@ -115,7 +115,7 @@ const IssueModule: React.FC = () => {
           })
             /*(article.filetype === 'Issue' || article.filetype === 'Volume'))*/
           .map(article => (
-            <li key={article.id} className="article-item">
+            <li key={article.id} className="search-article-item">
               <a
                 href={`/articles/${article.id}`}
                 className="article-link"
@@ -126,16 +126,16 @@ const IssueModule: React.FC = () => {
                   });
                 }}
               >
-                <h2 className="article-title">{article.title}</h2>
-                <div className="article-content-preview">
+                <h2 className="search-article-title">{article.title}</h2>
+                <div className="search-article-content-preview">
                   <img
                     src={`${baseURL}/api/${article.coverImage.replace(/\\/g, '/')}`}
                     alt={article.title}
-                    className="article-image"
+                    className="search-article-image"
                   />
-                  <div className="article-details">
-                    <p className="article-description">{article.description}</p>
-                    <p className="article-viewcount">Views: {article.viewcount || 0}</p>
+                  <div className="search-article-details">
+                    <p className="search-article-description">{article.description}</p>
+                    <p className="search-article-viewcount">Views: {article.viewcount || 0}</p>
                   </div>
                 </div>
               </a>

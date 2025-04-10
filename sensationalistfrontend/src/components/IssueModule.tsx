@@ -69,6 +69,9 @@ const IssueModule: React.FC = () => {
           </li>
         ))}
       </ul>
+      <div className="Link_to_view_more">
+      <a href = "https://the-sensationalist.xyz/search">View More</a>
+      </div>
     </div>
   );
 };

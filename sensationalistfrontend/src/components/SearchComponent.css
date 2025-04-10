@@ -1,19 +1,19 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search');
 
-.article-list {
+.search-article-list {
     list-style-type: none;
     padding: 0;
 }
   
-.article-item {
+.search-article-item {
   margin-bottom: 20px;
   margin-right: 20px;
   border-radius: 8px;
 }
 
-.article-link {
+.search-article-link {
   text-decoration: none;
   display: block;
   background-color: white;
@@ -24,19 +24,19 @@
 }
 
 
-.article-link:hover {
+.search-article-link:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px); /* Slight lift effect on hover 
+  transform: translateY(-3px); 
 }
   
-.article-title {
+.search-article-title {
   font-size: 1.5em;
   margin-bottom: 15px;
   color: #333;
   font-family: "Libre Baskerville", serif;
 }
 
-.article-content-preview {
+.search-article-content-preview {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -45,7 +45,7 @@
   gap: 20px;
 }
 
-.article-image {
+.search-article-image {
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -53,17 +53,17 @@
   flex-shrink: 0;
 }
 
-.article-details {
+.search-article-details {
   flex-grow: 1;
 }
 
-.article-description {
+.search-article-description {
   font-size: 1em;
   color: #666;
 }
 
 
-.article-link:active {
+.search-article-link:active {
   transform: scale(0.98);
 }
 
@@ -147,4 +147,4 @@ h1 {
   border: none;
   background: transparent;
   width: 1000px;
-} */
+} 
