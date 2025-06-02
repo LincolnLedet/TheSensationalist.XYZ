@@ -4,19 +4,21 @@
 
 .search-article-list {
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
 }
   
 .search-article-item {
   margin-bottom: 20px;
   margin-right: 20px;
   border-radius: 8px;
+  background-color: whitesmoke;
+
 }
 
 .search-article-link {
   text-decoration: none;
   display: block;
-  background-color: white;
+  background-color: grey;
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 4px;
