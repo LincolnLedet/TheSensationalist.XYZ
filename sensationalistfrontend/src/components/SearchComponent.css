@@ -4,7 +4,7 @@
 
 .search-article-list {
     list-style-type: none;
-    padding: 10px;
+    padding: 0;
 }
   
 .search-article-item {
@@ -12,7 +12,8 @@
   margin-right: 20px;
   border-radius: 8px;
   background-color: whitesmoke;
-
+  padding: 20px;
+  padding-top: 1px;
 }
 
 .search-article-link {

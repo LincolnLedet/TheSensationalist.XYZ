@@ -1,8 +1,10 @@
 .NavHeaderContainer {
   position: sticky;
   top: 0;
-  max-width: 98vw;
   overflow: hidden;
+  min-width: 100vw;
+
+
 }
 
 .LogoContainer {
