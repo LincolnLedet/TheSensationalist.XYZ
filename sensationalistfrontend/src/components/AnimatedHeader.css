@@ -1,23 +1,41 @@
+.NavHeaderContainer {
+  position: sticky;
+  top: 0;
+  max-width: 98vw;
+  overflow: hidden;
+}
+
+.LogoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
 .NavHeader {
   display: grid;
   align-items: center;
   background-color: black;
-  color: white; /* White text */
-  padding: 20px;
-  grid-template-columns: 1fr 1fr 1fr;  /* Define 3 columns */
-  grid-template-areas: 
-    "logo nav-links Media-Logos";
-    position: sticky; /* Makes the header sticky */
-    top: 0;
-    padding: 0 15px 0 15px;
-}
-
-.NavHeaderContainer {
-  position: sticky; /* Makes the header sticky */
+  color: white;
+  padding: 5px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: "logo nav-links Media-Logos";
+  position: sticky;
   top: 0;
-  width: 100%; /* Full width */
-
+  width: 100vw;
 }
+
+.logo {
+  height: 90px;
+  width: auto;
+  grid-area: logo;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Media-Logos {
   display: flex;
   justify-content: center;
@@ -27,16 +45,9 @@
   grid-area: Media-Logos;
 }
 
+.InstaLogo,
+.EmailLogo,
 .YoutubeLogo {
-  height: 50px;
-  width: auto;
-}
-
-.InstaLogo {
-  height: 50px;
-  width: auto;
-}
-.EmailLogo {
   height: 50px;
   width: auto;
 }
@@ -51,167 +62,24 @@
   color: lightgray;
 }
 
-.logo {
-  height: 100px;
-  width: auto;
-  grid-area: logo;
-}
-
 nav {
-  margin-left: 40px;
-  padding: 0;
-}
-
-nav li {
-  position: relative;
-  display: block;
-  opacity: 0;
-  cursor: pointer;
-}
-
-nav li > ul {
-  position: absolute;
-  pointer-events: none;
+  grid-area: nav-links;
 }
 
 nav > ul {
   display: flex;
 }
 
-nav > ul > li {
-  pointer-events: all;
-  opacity: 1;
-}
-
-nav ul li a {
-  white-space: nowrap;
+nav ul li {
   display: block;
 }
 
-nav li:hover > ul {
-  pointer-events: initial;
-}
-
-nav > ul > li > a {
+nav ul li a {
   color: white;
+  display: block;
+  white-space: nowrap;
+  text-decoration: none;
   min-width: 190px;
-  transition: background 0.5s, color 0.5s, transform 0.5s;
-  margin: 0;
-  box-sizing: border-box;
-  border-radius: 3px;
-  position: relative;
   text-align: center;
-  text-decoration: none;
-  grid-area: 'nav-links'; 
-}
-
-nav > ul > li > ul > li > a {
-  color: black;
-  background-color: white;
-  min-width: 190px;
-  transition: background 0.5s, color 0.5s, transform 0.5s;
-  margin: 0px 6px 6px 0px;
-  padding: 20px 40px;
-  box-sizing: border-box;
-  border-radius: 3px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-  position: relative;
-  text-decoration: none;
-}
-
-nav > ul > li > a:hover:before {
-  content: '';
-  top: 0;
-  left: 0;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 165%;
-}
-
-nav > ul > li > ul> li > a:hover:before {
-  content: '';
-  top: 0;
-  left: 0;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 100%;
-} 
-
-nav > ul > li > ul > li {
-  transition: transform 0.6s, opacity 0.6s;
-  transform: translateY(150%);
-  opacity: 0;
-}
-
-nav > ul > li:hover > ul > li, nav > ul > li.hover > ul > li {
-  transform: translateY(0%);
-  opacity: 1;
-}
-
-nav > ul > li > ul > li {
-  transition: transform 0.6s, opacity 0.6s;
-  transform: translateX(195px)translateY(0%);
-  opacity: 0;
-}
-
-@media (max-width: 768px) {
-  .NavHeader {
-    grid-template-columns: 1fr; 
-    padding: 20px; 
-  }
-
-  .NavHeaderContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .logo {
-    padding-right: 0; 
-    justify-self: center; 
-  }
-
-  .Media-Logos {
-    justify-content: center;
-    width: 100%; 
-  }
-
-  nav > ul {
-    flex-direction: row; 
-    align-items: center; 
-  }
-}
-
-@media (max-width: 768px) {
-
-  .NavHeader {
-    display: grid;
-    align-items: center;
-    background-color: black;
-    color: white; /* White text */
-    padding: 2px;
-    grid-template-columns: 1fr 1fr;  /* Define 3 columns */
-    grid-template-areas: 
-      "logo Media-Logos";
-    
-  }
-
-  .NavHeader {
-    display: grid;
-    align-items: center;
-    background-color: black;
-    color: white; /* White text */
-    padding: 2px;
-    grid-template-columns: 1fr 1fr;  /* Define 3 columns */
-    grid-template-areas: 
-      "logo Media-Logos";
-    
-  }
-
-  .nav-links {
-    display: none;
-  }
-
+  padding: 10px;
 }

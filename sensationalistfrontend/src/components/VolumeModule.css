@@ -3,13 +3,14 @@
 .volume-button {
   display: flex;
   flex-direction: column;
-  border-radius: 2px;
 
 
 }
 .volume-bottom-text{
   background-color: whitesmoke;
   color: black;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .volume-bottom-text h3{
@@ -45,8 +46,10 @@
 .volume-cover-image {
   width: 100%;
   height: 100%;
-  border-radius: 1px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   aspect-ratio: 5 / 4; /* Ensures a 4:5 aspect ratio */
+  
   
 }
 

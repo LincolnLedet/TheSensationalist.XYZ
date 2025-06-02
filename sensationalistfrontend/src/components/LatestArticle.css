@@ -6,6 +6,7 @@
     font-weight: bold;
     margin-bottom: 0.4rem;
     text-align: center;
+
 }
 
 .overlay-text {
@@ -27,11 +28,11 @@
     display: block;
     transition: transform 0.3s ease-in-out;
     transform-origin: center center; /* Keeps the zoom centered */
-    border-radius: 2px;
+    border-radius: 6px;
 }
 
 .image-overlay-container:hover .latest-content-cover-image {
-    transform: scale(1.1); /* Zooms in while staying in place */
+    transform: scale(1.01); /* Zooms in while staying in place */
 }
 
 .image-overlay-container {
