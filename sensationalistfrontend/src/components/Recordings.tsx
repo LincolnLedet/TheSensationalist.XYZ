@@ -5,7 +5,7 @@ import axios from "axios";
 
 interface Band {
   id: string;
-  name: string;
+  title: string;
   genre: string;
   landingImage: string;
 }
@@ -49,10 +49,9 @@ const Recordings: React.FC = () => {
           <p>{error}</p>
         ) : (
           bands.map((band) => (
-            
             <ArtistCard
               key={band.id}
-              name={band.name}
+              name={band.title}
               genre={band.genre}
               image={`https://www.the-sensationalist.xyz/api/uploads/images/${band.landingImage}
               `}

@@ -10,13 +10,14 @@ const ArtistCard: React.FC<{ name: string; genre: string; image: string }> = ({
   console.log(genre);
   return (
     <div className="artist-card">
-      <h3>{name}</h3>
-      <p>{genre}</p>
+
       <img className="artist-image" src={image} alt={name} />
+              <h3>{genre}</h3>
       <div className="artist-info">
         <h3>{name}</h3>
-        <p>{genre}</p>
+        <h3>{genre}</h3>
       </div>
+      
     </div>
   );
 };
