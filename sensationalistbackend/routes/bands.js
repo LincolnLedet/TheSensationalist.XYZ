@@ -1,6 +1,9 @@
 const express = require('express');
 const upload = require('../middleware/uploadMiddleware');  // Import upload middleware
 const { Band, AudioTrack, BandPhoto } = require('../database'); // Import models
+const fs = require('fs');
+const path = require('path');
+
 
 const router = express.Router();
 /**
@@ -42,7 +45,12 @@ router.post('/:bandId/upload-image', upload.single('landingImage'), async (req, 
 
     if (!band) return res.status(404).json({ error: 'Band not found' });
 
-    band.landingImage = req.file.path;
+        // Check if the file already exists
+    if (fs.existsSync(uploadPath)) {
+      return res.status(409).json({ error: 'A file with this name already exists.' });
+    }
+
+    band.landingImage = req.file.filename;
     await band.save();
 
     res.json({ message: 'Landing image uploaded successfully', band });
