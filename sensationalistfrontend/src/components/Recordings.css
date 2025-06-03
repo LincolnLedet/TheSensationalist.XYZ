@@ -1,6 +1,6 @@
 .recordingSection {
     width: 99vw;
-    height: 100vh; /* Ensures full screen */
+    height: 80vh; /* Ensures full screen */
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -18,14 +18,14 @@
 
 .video-background {
     width: 100vw;
-    height: 100vh;
+    height: 65vh;
     object-fit: cover; /* Ensures video fully covers section */
     /*transform: translate(-50%, -50%);*/
     z-index: 0; /* Moves video behind other content */
     overflow: hidden;
     opacity: .5;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 70%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .RecordTheRanchArtists{
@@ -43,5 +43,5 @@
     color: white; /* Example: Change text color */
     font-size: 3rem; /* Example: Increase font size */
     font-weight: bold;    
-    z-index: -2; /* Keeps text above video */
+    z-index: 1; /* Keeps text above video */
 }

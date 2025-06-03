@@ -29,10 +29,10 @@ const AnimatedHeader: React.FC = () => {
         <nav>
           <ul className="nav-links">
             <li><a href="/search">SEARCH</a></li>
-            <li><a href="/events">EVENTS</a></li>
+            {/* <li><a href="/events">EVENTS</a></li>
             <li><a href="/artists">ARTISTS</a></li>
             <li><a href="/music">MUSIC</a></li>
-            <li><a href="/shop">SHOP</a></li>
+            <li><a href="/shop">SHOP</a></li> */}
           </ul>
         </nav>
 
