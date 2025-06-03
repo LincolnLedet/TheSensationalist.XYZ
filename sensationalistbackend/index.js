@@ -25,8 +25,17 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 
 // ✅ Serve static files from 'uploads' directory
-app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/uploads', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  // 🔥 This header is critical for fixing ERR_BLOCKED_BY_RESPONSE.NotSameOrigin
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+
+  next();
+});
+app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
 // ✅ Import and use routes
 const articleRoutes = require('./routes/articles');
 const authRoutes = require('./routes/auth');

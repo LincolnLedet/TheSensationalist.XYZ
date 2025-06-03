@@ -45,10 +45,9 @@ router.post('/:bandId/upload-image', upload.single('landingImage'), async (req, 
 
     if (!band) return res.status(404).json({ error: 'Band not found' });
 
-        // Check if the file already exists
-    if (fs.existsSync(uploadPath)) {
-      return res.status(409).json({ error: 'A file with this name already exists.' });
-    }
+    const uploadPath = path.join(__dirname, '..', 'uploads', 'images', req.file.filename);
+
+
 
     band.landingImage = req.file.filename;
     await band.save();
