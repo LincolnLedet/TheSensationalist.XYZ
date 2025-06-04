@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
       </div>
        <div className="Recordings">
         <Recordings />
-      </div> 
+      </div>  
 
       <div className="footer">
         <Footer />
