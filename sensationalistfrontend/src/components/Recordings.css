@@ -1,6 +1,6 @@
 .recordingSection {
     width: 100%;
-    height: 80vh; /* Ensures full screen */
+    height: 75vh; /* Ensures full screen */
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -23,17 +23,17 @@
 
 .video-background {
     width: 100%;
-    height: 65vh;
+    height: 60vh;
     object-fit: cover; /* Ensures video fully covers section */
     /*transform: translate(-50%, -50%);*/
     z-index: 0; /* Moves video behind other content */
     overflow: hidden;
     opacity: .5;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
-.RecordTheRanchArtists{
+.bandCardContainers{
     display: flex;
     flex-direction: row;
     gap: 50px;

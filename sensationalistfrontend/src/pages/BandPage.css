@@ -1,0 +1,14 @@
+.bandPageContainer{
+    overflow:hidden;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bandPageGrid{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 3 equal-width columns */
+  grid-template-rows: auto;              /* Let rows size based on content */
+  gap: 1rem; 
+
+}

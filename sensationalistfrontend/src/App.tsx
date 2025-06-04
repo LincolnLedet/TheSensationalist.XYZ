@@ -12,6 +12,8 @@ import CartPage from './pages/CartPage'; // Adjust the path if necessary
 import SearchPage from './pages/SearchPage'; // Adjust the path if necessary
 import UserInfoPage from './pages/UserInfoPage'; // Adjust the path if necessary
 import AuthorPage from './pages/DisplayAllAuthors'; // Adjust the path if necessary
+import BandPage from './pages/BandPage'; // Adjust the path if necessary
+
 
 
 import { Elements } from '@stripe/react-stripe-js';
@@ -35,6 +37,7 @@ const App: React.FC = () => {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/userInfo" element={<UserInfoPage />} />
           <Route path="/authors" element={<AuthorPage />} />
+          <Route path= "/bands/:bandName" element={<BandPage />} />
 
 
           {/* Wrap the cart route with the Stripe Elements provider */}

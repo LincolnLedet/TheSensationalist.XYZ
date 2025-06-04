@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Recordings.css";
 import ArtistCard from "./ArtistCard";
 import axios from "axios";
+import {Link} from 'react-router-dom';
 
 interface Band {
   id: string;
@@ -33,7 +34,7 @@ const Recordings: React.FC = () => {
 
   return (
     <div className="recordingSection">
-      <p>FINAL TAKE FRIDAYS</p>
+      <p>MUSIC</p>
 
       <div className="video-overlay">
         <video className="video-background" autoPlay loop muted playsInline>
@@ -42,13 +43,14 @@ const Recordings: React.FC = () => {
         </video>
       </div>
 
-      <div className="RecordTheRanchArtists">
+      <div className="bandCardContainers">
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
         ) : (
           bands.map((band) => (
+            <Link to={`/bands/${band.title.toLowerCase().replace(/\s+/g, '-')}`}>
             <ArtistCard
               key={band.id}
               name={band.title}
@@ -56,6 +58,7 @@ const Recordings: React.FC = () => {
               image={`https://www.the-sensationalist.xyz/api/uploads/images/${band.landingImage}
               `}
             />
+            </Link>
             
           
           ))
