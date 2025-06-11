@@ -9,7 +9,9 @@ interface Band {
   title: string;
   genre: string;
   landingImage: string;
+  description: string;
 }
+
 
 const Recordings: React.FC = () => {
   const [bands, setBands] = useState<Band[]>([]);
@@ -55,6 +57,7 @@ const Recordings: React.FC = () => {
               key={band.id}
               name={band.title}
               genre={band.genre}
+              description ={band.description}
               image={`https://www.the-sensationalist.xyz/api/uploads/images/${band.landingImage}
               `}
             />

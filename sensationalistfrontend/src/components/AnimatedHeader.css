@@ -24,7 +24,7 @@
   grid-template-areas: "logo nav-links Media-Logos";
   position: sticky;
   top: 0;
-  max-width: 100vw
+  min-width: 100vw
 }
 
 .logo {
@@ -44,6 +44,9 @@
   list-style: none;
   gap: 10px;
   grid-area: Media-Logos;
+  padding-left: 20px;
+  padding-right: 20px;
+
 }
 
 .InstaLogo,

@@ -12,3 +12,20 @@
   gap: 1rem; 
 
 }
+
+
+.bandTextDescription{
+  width: 50vw;
+  padding: 20px;
+}
+
+.bandTextDescription h1{
+  color: white;
+  text-align: center;
+}
+
+.bandTextDescription p{
+  color: white;
+  text-align: left;
+  font-size:25px
+}

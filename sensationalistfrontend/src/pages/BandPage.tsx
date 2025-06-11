@@ -24,9 +24,11 @@ const BandPage: React.FC = () => {
         <div className='bandPageContainer'>
             <AnimatedHeader/>
             <div className='bandPageGrid'>
-
-            <h1>{band.title}</h1>
+                <div className='bandTextDescription'>
+                    <h1>{band.title}</h1>
+                    <p>{band.description}</p>
             <p>{band.genre}</p>
+                </div>
             <img src={`https://www.the-sensationalist.xyz/api/uploads/images/${band.landingImage}`} alt={band.title} />
             </div>
 
