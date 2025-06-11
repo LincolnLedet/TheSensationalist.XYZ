@@ -98,9 +98,14 @@ const AudioTrack = sequelize.define('AudioTrack', {
     type: DataTypes.STRING,
     allowNull: true,
     validate: {
-      isJpegFormat(value) {
-        if (value && !value.toLowerCase().endsWith('.jpeg') && !value.toLowerCase().endsWith('.jpg')) {
-          throw new Error('Only JPEG files are allowed');
+      isImageFormat(value) {
+        if (
+          value &&
+          !value.toLowerCase().endsWith('.jpeg') &&
+          !value.toLowerCase().endsWith('.jpg') &&
+          !value.toLowerCase().endsWith('.png')
+        ) {
+          throw new Error('Only JPEG, JPG, and PNG files are allowed');
         }
       }
     }
@@ -117,9 +122,14 @@ const BandPhoto = sequelize.define('BandPhoto', {
     type: DataTypes.STRING,
     allowNull: true,
     validate: {
-      isJpegFormat(value) {
-        if (value && !value.toLowerCase().endsWith('.jpeg') && !value.toLowerCase().endsWith('.jpg')) {
-          throw new Error('Only JPEG files are allowed');
+      isImageFormat(value) {
+        if (
+          value &&
+          !value.toLowerCase().endsWith('.jpeg') &&
+          !value.toLowerCase().endsWith('.jpg') &&
+          !value.toLowerCase().endsWith('.png')
+        ) {
+          throw new Error('Only JPEG, JPG, and PNG files are allowed');
         }
       }
     }

@@ -36,9 +36,11 @@ const fileFilter = (req, file, cb) => {
   if (file.fieldname === 'audioFile' && file.mimetype !== 'audio/mpeg') {
     return cb(new Error('Only MP3 files are allowed for audio uploads'), false);
   }
-  if ((file.fieldname === 'photo' || file.fieldname === 'landingImage') &&
-      !['image/jpeg', 'image/jpg'].includes(file.mimetype)) {
-    return cb(new Error('Only JPEG images are allowed for photos'), false);
+  if (
+    (file.fieldname === 'photo' || file.fieldname === 'landingImage') &&
+    !['image/jpeg', 'image/jpg', 'image/png'].includes(file.mimetype)
+  ) {
+    return cb(new Error('Only JPEG and PNG images are allowed for photos'), false);
   }
   cb(null, true);
 };
