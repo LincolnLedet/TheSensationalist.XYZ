@@ -12,13 +12,14 @@ const router = express.Router();
  */
 router.post('/', async (req, res) => {
   try {
-    const { title, description, spotifyLink, appleMusicLink, websiteLink, instagramLink,videoLink, email, phone } = req.body;
+    const { title, description, spotifyLink, appleMusicLink, websiteLink, instagramLink,videoLink, email, phone ,genre } = req.body;
 
     // Ensure title is provided
     if (!title) return res.status(400).json({ error: 'Band title is required' });
 
     const newBand = await Band.create({
       title,
+      genre,
       description,
       spotifyLink,
       appleMusicLink,
@@ -26,7 +27,8 @@ router.post('/', async (req, res) => {
       instagramLink,
       videoLink,
       email,
-      phone
+      phone,
+      genre
     });
 
     res.status(201).json({ message: 'Band created successfully', band: newBand });
