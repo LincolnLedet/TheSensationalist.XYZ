@@ -84,7 +84,7 @@
       transform: rotate(360deg);
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .grid-container {
       display: grid;
         grid-template-areas: 
