@@ -101,7 +101,7 @@
 }
 
 /* Mobile Layout */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .article-item {
     flex-direction: column; /* Stack image and text vertically for mobile */
     align-items: center; /* Center-align content */

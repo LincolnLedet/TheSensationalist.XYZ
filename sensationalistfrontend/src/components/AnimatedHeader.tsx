@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import './AnimatedHeader.css';
-import { ReactComponent as SensationalLogo } from './SVGs/SensationalistLogo.svg';
+import sensationalistLogo from './Images/sensationalistPNGWHITE_preview_rev_2.png';
 import { ReactComponent as InstaLogo } from './SVGs/instagram-svgrepo-com.svg';
 
 const AnimatedHeader: React.FC = () => {
@@ -22,7 +22,7 @@ const AnimatedHeader: React.FC = () => {
       <div className="NavHeader">
         <div className="LogoContainer">
           <a href="/" className="Media-Logo" aria-label="Homepage">
-            <SensationalLogo className="logo" />
+<img src={sensationalistLogo} alt="Sensationalist Logo" className="logo" />
           </a>
         </div>
 

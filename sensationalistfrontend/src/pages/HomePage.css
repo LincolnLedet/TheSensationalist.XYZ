@@ -96,17 +96,21 @@
             /* Single column layout */
         grid-template-rows: auto auto auto auto; /* Automatically size rows */
         justify-content: center;
-        padding: 1em;
-        height: 3400px;
-        min-width:500px;
+          padding: 1em;
+          height: 3400px;
+          min-width: 300px;
+        
+        }
+        
 
-    }
-
-    .LatestArticle {
-        grid-area: LatestArticle;
-    }
-    .header {
-        grid-area: header;
+        
+        
+        .LatestArticle {
+          grid-area: LatestArticle;
+        }
+        
+        .header {
+          grid-area: header;
     }
 
 
@@ -117,6 +121,12 @@
 
     .LatestVolume {
         grid-area: "LatestVolume";
-        width: 100%; /* Take up full width */
-    }
-}
+          width: 100%;
+          /* Take up full width */
+        }
+        
+        .LatestContentAndVolumes {
+          width: 90vw;
+
+        }
+        }

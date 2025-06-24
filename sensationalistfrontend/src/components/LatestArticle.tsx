@@ -55,7 +55,6 @@ const LatestArticle: React.FC = () => {
               crossOrigin="anonymous"
               alt={latestArticle.title}
               className="latest-content-cover-image"
-              loading="lazy"  /* ✅ Lazy loads images only when they enter the viewport */
             />
             <div className="overlay-text">
               <h2>{latestArticle.title}</h2>

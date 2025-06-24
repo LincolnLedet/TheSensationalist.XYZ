@@ -20,6 +20,7 @@
     border-radius: 5px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
+
 }
 
 .latest-content-cover-image {
@@ -41,4 +42,15 @@
     overflow: hidden; /* Prevents the zoomed image from overflowing */
     width: 100%; /* Ensures container matches the image size */
     height: 400px;
+}
+@media (max-width: 900px) {
+    .overlay-text {
+
+        top: 41%;
+        width:60vw;
+        min-width: 350px;
+        max-height: 30vh;
+
+
+    }
 }
