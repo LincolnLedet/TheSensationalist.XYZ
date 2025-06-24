@@ -11,6 +11,9 @@
   color: black;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  height:100px;
+
+  
 }
 
 .volume-bottom-text h3{
@@ -62,4 +65,10 @@
     align-items: center;
     
   }
+  .volume-bottom-text{
+
+  height:180px;
+
+  
+}
 }

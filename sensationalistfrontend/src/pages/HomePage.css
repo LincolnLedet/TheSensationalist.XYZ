@@ -97,7 +97,7 @@
         grid-template-rows: auto auto auto auto; /* Automatically size rows */
         justify-content: center;
           padding: 1em;
-          height: 2900px;
+          height: 3000px;
           min-width: 300px;
         
         }
