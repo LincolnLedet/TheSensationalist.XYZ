@@ -46,11 +46,17 @@
 @media (max-width: 900px) {
     .overlay-text {
 
-        top: 41%;
+        top: 40%;
         width:60vw;
         min-width: 350px;
-        max-height: 30vh;
+        max-height: 150px;
+        font-size: 20px;
 
 
     }
+
+    .image-overlay-container {
+   
+    height: 300px;
+}
 }
